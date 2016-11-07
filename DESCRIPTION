@@ -1,0 +1,9 @@
+Package: docxtools
+Type: Package
+Title: Toolbox For Rmarkdown To DOCX Output
+Version: 0.1.0
+Author: Richard Layton
+Maintainer: Richard Layton <graphdr@gmail.com>
+Description: A package of tools i use for using R Markdown to create docx output documents.
+License: MIT + file LICENSE
+LazyData: TRUE
