@@ -1,9 +1,9 @@
 Package: docxtools
 Type: Package
-Title: Tools For R Markdown To Docx Documents
+Title: Tools for R Markdown to Docx Documents
 Version: 0.1.0
 Author: Richard Layton
-Maintainer: Richard Layton <graphdr@gmail.com>
+Maintainer: Richard Layton <graphdoctor@gmail.com>
 Description: A set of helper functions for using R Markdown to create documents
     in docx format, especially documents for use in a classroom or workshop
     setting.
