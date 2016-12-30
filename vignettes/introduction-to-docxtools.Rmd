@@ -1,0 +1,28 @@
+---
+title: "Introduction to docxtools"
+author: "Richard Layton"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Using R, RStudio, R Markdown, and knitr to produce Word documents is a regular part of my workflow when my collaborators are MSOffice users. This package is a collection of helper functions for designing Word documents used in a classroom or workshop setting. 
+
+## Overview
+
+The package has these functions: 
+
+- align_pander() 
+- format_engr() 
+- put_axes() 
+- put_gap() 
+
+
+
+
+
+
+

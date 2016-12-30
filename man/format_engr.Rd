@@ -12,23 +12,42 @@ format_engr(x, sigdig = NULL)
 \item{sigdig}{: An optional vector of significant digits.}
 }
 \value{
-The returned object is a data frame with numeric variables converted to formatted strings bounded by \code{"$...$"} and interpreted by R Markdown as an equation.
+The returned object is a data frame with numeric variables converted
+  to formatted strings bounded by \code{"$...$"} and interpreted by R
+  Markdown as an equation.
 }
 \description{
-Converts numeric objects into character variables formatted in engineering notation: base 10 with exponents that are multiples of 3. The input argument is a numeric vector or a data frame with at least one numeric variable.
+Converts numeric objects into character variables formatted in engineering
+notation: base 10 with exponents that are multiples of 3. The input argument
+is a numeric vector or a data frame with at least one numeric variable.
 }
 \details{
-The preferred input is a data frame. If the input is a numeric vector, it will be formatted and returned as a data frame with the variable name \code{value}. To preserve the variable name from the calling script, convert the number or vector to a data frame before calling \code{engr_format()}.
+The preferred input is a data frame. If the input is a numeric vector, it
+will be formatted and returned as a data frame with the variable name
+\code{value}. To preserve the variable name from the calling script, convert
+the number or vector to a data frame before calling \code{engr_format()}.
 
 Non-numeric variables in a data frame are unaffected and are returned as-is.
 
-Each numeric variable can be assigned its own number of significant digits. The default is 4. If \code{sigdig} is a single value, it is used for all variables; if an array, an excess number of elements is truncated and a shortage of elements is filled with the default 4. Setting \code{sigdig = 0} returns the numerical variable as-is.
+Each numeric variable can be assigned its own number of significant digits.
+The default is 4. If \code{sigdig} is a single value, it is used for all
+variables; if an array, an excess number of elements is truncated and a
+shortage of elements is filled with the default 4. Setting \code{sigdig = 0}
+returns the numerical variable as-is.
 
-The output format is "coefficient x 10^exponent" except for exponents equal to 0, 1, or 2. In these cases, the output format is floating-point. In all cases, the decimal point in the coefficient floats.
+The output format is "coefficient x 10^exponent" except for exponents equal
+to 0, 1, or 2. In these cases, the output #' format is floating-point. In all
+cases, the decimal point in the coefficient floats.
 
-Trailing zeros to the right of a decimal are significant. A trailing zero before a decimal is ambiguous; such numbers are reported with the decimal moved an additional three places to the left except for cases in which doing so results in a zero coefficient due to a small number of significant digits.
+Trailing zeros to the right of a decimal are significant. A trailing zero
+before a decimal is ambiguous; such numbers are reported with the decimal
+moved an additional three places to the left except for cases in which doing
+so results in a zero coefficient due to a small number of significant digits.
 
-The numerical output strings are bounded by \code{"$...$"} for rendering in an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the Rmd code chunk  \code{knitr::kable(engr_format(df))} prints the formatted data frame to the output document.
+The numerical output strings are bounded by \code{"$...$"} for rendering in
+an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the Rmd
+code chunk  \code{knitr::kable(engr_format(df))} prints the formatted data
+frame to the output document.
 }
 \examples{
 # create test input arguments

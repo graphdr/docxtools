@@ -10,4 +10,6 @@ Description: A set of helper functions for using R Markdown to create documents
 License: MIT + file LICENSE
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Imports: ggplot2, dplyr, stringr, tidyr, tibble, pander
+Imports: ggplot2, dplyr, stringr, tidyr, pander
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
