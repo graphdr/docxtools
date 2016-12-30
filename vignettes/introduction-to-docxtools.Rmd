@@ -20,6 +20,69 @@ The package has these functions:
 - put_axes() 
 - put_gap() 
 
+## Example 
+
+```{r}
+# packages
+library(knitr)
+suppressPackageStartupMessages(library(dplyr))
+library(docxtools)
+```
+
+Load a data set to illustrate the use of `format_engr()` and `align_pander()`. The data are readings of air temperature and pressure. We use the ideal gas law to compute a mean air density. 
+
+\[
+ \rho = \frac{p}{RT}
+\]
+
+```{r}
+load("../data/density_data.rda")
+knitr::kable(density_data)
+```
+
+The first step is to convert the readings into consistent SI units and compute density, 
+
+
+
+```{r}
+density_data <- density_data %>% 
+	mutate(T_K = T_C + 273.15) %>% 
+	mutate(p_Pa = p_kPa * 1000) %>% 
+	select(T_K, p_Pa, R) %>% 
+	mutate(density = p_Pa / (R * T_K))
+kable(density_data)
+```
+
+If presenting this table in a document, suppose we want to report temperature with 5 significant digits, pressure with 4, R as-is, and density with 5. 
+
+```{r}
+sigdig   <- c(5, 4, 0, 5)
+to_print <- format_engr(density_data, sigdig)
+kable(to_print)
+```
+
+The table entries have all been returned as character strings with math formatting, 
+
+```{r}
+str(to_print)
+```
+
+Conventional column alignment is numbers aligned right. We use `align_pander()` to right-align all 4 columns, 
+
+```{r}
+align_pander(to_print, "rrrr")
+```
+
+Finally, the heading can be edited for presentation,  
+
+```{r}
+names(to_print) <- c("$T\\,(\\mathrm{K})$"
+	, "$p\\,(\\mathrm{Pa})$"
+	, "$R\\,(\\mathrm{J}\\,\\mathrm{kg}^{-1}\\,\\mathrm{K}^{-1})$"
+	, "$\\rho\\,(\\mathrm{kg/m}^{3})$"
+	)
+align_pander(to_print, "rrrr")
+```
 
 
 

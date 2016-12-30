@@ -13,3 +13,4 @@ RoxygenNote: 5.0.1
 Imports: ggplot2, dplyr, stringr, tidyr, pander
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
+Depends: R (>= 2.10)
