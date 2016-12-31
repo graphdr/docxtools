@@ -175,7 +175,7 @@ However, as we reduce the number of significant digits, we can eventually obtain
 
 ## scalars and vectors are returned as data frames 
 
-The preferred input is a data frame. If the input is a numeric vector, it will be formatted and returned as a data frame with the variable name `value`. 
+The preferred input to `format_engr()` is a data frame. If the input is a numeric vector, it will be formatted and returned as a data frame with the variable name `value`. 
 
 For example,  using `y2` again, 
 
@@ -206,8 +206,8 @@ num   <- c(9.5, 10.4, -15)
 f_num <- format_engr(num, 3)
 str(f_num)
 
+# thus, we have 
 f_num$value
-align_pander(f_num, "r")
 ```
 
 

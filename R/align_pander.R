@@ -23,6 +23,7 @@
 #'
 #' @export
 align_pander <- function(x, align_idx = NULL, caption = NULL) {
+	stopifnot(is.data.frame(x))
 	if (is.null(align_idx)) {
 		panderOptions('table.alignment.default'
 			, function(x) ifelse(sapply(x, is.numeric), 'right', 'left'))
@@ -35,7 +36,6 @@ align_pander <- function(x, align_idx = NULL, caption = NULL) {
 	}
 	panderOptions('table.split.table', Inf)
 	panderOptions('keep.trailing.zeros', TRUE)
-	panderOptions('table.style', 'simple')
-	pander(x, caption = caption)
+	pander(x, caption = caption, style = 'simple')
 }
 
