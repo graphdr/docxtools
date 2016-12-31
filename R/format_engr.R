@@ -36,10 +36,6 @@
 #' @param x : The numeric object to be formatted.
 #' @param sigdig : An optional vector of significant digits.
 #'
-#' @import dplyr
-#' @import stringr
-#' @import tidyr
-#'
 #' @return The returned object is a data frame with numeric variables converted
 #'   to formatted strings bounded by \code{"$...$"} and interpreted by R
 #'   Markdown as an equation.

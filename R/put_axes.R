@@ -8,8 +8,6 @@
 #' @param col : Line color, default is \code{"gray60"}
 #' @param size : Line width, default is \code{0.5}
 #'
-#' @import ggplot2
-#'
 #' @return Prints the empty axes to the output document.
 #'
 #' @examples

@@ -9,8 +9,6 @@
 #' @param col : Border color, default is \code{"transparent"}
 #' @param fill : Fill color, default is \code{"transparent"}
 #'
-#' @import ggplot2
-#'
 #' @return Prints the box to the output document.
 #'
 #' @examples

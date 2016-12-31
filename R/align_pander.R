@@ -10,9 +10,6 @@
 #' @param align_idx : Optional string made up of \code{l} (left-aligned), \code{r} (right-aligned), and \code{c} (center-aligned).
 #' @param caption : Optional string used as the \code{pander()} caption argument.
 #'
-#' @import pander
-#' @import stringr
-#'
 #' @return Prints the data frame in table form using \code{pander(x)}.
 #'
 #' @examples
