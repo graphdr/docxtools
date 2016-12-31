@@ -48,6 +48,8 @@ The numerical output strings are bounded by \code{"$...$"} for rendering in
 an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the Rmd
 code chunk  \code{knitr::kable(engr_format(df))} prints the formatted data
 frame to the output document.
+
+To learn more about docxtools, start with the vignettes: \code{browseVignettes(package = "docxtools")}.
 }
 \examples{
 # create test input arguments
