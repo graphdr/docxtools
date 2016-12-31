@@ -1,0 +1,113 @@
+---
+title: "Put objects in docx"
+author: "Richard Layton"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Put objects in docx}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Using R, RStudio, R Markdown, and knitr to produce Word documents is a regular part of my workflow when my collaborators are MSOffice users. This package is a collection of helper functions for designing Word documents used in a classroom or workshop setting. 
+
+## overview
+
+The package has these functions for formatting tables, 
+
+- align_pander() 
+- format_engr() 
+
+and these for putting specific objects in a document, 
+
+- put_axes() 
+- put_gap() 
+
+## using format_engr() and align_pander() 
+
+The primary goal of `format_engr()` is to present numeric variables in a data frame in *engineering format*, that is, scientific notation with exponents that are multiples of 3. Compare: 
+
+| Syntax |Expression|
+|--------|----------|
+|conventional computer syntax |$1.011e+5$         | 
+|mathematical syntax          |$1.011\times10^{5}$|
+|engineering format           |$101.1\times10^{3}$|
+
+This example uses a small temperature-pressure data set to compute air density and display the results in a table. Density is computed using the ideal gas law, 
+\[
+ \rho = \frac{p}{RT}
+\]
+
+and `format_engr()` and `align_pander()` are used to format the table for presentation. 
+
+Start by loading packages, 
+
+```{r}
+library(knitr)
+suppressPackageStartupMessages(library(dplyr))
+library(docxtools)
+```
+
+Load the example data and display it, 
+
+```{r}
+load("../data/density_data.rda")
+knitr::kable(density_data)
+```
+
+Convert the readings into consistent SI units and compute density, 
+
+```{r}
+density_data <- density_data %>% 
+	mutate(T_K = T_C + 273.15) %>% 
+	mutate(p_Pa = p_kPa * 1000) %>% 
+	select(T_K, p_Pa, R) %>% 
+	mutate(density = p_Pa / (R * T_K))
+knitr::kable(density_data)
+```
+
+Suppose we want to report temperature with 5 significant digits, pressure with 4, the gas constant as-is (`sigdig = 0`), and density with 5. The first argument of `format_engr()` is the data frame, the second is the array of significant digits in column order. 
+
+```{r}
+to_print <- format_engr(density_data, sigdig = c(5, 4, 0, 5))
+knitr::kable(to_print)
+```
+
+Comments: 
+
+- scientific notation is omitted when the exponent is 0, 1, or 2, hence temperature **T_K** is reported with 5 digits but without scientific notation 
+- pressure data **p_Pa** is correctly shown in engineering format 
+- with significant digits = 0, the gas constant **R** is reported as originally saved in the data set 
+- trailing zeros are significant 
+
+Table entries have all been returned as character strings with math formatting.  
+
+```{r}
+str(to_print)
+```
+
+We use `align_pander()` to align the columns. The first argument is the data frame, the second is a string comprised of any combination of  "r", "l", and "c". Because the numbers in each column take up the same amount of space, we might try center-alignment. 
+
+```{r}
+align_pander(to_print, align_idx = "cccc")
+```
+
+Finally, the heading can be edited for presentation,  
+
+```{r}
+names(to_print) <- c("$T\\,(\\mathrm{K})$"
+	, "$p\\,(\\mathrm{Pa})$"
+	, "$R\\,(\\mathrm{J}\\,\\mathrm{kg}^{-1}\\,\\mathrm{K}^{-1})$"
+	, "$\\rho\\,(\\mathrm{kg/m}^{3})$"
+	)
+align_pander(to_print, "cccc")
+```
+
+The heading row, like the numeric variables, are formatted in R Markdown math format to obtain consistent font size and type and to take advantage of the math syntax for exponents. 
+
+## data frames with non-numeric variables
+
+
+
+
+

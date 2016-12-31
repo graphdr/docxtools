@@ -1,0 +1,218 @@
+---
+title: "Numbers in engineering format"
+author: "Richard Layton"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Numbers in engineering format}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The package has these functions for formatting numbers and tables, 
+
+- format_engr() 
+- align_pander() 
+
+## format_engr()
+
+The primary goal of `format_engr()` is to present numeric variables in a data frame in *engineering format*, that is, scientific notation with exponents that are multiples of 3. Compare: 
+
+| Syntax |Expression|
+|--------|----------|
+|conventional computer syntax |$1.011e+5$         | 
+|mathematical syntax          |$1.011\times10^{5}$|
+|engineering format           |$101.1\times10^{3}$|
+
+This example uses a small temperature-pressure data set to compute air density and display the results in a table. Density is computed using the ideal gas law, 
+\[
+ \rho = \frac{p}{RT}
+\]
+
+Start by loading packages, 
+
+```{r}
+library(knitr)
+opts_knit$set(root.dir = "../")
+```
+
+```{r}
+suppressPackageStartupMessages(library(dplyr))
+library(docxtools)
+```
+
+Load the example data and display it, 
+
+```{r}
+load("data/density_data.rda")
+knitr::kable(density_data)
+```
+
+Convert the readings into consistent SI units and compute density, 
+
+```{r}
+density_data <- density_data %>% 
+	mutate(T_K = T_C + 273.15) %>% 
+	mutate(p_Pa = p_kPa * 1000) %>% 
+	select(T_K, p_Pa, R) %>% 
+	mutate(density = p_Pa / (R * T_K))
+knitr::kable(density_data)
+```
+
+The first argument of `format_engr()` is the data frame, the second is the array of significant digits in column order. Suppose we want to report temperature with 5 significant digits, pressure with 4, the gas constant as-is (`sigdig = 0`), and density with 5. 
+
+```{r}
+to_print <- format_engr(density_data, sigdig = c(5, 4, 0, 5))
+knitr::kable(to_print)
+```
+
+Comments: 
+
+- scientific notation is omitted when the exponent is 0, 1, or 2, hence temperature **T_K** is reported with 5 digits but without scientific notation 
+- pressure data **p_Pa** is correctly shown in engineering format 
+- with significant digits = 0, the gas constant **R** is reported as originally found in the data set 
+- trailing zeros are significant 
+
+
+
+
+## align_pander() 
+
+Table entries have all been returned as character strings with math formatting.  
+
+```{r}
+str(to_print)
+```
+
+We use `align_pander()` to align the columns. The first argument is the data frame, the second is a string comprised of any combination of  "r", "l", and "c". Because the numbers in each column take up the same amount of space, we might try center-alignment. 
+
+```{r}
+align_pander(to_print, align_idx = "cccc")
+```
+
+Finally, the heading can be edited for presentation,  
+
+```{r}
+names(to_print) <- c("$T\\,(\\mathrm{K})$"
+	, "$p\\,(\\mathrm{Pa})$"
+	, "$R\\,(\\mathrm{J}\\,\\mathrm{kg}^{-1}\\,\\mathrm{K}^{-1})$"
+	, "$\\rho\\,(\\mathrm{kg/m}^{3})$"
+	)
+align_pander(to_print, "cccc")
+```
+
+The heading row, like the numeric variables, are formatted in R Markdown math format to obtain consistent font size and type and to take advantage of the math syntax for exponents. 
+
+
+
+
+## non-numeric variables  
+
+Load some alphanumeric test data, 
+
+```{r}
+load("data/alphanum_data.rda")
+str(alphanum_data)
+```
+
+Format the entire data frame with the default 4 significant digits
+
+```{r}
+to_print <- format_engr(alphanum_data)
+align_pander(to_print, "rcrcr")
+```
+
+- character variables `b` and `a` are unaffected by `engr_format()` and are printed in the same order as originally received 
+- coefficients have floating decimal points 
+
+Variables can be re-ordered in the usual way, e.g., 
+
+```{r}
+x2 <- alphanum_data %>% 
+	select(a, b, w, y, z)
+to_print <- format_engr(x2)
+align_pander(to_print, "ccrrr")
+```
+
+## significant zeros 
+
+Leading zeros are not significant. 
+
+Trailing zeros generally should be significant. For example, isolate a number from the `y` column:  
+
+```{r collapse = TRUE}
+y2 <- alphanum_data$y[2]
+y2
+```
+
+Formatting `y2` with different significant digits using `format_engr(y2, sigdig)` yields the table below. With 3 digits, `y2` has 3 unambiguous significant digits. However, reducing the number of digits to 2 would produce a coefficient of $350$ with an ambiguous zero before the decimal point. In such cases, `format_engr()` changes the exponent to produce `r format_engr(y2, 2)` with two unambiguous significant digits.   
+
+|`sigdig`|$y_2$|
+|--------|----------|
+|   4    |`r format_engr(y2, 4)`|
+|   3    |`r format_engr(y2, 3)`|
+|   2    |`r format_engr(y2, 2)`|
+|   1    |`r format_engr(y2, 1)`|
+
+*Exceptions to the significant trailing zero rule.* Consider $z_2$ from the data frame, 
+
+```{r collapse = TRUE}
+z2 <- alphanum_data$z[2]
+z2
+```
+
+For numbers like `z2` that in scientific notation would have exponents = 0, 1, or 2, `format_engr()` foregoes powers of ten notation.  
+
+
+|`sigdig`|$z_2$|
+|--------|----------|
+|   4    |`r format_engr(z2, 4)`|
+|   3    |`r format_engr(z2, 3)`|
+|   2    |`r format_engr(z2, 2)`|
+|   1    |`r format_engr(z2, 1)`|
+
+However, as we reduce the number of significant digits, we can eventually obtain a zero whose significance is ambiguous, as in $z_2 =$ `r format_engr(z2, 1)`. In such cases, `format_engr()` leaves the ambiguous significant zero instead of imposing scientific notation that the audience might find distracting.
+
+## scalars and vectors are returned as data frames 
+
+The preferred input is a data frame. If the input is a numeric vector, it will be formatted and returned as a data frame with the variable name `value`. 
+
+For example,  using `y2` again, 
+
+```{r, collapse = TRUE}
+str(y2)
+```
+
+Now formatting the number
+
+```{r, collapse = TRUE}
+f_y2 <- format_engr(y2, 4)
+str(f_y2)
+
+# thus, we have 
+f_y2$value
+```
+
+which can be used in an inline code chunk, 
+
+    $y_2 =$ `r f_y2$value`
+
+to produce $y_2 =$ `r f_y2$value`.
+
+Similarly, vectors are also returned as a data frame. 
+
+```{r, collapse = TRUE}
+num   <- c(9.5, 10.4, -15)
+f_num <- format_engr(num, 3)
+str(f_num)
+
+f_num$value
+align_pander(f_num, "r")
+```
+
+
+
+
+
+
+
