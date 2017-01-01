@@ -31,7 +31,8 @@
 #' code chunk  \code{knitr::kable(engr_format(df))} prints the formatted data
 #' frame to the output document.
 #'
-#' To learn more about docxtools, start with the vignettes: \code{browseVignettes(package = "docxtools")}.
+#' To learn more about docxtools, start with the vignettes:
+#' \code{browseVignettes(package = "docxtools")}.
 #'
 #' @param x : The numeric object to be formatted.
 #' @param sigdig : An optional vector of significant digits.

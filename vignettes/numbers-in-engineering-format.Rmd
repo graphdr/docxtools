@@ -41,8 +41,8 @@ Create some data for the example,
 ```{r}
 # temperature in K
 T_K  <- c(294.05, 294.15, 294.65, 293.35, 293.85)
-# pressure in Pa
-p_Pa <- c(101.1, 101.0, 101.1, 101.0, 101.1) * 1000
+# convert pressure from hPa to Pa
+p_Pa <- c(1011, 1010, 1011, 1010, 1011) * 100
 # gas constant in J / (kg K)
 R    <- 287
 # density in kg / m^3

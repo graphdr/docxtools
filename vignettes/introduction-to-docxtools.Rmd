@@ -9,15 +9,15 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Using R, RStudio, R Markdown, and knitr to produce Word documents is a regular part of my workflow when my collaborators are MSOffice users. This package is a collection of helper functions for designing Word documents used in a classroom or workshop setting. 
+This package is a collection of helper functions for designing Word documents used in a classroom or workshop setting. These are particularly useful when my collaborators work with Office software only. 
 
-The package has these functions for formatting numbers and tables,  
+The package has these functions for formatting numbers and aligning table columns, 
 
-- align_pander() 
-- format_engr() 
+- `align_pander()` 
+- `format_engr()` 
 
-and these for putting specific objects in a document, 
+and these for putting workspace in a printed document to create space for written responses, 
 
-- put_axes() 
-- put_gap() 
+- `put_axes()` 
+- `put_gap()` 
 

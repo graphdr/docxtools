@@ -15,12 +15,18 @@ put_gap(col = NULL, fill = NULL)
 Prints the box to the output document.
 }
 \description{
-Creates white space in a document by creating an empty plot in \code{ggplot2}. Border and fill can be specified to create a box. The defaults are transparent.
+Creates white space in a document by creating an empty plot in
+\code{ggplot2}. Border and fill can be specified to create a box. The
+defaults are transparent.
 }
 \details{
-Allows the author of Rmd to docx documents to insert a vertical white space of specified height, particularly useful in creating documents that users are expected to write in, such as workshop or student lab materials.
+Allows the author of Rmd to docx documents to insert a vertical white space
+of specified height, particularly useful in creating documents that users are
+expected to write in, such as workshop or student lab materials.
 
-The dimensions of the gap are determined when it is printed, e.g., using \code{knitr} in an R Markdown script, the box height in inches is set with the \code{fig.height} code chunk option.
+The dimensions of the gap are determined when it is printed, e.g., using
+\code{knitr} in an R Markdown script, the box height in inches is set with
+the \code{fig.height} code chunk option.
 }
 \examples{
 put_gap()

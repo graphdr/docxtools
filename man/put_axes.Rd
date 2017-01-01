@@ -7,20 +7,24 @@
 put_axes(quadrant = NULL, col = NULL, size = NULL)
 }
 \arguments{
-\item{quadrant}{: The quadrant to plot, 1, 2, 3, 4, or 0 for all four. Default is the first quadrant.}
+\item{quadrant}{: The quadrant to plot, 1, 2, 3, 4, or 0 for all four.
+Default is the first quadrant.}
 
-\item{col}{: Line color, default is \code{"gray60"}}
+\item{col}{: Line color, default is \code{"gray60"}.}
 
-\item{size}{: Line width, default is \code{0.5}}
+\item{size}{: Line width, default is \code{0.5}.}
 }
 \value{
-Prints the empty axes to the output document.
+The empty axes.
 }
 \description{
-Creates an empty, 2-dimensional, coordinate axes using \code{ggplot2}: no scales, no tick marks, no axis labels.
+Creates an empty, 2-dimensional, coordinate axes using \code{ggplot2}: no
+scales, no tick marks, no axis labels.
 }
 \details{
-The size of the figure is determined when printed, e.g., using \code{knitr} in an R Markdown script, the figure height in inches is set with the \code{fig.height} code chunk option.
+The size of the figure is determined when printed, e.g., using \code{knitr}
+in an R Markdown script, the figure height in inches is set with the
+\code{fig.height} code chunk option.
 }
 \examples{
 put_axes()
