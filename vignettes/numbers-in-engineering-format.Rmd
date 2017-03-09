@@ -29,6 +29,7 @@ This example uses a small temperature-pressure data set to compute air density a
 
 Start by loading packages, 
 
+
 ```{r}
 library(knitr)
 opts_knit$set(root.dir = "../")

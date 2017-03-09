@@ -40,4 +40,3 @@ align_pander(x, align_idx = "rcrrr")
 align_pander(x, caption = "A nicely formatted table")
 
 }
-

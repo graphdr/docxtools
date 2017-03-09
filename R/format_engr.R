@@ -143,11 +143,11 @@ format_engr <- function(x, sigdig = NULL) {
 		numeric_cols$num_str[sel] <- sprintf(paste0("%.", numeric_cols$sigdig[sel], "f"), as.numeric(numeric_cols$num_str[sel]) / 1000)
 		numeric_cols$pow[sel] <- numeric_cols$pow[sel] + 3
 
-		# continue the formatting
+		# continue formatting (str_replace requires the replacement to be a string)
 		numeric_cols <- numeric_cols %>%
 			mutate(num_str = if_else(num_sign < 0, str_c("-", num_str), num_str)) %>%
 			mutate(output  = if_else(pow == 0, "$nn$"
-															 , str_replace(paste("${nn}\\times 10^{pp}$"), "pp", pow))) %>%
+															 , str_replace(paste("${nn}\\times 10^{pp}$"), "pp", as.character(pow)))) %>%
 			mutate(output = str_replace(output, "nn", num_str)) %>%
 			select(obs, var, output) %>%
 			spread(var, output) %>%

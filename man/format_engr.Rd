@@ -80,4 +80,3 @@ format_engr(CO2[1:5,], 3)
 format_engr(a) # non-numeric, produces an error}
 
 }
-

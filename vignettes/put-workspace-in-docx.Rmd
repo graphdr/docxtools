@@ -93,7 +93,7 @@ put_axes(3)
 put_axes(4, col = "red", size = 2)
 ```
 
-```{r, fig.show = 'hold'}
+```{r, fig.show = 'hold', eval = FALSE}
 # two adjacent quadrants
 put_axes(12)
 # two adjacent quadrants
