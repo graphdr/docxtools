@@ -1,0 +1,82 @@
+---
+output:
+  github_document:
+    html_preview: TRUE
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+# docxtools <img src="man/figures/logo.png" align="right" />
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
+
+
+## overview
+
+docxtools is a small collection of helper functions for using R markdown to create Word documents. These are particularly useful when working reproducibly with collaborators who work with Office software exclusively.  
+
+- `format_engr()` to apply engineering format to numbers  
+- `align_pander()` to print a table of numbers using pander
+- `put_gap()`  to create white space in a document 
+- `put_axes()` to place unlabeled axes in a document 
+
+
+## installation  
+
+```{r eval=FALSE}
+# The easiest way to get docxtools
+install.packages("docxtools")
+```
+
+
+## usage 
+
+```{r}
+library(docxtools)
+
+set.seed(20170913)
+n <- 5
+a <- sample(letters, n)
+b <- sample(letters, n)
+w <- runif(n, min = -5, max = 50) * 1e+5
+y <- runif(n, min = -25, max = 40) / 1e+3
+z <- runif(n, min = -5, max = 100)
+x <- data.frame(w, a, y, b, z, stringsAsFactors = FALSE)
+
+output <- format_engr(x, sigdig = c(3, 4, 5))
+output
+
+align_pander(output, align_idx = "rcrcr")
+```
+
+Using `put_gap()` with knitr and R markdown, the gap height is specified in the R code-chunk header. 
+
+<pre class="r"><code>```{r fig.height = 0.75}
+# a gap with a border
+put_gap(col = "gray", fill = NULL)
+<code>```</code></code></pre>
+
+```{r fig.height = 0.75, echo=FALSE}
+# a gap with a border
+put_gap(col = "gray", fill = NULL)
+```
+
+For `put_axes()` with knitr and R markdown, the axis height is specified in the R code-chunk header. 
+
+<pre class="r"><code>```{r fig.height = 2}
+# first quadrant axes
+put_axes(1, col = "blue", size = 2)
+<code>```</code></code></pre>
+
+```{r, fig.height = 2, echo = FALSE}
+# first quadrant axes
+put_axes(1, col = "blue", size = 0.5)
+```
+
