@@ -63,7 +63,7 @@ Using `put_gap()` with knitr and R markdown, the gap height is specified in the 
 # a gap with a border
 put_gap(col = "gray", fill = NULL)
 <code>```</code></code></pre>
-![](README-unnamed-chunk-4-1.png)
+![](images/README-unnamed-chunk-4-1.png)
 
 For `put_axes()` with knitr and R markdown, the axis height is specified in the R code-chunk header.
 
@@ -71,4 +71,4 @@ For `put_axes()` with knitr and R markdown, the axis height is specified in the 
 # first quadrant axes
 put_axes(1, col = "blue", size = 2)
 <code>```</code></code></pre>
-![](README-unnamed-chunk-5-1.png)
+![](images/README-unnamed-chunk-5-1.png)
