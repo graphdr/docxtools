@@ -7,7 +7,7 @@ docxtools <img src="man/figures/logo.png" align="right" />
 overview
 --------
 
-docxtools is a small collection of helper functions for using R markdown to create Word documents. These are particularly useful when working reproducibly with collaborators who work with Office software exclusively.
+docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to does one own's work reproducibly but has collaborators who work with Office software exclusively.
 
 -   `format_engr()` to apply engineering format to numbers
 -   `align_pander()` to print a table of numbers using pander
@@ -72,3 +72,7 @@ For `put_axes()` with knitr and R markdown, the axis height is specified in the 
 put_axes(1, col = "blue", size = 2)
 <code>```</code></code></pre>
 ![](images/README-unnamed-chunk-5-1.png)
+
+------------------------------------------------------------------------
+
+Richard Layton
