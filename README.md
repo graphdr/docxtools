@@ -75,4 +75,4 @@ put_axes(1, col = "blue", size = 2)
 
 ------------------------------------------------------------------------
 
-Richard Layton
+License: MIT + File LICENSE<br> Richard Layton
