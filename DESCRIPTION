@@ -12,8 +12,11 @@ License: MIT + file LICENSE
 LazyData: TRUE
 RoxygenNote: 6.0.1
 Imports: ggplot2, dplyr, stringr, tidyr, pander
-Suggests: knitr, rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
 Depends: R (>= 3.1.2)
-URL:  https://CRAN.R-project.org/package=docxtools, 
+URL: https://CRAN.R-project.org/package=docxtools, 
     https://github.com/graphdr/docxtools

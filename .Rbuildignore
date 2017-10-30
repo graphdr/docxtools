@@ -1,2 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^README\.Rmd$
+^LICENSE\.md$
+^cran-comments\.md$
+^\.travis\.yml$
+^revdep$
+^images$

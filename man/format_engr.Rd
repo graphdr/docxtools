@@ -77,6 +77,9 @@ format_engr(mtcars[1:5, 1:5], sigdig = c(3, 0, 0, 0, 3))
 format_engr(CO2[1:5,], 3)
 
 \dontrun{
-format_engr(a) # non-numeric, produces an error}
+# if no columns are numeric, an error is thrown, e.g.,
+a
+format_engr(a)
+}
 
 }

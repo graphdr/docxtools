@@ -4,7 +4,7 @@ output:
     html_preview: TRUE
 ---
 
-```{r, echo = FALSE}
+```{r 001, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -31,7 +31,7 @@ docxtools is a small set of helper functions for using R Markdown to create docu
 
 ## installation  
 
-```{r eval=FALSE}
+```{r 002, eval=FALSE}
 # The easiest way to get docxtools
 install.packages("docxtools")
 ```
@@ -39,7 +39,7 @@ install.packages("docxtools")
 
 ## usage 
 
-```{r}
+```{r 003}
 library(docxtools)
 
 set.seed(20170913)
@@ -64,7 +64,7 @@ Using `put_gap()` with knitr and R markdown, the gap height is specified in the 
 put_gap(col = "gray", fill = NULL)
 <code>```</code></code></pre>
 
-```{r fig.height = 0.75, echo=FALSE}
+```{r 004, fig.height = 0.75, echo=FALSE}
 # a gap with a border
 put_gap(col = "gray", fill = NULL)
 ```
@@ -76,7 +76,7 @@ For `put_axes()` with knitr and R markdown, the axis height is specified in the 
 put_axes(1, col = "blue", size = 2)
 <code>```</code></code></pre>
 
-```{r, fig.height = 2, echo = FALSE}
+```{r 005, fig.height = 2, echo = FALSE}
 # first quadrant axes
 put_axes(1, col = "blue", size = 0.5)
 ```

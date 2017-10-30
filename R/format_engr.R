@@ -66,7 +66,10 @@
 #' format_engr(CO2[1:5,], 3)
 #'
 #' \dontrun{
-#' format_engr(a) # non-numeric, produces an error}
+#' # if no columns are numeric, an error is thrown, e.g.,
+#' a
+#' format_engr(a)
+#' }
 #'
 #' @export
 format_engr <- function(x, sigdig = NULL) {
