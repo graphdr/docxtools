@@ -36,7 +36,7 @@ shortage of elements is filled with the default 4. Setting \code{sigdig = 0}
 returns the numerical variable as-is.
 
 The output format is "coefficient x 10^exponent" except for exponents equal
-to 0, 1, or 2. In these cases, the output #' format is floating-point. In all
+to 0, 1, or 2. In these cases, the output format is floating-point. In all
 cases, the decimal point in the coefficient floats.
 
 Trailing zeros to the right of a decimal are significant. A trailing zero

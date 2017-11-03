@@ -27,7 +27,7 @@ output column alignment. The default alignments are numeric right and
 everything else left.
 
 If \code{align_idx} is not NULL, a warning message is generated if its string
-length doesn't match the number of columns in the table.
+length does not match the number of columns in the table.
 
 The function also sets these pander options as defaults: \itemize{ \item
 \code{table.split.table = Inf} \item \code{keep.trailing.zeros = TRUE} \item
