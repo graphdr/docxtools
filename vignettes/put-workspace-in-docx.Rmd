@@ -1,7 +1,5 @@
 ---
 title: "Put workspace in docx"
-author: "Richard Layton"
-date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     fig_caption: yes

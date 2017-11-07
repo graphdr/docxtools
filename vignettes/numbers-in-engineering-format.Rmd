@@ -1,7 +1,5 @@
 ---
 title: "Numbers in engineering format"
-author: "Richard Layton"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Numbers in engineering format}
