@@ -80,6 +80,8 @@ format_engr <- function(x, sigdig = NULL) {
 	}
 	stopifnot(is.data.frame(x))
 
+	x <- as.data.frame(x)
+
 	# to return data frame variables in the same order received
 	orig_names <- names(x)
 	n          <- dim(x)[1]
@@ -89,18 +91,6 @@ format_engr <- function(x, sigdig = NULL) {
 	if (is.null(sigdig)) sigdig <- 4
 	sigdig <- as.integer(sigdig)
 	stopifnot(sigdig >= 0)
-
-	# declare variables to address the "no visible binding" check
-	# there may be a better way, but I don't know what it is yet
-	div      <- 0
-	num_sign <- 0
-	num      <- 0
-	num_left <- 0
-	num_str  <- ""
-	output   <- ""
-	pow      <- ""
-	value    <- ""
-	var      <- ""
 
 	# isolate the numeric variables
 	numeric_cols   <- x %>% select_if(is.numeric)
