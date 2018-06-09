@@ -1,23 +1,29 @@
 Package: docxtools
-Type: Package
 Title: Tools for R Markdown to Docx Documents
-Version: 0.1.1
-Date: 2017-03-09
+Version: 0.1.2
+Language: en-US
 Authors@R: c(
     person("Richard", "Layton", email = "graphdoctor@gmail.com", role = c("aut", "cre"))
     )
 Description: A set of helper functions for using R Markdown to create documents
     in docx format, especially documents for use in a classroom or workshop
     setting.
+Depends: R (>= 3.1.2)
 License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 6.0.1
-Imports: ggplot2, dplyr, stringr, tidyr, pander
+Imports: 
+    dplyr, 
+    ggplot2, 
+    pander, 
+    stringr, 
+    tidyr 
 Suggests: 
     knitr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
-Depends: R (>= 3.1.2)
 URL: https://CRAN.R-project.org/package=docxtools, 
     https://github.com/graphdr/docxtools
+BugReports: https://github.com/graphdr/docxtools/issues

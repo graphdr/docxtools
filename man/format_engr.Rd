@@ -42,12 +42,13 @@ cases, the decimal point in the coefficient floats.
 Trailing zeros to the right of a decimal are significant. A trailing zero
 before a decimal is ambiguous; such numbers are reported with the decimal
 moved an additional three places to the left except for cases in which doing
-so results in a zero coefficient due to a small number of significant digits.
+so results in a zero coefficient due to a small number of significant
+digits.
 
 The numerical output strings are bounded by \code{"$...$"} for rendering in
-an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the Rmd
-code chunk  \code{knitr::kable(engr_format(df))} prints the formatted data
-frame to the output document.
+an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the
+Rmd code chunk  \code{knitr::kable(engr_format(df))} prints the formatted
+data frame to the output document.
 
 To learn more about docxtools, start with the vignettes:
 \code{browseVignettes(package = "docxtools")}.

@@ -28,52 +28,56 @@
 #'
 #' @export
 put_axes <- function(quadrant = NULL, col = NULL, size = NULL) {
-	if (is.null(quadrant)) quadrant <- 1
-	if (is.null(col)) col <- "gray60"
-	if (is.null(size)) size <- 0.5
-	if (quadrant == 0) {
-		x_lim <- c(-1, 1)
-		y_lim <- c(-1, 1)
-	} else if (quadrant == 1) {
-		x_lim <- c(0, 1)
-		y_lim <- c(0, 1)
-	} else if (quadrant == 2) {
-		x_lim <- c(-1, 0)
-		y_lim <- c(0, 1)
-	} else if (quadrant == 3) {
-		x_lim <- c(-1, 0)
-		y_lim <- c(-1, 0)
-	} else if (quadrant == 4) {
-		x_lim <- c(0, 1)
-		y_lim <- c(-1, 0)
-	} else if (quadrant == 12 | quadrant == 21) {
-		x_lim <- c(-1, 1)
-		y_lim <- c(0, 1)
-	} else if (quadrant == 23 | quadrant == 32) {
-		x_lim <- c(-1, 0)
-		y_lim <- c(-1, 1)
-	} else if (quadrant == 34 | quadrant == 43) {
-		x_lim <- c(-1, 1)
-		y_lim <- c(-1, 0)
-	} else if (quadrant == 14 | quadrant == 41) {
-		x_lim <- c(0, 1)
-		y_lim <- c(-1, 1)
-		} else{
-		stop("put_axes(): Incorrect quadrant argument.")
-	}
-	p <- ggplot() +
-		geom_segment(aes(x = x_lim[1], y = 0, xend = x_lim[2], yend = 0)
-			, col = col, size = size, lineend = "square") +
-		geom_segment(aes(x = 0, y = y_lim[1], xend = 0, yend = y_lim[2])
-								 , col = col, size = size, lineend = "square") +
-		theme(axis.ticks = element_blank()
-			, axis.text    = element_blank()
-			, axis.title   = element_blank()
-			, panel.grid   = element_blank()
-			, panel.background = element_blank()
-			, plot.margin = unit(c(0, 0, 0, 0), "mm")
-		) +
-		coord_cartesian(xlim = x_lim, ylim = y_lim) +
-	  coord_fixed()
- return(p)
+  if (is.null(quadrant)) quadrant <- 1
+  if (is.null(col)) col <- "gray60"
+  if (is.null(size)) size <- 0.5
+  if (quadrant == 0) {
+    x_lim <- c(-1, 1)
+    y_lim <- c(-1, 1)
+  } else if (quadrant == 1) {
+    x_lim <- c(0, 1)
+    y_lim <- c(0, 1)
+  } else if (quadrant == 2) {
+    x_lim <- c(-1, 0)
+    y_lim <- c(0, 1)
+  } else if (quadrant == 3) {
+    x_lim <- c(-1, 0)
+    y_lim <- c(-1, 0)
+  } else if (quadrant == 4) {
+    x_lim <- c(0, 1)
+    y_lim <- c(-1, 0)
+  } else if (quadrant == 12 | quadrant == 21) {
+    x_lim <- c(-1, 1)
+    y_lim <- c(0, 1)
+  } else if (quadrant == 23 | quadrant == 32) {
+    x_lim <- c(-1, 0)
+    y_lim <- c(-1, 1)
+  } else if (quadrant == 34 | quadrant == 43) {
+    x_lim <- c(-1, 1)
+    y_lim <- c(-1, 0)
+  } else if (quadrant == 14 | quadrant == 41) {
+    x_lim <- c(0, 1)
+    y_lim <- c(-1, 1)
+  } else {
+    stop("put_axes(): Incorrect quadrant argument.")
+  }
+  p <- ggplot() +
+    geom_segment(aes(x = x_lim[1], y = 0, xend = x_lim[2], yend = 0),
+      col = col, size = size, lineend = "square"
+    ) +
+    geom_segment(aes(x = 0, y = y_lim[1], xend = 0, yend = y_lim[2]),
+      col = col, size = size, lineend = "square"
+    ) +
+    theme(
+      axis.ticks = element_blank(),
+      axis.text = element_blank(),
+      axis.title = element_blank(),
+      panel.grid = element_blank(),
+      panel.background = element_blank(),
+      plot.margin = unit(c(0, 0, 0, 0), "mm")
+    ) +
+    coord_cartesian(xlim = x_lim, ylim = y_lim) +
+    coord_fixed()
+  return(p)
 }
+"put_axes"

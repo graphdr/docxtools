@@ -7,9 +7,9 @@
 put_gap(col = NULL, fill = NULL)
 }
 \arguments{
-\item{col}{: Border color, default is \code{"transparent"}}
+\item{col}{Border color, default is \code{"transparent"}}
 
-\item{fill}{: Fill color, default is \code{"transparent"}}
+\item{fill}{Fill color, default is \code{"transparent"}}
 }
 \value{
 Prints the box to the output document.
@@ -21,8 +21,8 @@ defaults are transparent.
 }
 \details{
 Allows the author of Rmd to docx documents to insert a vertical white space
-of specified height, particularly useful in creating documents that users are
-expected to write in, such as workshop or student lab materials.
+of specified height, particularly useful in creating documents that users
+are expected to write in, such as workshop or student lab materials.
 
 The dimensions of the gap are determined when it is printed, e.g., using
 \code{knitr} in an R Markdown script, the box height in inches is set with

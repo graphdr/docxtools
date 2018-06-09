@@ -8,3 +8,13 @@ include:
 - r: release
 - r: oldrel
 - r: devel
+
+r_packages:
+  - covr
+  - devtools
+
+r_github_packages:
+  - codecov/example-r
+
+after_success:
+  - Rscript -e 'library(covr);codecov()'

@@ -1,29 +1,46 @@
 
-docxtools <img src="man/figures/logo.png" align="right" />
-==========================================================
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools) [![Build Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
+# docxtools <img src="man/figures/logo.png" align="right" />
 
-overview
---------
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
+[![Build
+Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
+[![Rdoc](http://www.rdocumentation.org/badges/version/docxtools)](http://www.rdocumentation.org/packages/docxtools)
 
-docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to does one own's work reproducibly but has collaborators who work with Office software exclusively.
+## Overview
 
--   `format_engr()` to apply engineering format to numbers
--   `align_pander()` to print a table of numbers using pander
--   `put_gap()` to create white space in a document
--   `put_axes()` to place unlabeled axes in a document
+docxtools is a small set of helper functions for using R Markdown to
+create documents in docx format, especially documents for use in a
+classroom or workshop setting. These are particularly useful when one
+tries to does one own’s work reproducibly but has collaborators who work
+with Office software exclusively.
 
-installation
-------------
+  - `format_engr()` to apply engineering format to numbers  
+  - `align_pander()` to print a table of numbers using pander
+  - `put_gap()` to create white space in a document
+  - `put_axes()` to place unlabeled axes in a document
+
+## Installation
+
+From CRAN,
 
 ``` r
-# The easiest way to get docxtools
 install.packages("docxtools")
 ```
 
-usage
------
+Or you can obtain the latest devlopment version from GitHub
+
+``` r
+install.packages("devtools")
+devtools::install_github("graphdr/docxtools")
+```
+
+## Usage
 
 ``` r
 library(docxtools)
@@ -38,6 +55,8 @@ z <- runif(n, min = -5, max = 100)
 x <- data.frame(w, a, y, b, z, stringsAsFactors = FALSE)
 
 output <- format_engr(x, sigdig = c(3, 4, 5))
+#> Warning in if (width... < 0) stop("`width` is shorter than `ellipsis`", :
+#> the condition has length > 1 and only the first element will be used
 output
 #>                        w a                         y b        z
 #> 1  ${327}\\times 10^{3}$ f ${-21.43}\\times 10^{-3}$ j $26.425$
@@ -49,30 +68,34 @@ output
 align_pander(output, align_idx = "rcrcr")
 ```
 
-|                      w|  a  |                         y|  b  |       z|
-|----------------------:|:---:|-------------------------:|:---:|-------:|
-|   327 × 10<sup>3</sup>|  f  |  −21.43 × 10<sup>−3</sup>|  j  |  26.425|
-|  3.35 × 10<sup>6</sup>|  o  |   32.69 × 10<sup>−3</sup>|  u  |  88.005|
-|  1.70 × 10<sup>6</sup>|  a  |   4.895 × 10<sup>−3</sup>|  b  |  80.499|
-|  1.02 × 10<sup>6</sup>|  q  |   6.986 × 10<sup>−3</sup>|  y  |  93.280|
-|  1.80 × 10<sup>6</sup>|  w  |  −13.86 × 10<sup>−3</sup>|  v  |  37.444|
+|                       w | a |                          y | b |          z |
+| ----------------------: | :-: | -------------------------: | :-: | ---------: |
+|  \({327}\times 10^{3}\) | f | \({-21.43}\times 10^{-3}\) | j | \(26.425\) |
+| \({3.35}\times 10^{6}\) | o |  \({32.69}\times 10^{-3}\) | u | \(88.005\) |
+| \({1.70}\times 10^{6}\) | a |  \({4.895}\times 10^{-3}\) | b | \(80.499\) |
+| \({1.02}\times 10^{6}\) | q |  \({6.986}\times 10^{-3}\) | y | \(93.280\) |
+| \({1.80}\times 10^{6}\) | w | \({-13.86}\times 10^{-3}\) | v | \(37.444\) |
 
-Using `put_gap()` with knitr and R markdown, the gap height is specified in the R code-chunk header.
+Using `put_gap()` with knitr and R markdown, the gap height is specified
+in the R code-chunk header.
 
 <pre class="r"><code>```{r fig.height = 0.75}
 # a gap with a border
 put_gap(col = "gray", fill = NULL)
 <code>```</code></code></pre>
-![](images/README-004-1.png)
 
-For `put_axes()` with knitr and R markdown, the axis height is specified in the R code-chunk header.
+![](man/figures/README-004-1.png)<!-- -->
+
+For `put_axes()` with knitr and R markdown, the axis height is specified
+in the R code-chunk header.
 
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
 put_axes(1, col = "blue", size = 2)
 <code>```</code></code></pre>
-![](images/README-005-1.png)
 
-------------------------------------------------------------------------
+![](man/figures/README-005-1.png)<!-- -->
+
+-----
 
 License: MIT + File LICENSE<br> Richard Layton

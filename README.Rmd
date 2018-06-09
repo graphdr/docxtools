@@ -4,22 +4,28 @@ output:
     html_preview: TRUE
 ---
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 ```{r 001, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "images/README-"
+  fig.path = "man/figures/README-"
 )
 options(tibble.print_min = 5, tibble.print_max = 5)
 ```
 
 # docxtools <img src="man/figures/logo.png" align="right" />
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
 [![Build Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
+[![Coverage Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
+[![Rdoc](http://www.rdocumentation.org/badges/version/docxtools)](http://www.rdocumentation.org/packages/docxtools)
 
 
-## overview
+
+## Overview
 
 docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to does one own's work reproducibly but has collaborators who work with Office software exclusively.  
 
@@ -29,15 +35,22 @@ docxtools is a small set of helper functions for using R Markdown to create docu
 - `put_axes()` to place unlabeled axes in a document 
 
 
-## installation  
+## Installation  
 
-```{r 002, eval=FALSE}
-# The easiest way to get docxtools
+From CRAN, 
+
+```r
 install.packages("docxtools")
 ```
 
+Or you can obtain the latest devlopment version from GitHub 
 
-## usage 
+```r
+install.packages("devtools")
+devtools::install_github("graphdr/docxtools")
+```
+
+## Usage 
 
 ```{r 003}
 library(docxtools)

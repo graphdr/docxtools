@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Align the columns of a pander table. � align_pander • docxtools</title>
+<title>Align the columns of a pander table. — align_pander • docxtools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Align the columns of a pander table. — align_pander" />
+
+<meta property="og:description" content="Uses pander() to print a data frame as a table to the output
+document." />
+
+<meta property="og:image" content="/logo.png" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +59,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">docxtools</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">docxtools</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -88,6 +104,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -95,33 +112,38 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Align the columns of a pander table.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/graphdr/docxtools/blob/master/R/align_pander.R'><code>R/align_pander.R</code></a></small>
+    <div class="hidden name"><code>align_pander.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>Uses <code>pander()</code> to print a data frame as a table to the output document.</p>
+    <p>Uses <code>pander()</code> to print a data frame as a table to the output
+document.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>align_pander</span>(<span class='no'>x</span>, <span class='kw'>align_idx</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>: A data frame to be printed in the output document.</p></td>
+      <td><p>A data frame to be printed in the output document.</p></td>
     </tr>
     <tr>
       <th>align_idx</th>
-      <td><p>: Optional string made up of <code>l</code> (left-aligned),
+      <td><p>Optional string made up of <code>l</code> (left-aligned),
 <code>r</code> (right-aligned), and <code>c</code> (center-aligned).</p></td>
     </tr>
     <tr>
       <th>caption</th>
-      <td><p>: Optional string used as the <code>pander()</code> caption
+      <td><p>Optional string used as the <code>pander()</code> caption
 argument.</p></td>
     </tr>
     </table>
@@ -135,8 +157,8 @@ argument.</p></td>
     <p>Uses <code>panderOptions('table.alignment.default')</code> argument to assign
 output column alignment. The default alignments are numeric right and
 everything else left.</p>
-<p>If <code>align_idx</code> is not NULL, a warning message is generated if its string
-length does not match the number of columns in the table.</p>
+<p>If <code>align_idx</code> is not NULL, a warning message is generated if its
+string length does not match the number of columns in the table.</p>
 <p>The function also sets these pander options as defaults:</p><ul>
 <li><p><code>table.split.table = Inf</code></p></li>
 <li><p><code>keep.trailing.zeros = TRUE</code></p></li>
@@ -199,11 +221,14 @@ length does not match the number of columns in the table.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

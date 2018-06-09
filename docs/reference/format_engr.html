@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Format numerical variables in engineering notation. � format_engr • docxtools</title>
+<title>Format numerical variables in engineering notation. — format_engr • docxtools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Format numerical variables in engineering notation. — format_engr" />
+
+<meta property="og:description" content="Converts numeric objects into character variables formatted in engineering
+notation: base 10 with exponents that are multiples of 3. The input argument
+is a numeric vector or a data frame with at least one numeric variable." />
+
+<meta property="og:image" content="/logo.png" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +60,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">docxtools</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">docxtools</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -88,6 +105,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -95,21 +113,25 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Format numerical variables in engineering notation.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/graphdr/docxtools/blob/master/R/format_engr.R'><code>R/format_engr.R</code></a></small>
+    <div class="hidden name"><code>format_engr.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Converts numeric objects into character variables formatted in engineering
 notation: base 10 with exponents that are multiples of 3. The input argument
 is a numeric vector or a data frame with at least one numeric variable.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -146,11 +168,12 @@ cases, the decimal point in the coefficient floats.</p>
 <p>Trailing zeros to the right of a decimal are significant. A trailing zero
 before a decimal is ambiguous; such numbers are reported with the decimal
 moved an additional three places to the left except for cases in which doing
-so results in a zero coefficient due to a small number of significant digits.</p>
+so results in a zero coefficient due to a small number of significant
+digits.</p>
 <p>The numerical output strings are bounded by <code>"$...$"</code> for rendering in
-an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the Rmd
-code chunk  <code><a href='http://www.rdocumentation.org/packages/knitr/topics/kable'>knitr::kable(engr_format(df))</a></code> prints the formatted data
-frame to the output document.</p>
+an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the
+Rmd code chunk  <code><a href='http://www.rdocumentation.org/packages/knitr/topics/kable'>knitr::kable(engr_format(df))</a></code> prints the formatted
+data frame to the output document.</p>
 <p>To learn more about docxtools, start with the vignettes:
 <code>browseVignettes(package = "docxtools")</code>.</p>
     
@@ -172,22 +195,22 @@ frame to the output document.</p>
 #&gt; 2 28.374092 o  0.000347614 y 4874357.1
 #&gt; 3 -3.849624 i  0.004599897 g -111651.4
 #&gt; 4 44.500979 a -0.003045062 a 1314715.7
-#&gt; 5 92.411835 x -0.001069473 i  417385.0</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;          z b                         y a                        w
+#&gt; 5 92.411835 x -0.001069473 i  417385.0</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;          z b                         y a                        w
 #&gt; 1  $6.501$ c  ${1.052}\\times 10^{-3}$ q  ${2.847}\\times 10^{6}$
 #&gt; 2  $28.37$ o  ${347.6}\\times 10^{-6}$ y  ${4.874}\\times 10^{6}$
 #&gt; 3 $-3.850$ i  ${4.600}\\times 10^{-3}$ g ${-111.7}\\times 10^{3}$
 #&gt; 4  $44.50$ a ${-3.045}\\times 10^{-3}$ a  ${1.315}\\times 10^{6}$
-#&gt; 5  $92.41$ x ${-1.069}\\times 10^{-3}$ i  ${417.4}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt;         z b                        y a                      w
+#&gt; 5  $92.41$ x ${-1.069}\\times 10^{-3}$ i  ${417.4}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;         z b                        y a                      w
 #&gt; 1  $6.50$ c  ${1.05}\\times 10^{-3}$ q ${2.85}\\times 10^{6}$
 #&gt; 2  $28.4$ o   ${348}\\times 10^{-6}$ y ${4.87}\\times 10^{6}$
 #&gt; 3 $-3.85$ i  ${4.60}\\times 10^{-3}$ g ${-112}\\times 10^{3}$
 #&gt; 4  $44.5$ a ${-3.05}\\times 10^{-3}$ a ${1.31}\\times 10^{6}$
-#&gt; 5  $92.4$ x ${-1.07}\\times 10^{-3}$ i  ${417}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt;         z b                         y a                         w
+#&gt; 5  $92.4$ x ${-1.07}\\times 10^{-3}$ i  ${417}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;         z b                         y a                         w
 #&gt; 1  $6.50$ c  ${1.052}\\times 10^{-3}$ q  ${2.8465}\\times 10^{6}$
 #&gt; 2  $28.4$ o  ${347.6}\\times 10^{-6}$ y  ${4.8744}\\times 10^{6}$
 #&gt; 3 $-3.85$ i  ${4.600}\\times 10^{-3}$ g ${-111.65}\\times 10^{3}$
 #&gt; 4  $44.5$ a ${-3.045}\\times 10^{-3}$ a  ${1.3147}\\times 10^{6}$
-#&gt; 5  $92.4$ x ${-1.069}\\times 10^{-3}$ i  ${417.38}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>y</span>, <span class='fl'>2</span>)  <span class='co'># numeric vector</span></div><div class='output co'>#&gt;                     value
+#&gt; 5  $92.4$ x ${-1.069}\\times 10^{-3}$ i  ${417.38}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>y</span>, <span class='fl'>2</span>)  <span class='co'># numeric vector</span></div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;                     value
 #&gt; 1  ${1.1}\\times 10^{-3}$
 #&gt; 2 ${0.35}\\times 10^{-3}$
 #&gt; 3  ${4.6}\\times 10^{-3}$
@@ -195,7 +218,7 @@ frame to the output document.</p>
 #&gt; 5 ${-1.1}\\times 10^{-3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>n</span>, <span class='fl'>3</span>)  <span class='co'># numeric scalar</span></div><div class='output co'>#&gt;    value
 #&gt; 1 $5.00$</div><div class='input'>
 <span class='co'># using base R data sets</span>
-<span class='fu'>format_engr</span>(<span class='no'>DNase</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, ], <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt;    Run                     conc                  density
+<span class='fu'>format_engr</span>(<span class='no'>DNase</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, ], <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;    Run                     conc                  density
 #&gt; 1    1 ${48.83}\\times 10^{-3}$ ${17.00}\\times 10^{-3}$
 #&gt; 2    1 ${48.83}\\times 10^{-3}$ ${18.00}\\times 10^{-3}$
 #&gt; 3    1 ${195.3}\\times 10^{-3}$ ${121.0}\\times 10^{-3}$
@@ -205,12 +228,12 @@ frame to the output document.</p>
 #&gt; 7    1 ${781.2}\\times 10^{-3}$ ${377.0}\\times 10^{-3}$
 #&gt; 8    1 ${781.2}\\times 10^{-3}$ ${374.0}\\times 10^{-3}$
 #&gt; 9    1                  $1.562$ ${614.0}\\times 10^{-3}$
-#&gt; 10   1                  $1.562$ ${609.0}\\times 10^{-3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fl'>1</span>:<span class='fl'>5</span>], <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt;      mpg cyl  disp    hp   drat
+#&gt; 10   1                  $1.562$ ${609.0}\\times 10^{-3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fl'>1</span>:<span class='fl'>5</span>], <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;      mpg cyl  disp    hp   drat
 #&gt; 1 $21.0$ $6$ $160$ $110$ $3.90$
 #&gt; 2 $21.0$ $6$ $160$ $110$ $3.90$
 #&gt; 3 $22.8$ $4$ $108$  $93$ $3.85$
 #&gt; 4 $21.4$ $6$ $258$ $110$ $3.08$
-#&gt; 5 $18.7$ $8$ $360$ $175$ $3.15$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>CO2</span>[<span class='fl'>1</span>:<span class='fl'>5</span>,], <span class='fl'>3</span>)</div><div class='output co'>#&gt;   Plant   Type  Treatment                    conc uptake
+#&gt; 5 $18.7$ $8$ $360$ $175$ $3.15$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>CO2</span>[<span class='fl'>1</span>:<span class='fl'>5</span>,], <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;   Plant   Type  Treatment                    conc uptake
 #&gt; 1   Qn1 Quebec nonchilled                  $95.0$ $16.0$
 #&gt; 2   Qn1 Quebec nonchilled                   $175$ $30.4$
 #&gt; 3   Qn1 Quebec nonchilled ${0.250}\\times 10^{3}$ $34.8$
@@ -244,11 +267,14 @@ frame to the output document.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

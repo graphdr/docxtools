@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Insert a two-dimensional coordinate axes in a document. � put_axes • docxtools</title>
+<title>Insert a two-dimensional coordinate axes in a document. — put_axes • docxtools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Insert a two-dimensional coordinate axes in a document. — put_axes" />
+
+<meta property="og:description" content="Creates an empty, 2-dimensional, coordinate axes using ggplot2: no
+scales, no tick marks, no axis labels." />
+
+<meta property="og:image" content="/logo.png" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +59,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">docxtools</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">docxtools</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -88,6 +104,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -95,20 +112,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Insert a two-dimensional coordinate axes in a document.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/graphdr/docxtools/blob/master/R/put_axes.R'><code>R/put_axes.R</code></a></small>
+    <div class="hidden name"><code>put_axes.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Creates an empty, 2-dimensional, coordinate axes using <code>ggplot2</code>: no
 scales, no tick marks, no axis labels.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>put_axes</span>(<span class='kw'>quadrant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -138,7 +159,7 @@ in an R Markdown script, the figure height in inches is set with the
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>put_axes</span>()</div><div class='img'><img src='put_axes-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>quadrant</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='img'><img src='put_axes-6.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='img'><img src='put_axes-7.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='img'><img src='put_axes-8.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>put_axes</span>()</div><div class='img'><img src='put_axes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>quadrant</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='img'><img src='put_axes-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='img'><img src='put_axes-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='img'><img src='put_axes-4.png' alt='' width='700' height='433' /></div><div class='input'>
 </div># NOT RUN {
 # In an R Markdown script
 ```{r fig.height = 3.2}
@@ -169,11 +190,14 @@ put_axes()
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

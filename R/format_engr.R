@@ -24,12 +24,13 @@
 #' Trailing zeros to the right of a decimal are significant. A trailing zero
 #' before a decimal is ambiguous; such numbers are reported with the decimal
 #' moved an additional three places to the left except for cases in which doing
-#' so results in a zero coefficient due to a small number of significant digits.
+#' so results in a zero coefficient due to a small number of significant
+#' digits.
 #'
 #' The numerical output strings are bounded by \code{"$...$"} for rendering in
-#' an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the Rmd
-#' code chunk  \code{knitr::kable(engr_format(df))} prints the formatted data
-#' frame to the output document.
+#' an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the
+#' Rmd code chunk  \code{knitr::kable(engr_format(df))} prints the formatted
+#' data frame to the output document.
 #'
 #' To learn more about docxtools, start with the vignettes:
 #' \code{browseVignettes(package = "docxtools")}.
@@ -73,109 +74,119 @@
 #'
 #' @export
 format_engr <- function(x, sigdig = NULL) {
-	# if x is scalar or vector, create data frame x$value
-	if (is.atomic(x) & !is.list(x) & is.null(dim(x))) {
-		x <- data.frame(x, stringsAsFactors = FALSE)
-		names(x) <- "value"
-	}
-	stopifnot(is.data.frame(x))
+  # if x is scalar or vector, create data frame x$value
+  if (is.atomic(x) & !is.list(x) & is.null(dim(x))) {
+    x <- data.frame(x, stringsAsFactors = FALSE)
+    names(x) <- "value"
+  }
+  stopifnot(is.data.frame(x))
 
-	x <- as.data.frame(x)
+  x <- as.data.frame(x, stringsAsFactors = FALSE)
 
-	# to return data frame variables in the same order received
-	orig_names <- names(x)
-	n          <- dim(x)[1]
-	obs        <- as.integer(1:n)
+  # to return data frame variables in the same order received
+  orig_names <- names(x)
+  n <- dim(x)[1]
+  obs <- as.integer(1:n)
 
-	# prepare significant digits
-	if (is.null(sigdig)) sigdig <- 4
-	sigdig <- as.integer(sigdig)
-	stopifnot(sigdig >= 0)
+  # prepare significant digits
+  if (is.null(sigdig)) sigdig <- 4
+  sigdig <- as.integer(sigdig)
+  stopifnot(sigdig >= 0)
 
-	# isolate the numeric variables
-	numeric_cols   <- x %>% select_if(is.numeric)
-	m_numeric_cols <- dim(numeric_cols)[2]
-	numeric_cols   <- mutate(numeric_cols, obs = obs)
-	stopifnot(m_numeric_cols > 0)
+  # isolate the numeric variables
+  numeric_cols <- x %>% select_if(is.numeric)
+  m_numeric_cols <- dim(numeric_cols)[2]
+  numeric_cols <- mutate(numeric_cols, obs = obs)
+  stopifnot(m_numeric_cols > 0)
 
-	# match sigdig array to numeric data
-	sigfig_length <- length(sigdig)
-	if (sigfig_length == 1) {
-		sigdig <- rep(sigdig, m_numeric_cols)
-	} else if (sigfig_length > 1 & sigfig_length < m_numeric_cols) {
-		sigdig <- c(sigdig, rep(4, m_numeric_cols - sigfig_length))
-	} else if (sigfig_length > m_numeric_cols) {
-		sigdig <- sigdig[1:m_numeric_cols]
-	} else {
-		sigdig <- sigdig
-	}
-	sigdig <- as.integer(sigdig)
+  # match sigdig array to numeric data
+  sigfig_length <- length(sigdig)
+  if (sigfig_length == 1) {
+    sigdig <- rep(sigdig, m_numeric_cols)
+  } else if (sigfig_length > 1 & sigfig_length < m_numeric_cols) {
+    sigdig <- c(sigdig, rep(4, m_numeric_cols - sigfig_length))
+  } else if (sigfig_length > m_numeric_cols) {
+    sigdig <- sigdig[1:m_numeric_cols]
+  } else {
+    sigdig <- sigdig
+  }
+  sigdig <- as.integer(sigdig)
 
-	# format the numeric variables, omitting any with sigdig = 0
-	if (sum(sigdig) > 0) {
-		numeric_cols <- format(numeric_cols, scientific = TRUE) %>%
-			gather(var, value, 1:m_numeric_cols) %>%
-			separate(value, c("num",  "pow"), "e", remove = FALSE) %>%
-			mutate(sigdig = rep(sigdig, each = n)) %>%
-			filter(sigdig > 0) %>%
-			mutate(num = as.numeric(num)) %>%
-			mutate(pow = as.numeric(pow)) %>%
-			mutate(div = pow %% 3) %>%
-			mutate(num = num * 10 ^ div) %>%
-			mutate(pow = round(pow - div, 0)) %>%
-			mutate(num = signif(num, sigdig)) %>%
-			mutate(num_sign = sign(num)) %>%
-			mutate(num_str = sprintf(paste0("%.", sigdig, "f"), abs(num))) %>%
-			separate(num_str, c("num_left", "num_right"), "\\.", remove = FALSE) %>%
-			mutate(num_str = if_else(str_length(num_left) >= sigdig
-															 , num_left
-															 , str_trunc(num_str, sigdig + 1, "right", "")))
+  # format the numeric variables, omitting any with sigdig = 0
+  if (sum(sigdig) > 0) {
+    numeric_cols <- format(numeric_cols, scientific = TRUE) %>%
+      gather(var, value, 1:m_numeric_cols) %>%
+      separate(value, c("num", "pow"), "e", remove = FALSE) %>%
+      mutate(sigdig = rep(sigdig, each = n)) %>%
+      filter(sigdig > 0) %>%
+      mutate(num = as.numeric(num)) %>%
+      mutate(pow = as.numeric(pow)) %>%
+      mutate(div = pow %% 3) %>%
+      mutate(num = num * 10^div) %>%
+      mutate(pow = round(pow - div, 0)) %>%
+      mutate(num = signif(num, sigdig)) %>%
+      mutate(num_sign = sign(num)) %>%
+      mutate(num_str = sprintf(paste0("%.", sigdig, "f"), abs(num))) %>%
+      separate(num_str, c("num_left", "num_right"), "\\.", remove = FALSE) %>%
+      mutate(num_str = if_else(str_length(num_left) >= sigdig,
+        num_left,
+        str_trunc(num_str, sigdig + 1, "right", "")
+      ))
 
-		# adjust coefficient and exponent when significance of trailing zero is ambiguous
-		sel <- as.numeric(numeric_cols$num_right) == 0 & str_detect(numeric_cols$num_left, "0$") & as.numeric(numeric_cols$num_left)/1000 >= 0.1
-		numeric_cols$num_str[sel] <- sprintf(paste0("%.", numeric_cols$sigdig[sel], "f"), as.numeric(numeric_cols$num_str[sel]) / 1000)
-		numeric_cols$pow[sel] <- numeric_cols$pow[sel] + 3
+    # adjust coefficient and exponent when significance of trailing zero
+    # is ambiguous
+    sel <- as.numeric(numeric_cols$num_right) == 0 &
+      str_detect(numeric_cols$num_left, "0$") &
+      as.numeric(numeric_cols$num_left) / 1000 >= 0.1
+    numeric_cols$num_str[sel] <- sprintf(
+      paste0("%.", numeric_cols$sigdig[sel], "f"),
+      as.numeric(numeric_cols$num_str[sel]) / 1000
+    )
+    numeric_cols$pow[sel] <- numeric_cols$pow[sel] + 3
 
-		# continue formatting (str_replace requires the replacement to be a string)
-		numeric_cols <- numeric_cols %>%
-			mutate(num_str = if_else(num_sign < 0, str_c("-", num_str), num_str)) %>%
-			mutate(output  = if_else(pow == 0, "$nn$"
-															 , str_replace(paste("${nn}\\times 10^{pp}$"), "pp", as.character(pow)))) %>%
-			mutate(output = str_replace(output, "nn", num_str)) %>%
-			select(obs, var, output) %>%
-			spread(var, output) %>%
-			mutate(obs = as.integer(obs))
-	} else {
-		numeric_cols <- select(numeric_cols, obs)
-	} # end of engr-format section
+    # continue formatting (str_replace requires the replacement to be a string)
+    numeric_cols <- numeric_cols %>%
+      mutate(num_str = if_else(num_sign < 0, str_c("-", num_str), num_str)) %>%
+      mutate(output = if_else(
+        pow == 0,
+        "$nn$",
+        str_replace(paste("${nn}\\times 10^{pp}$"), "pp", as.character(pow))
+      )) %>%
+      mutate(output = str_replace(output, "nn", num_str)) %>%
+      select(obs, var, output) %>%
+      spread(var, output) %>%
+      mutate(obs = as.integer(obs))
+  } else {
+    numeric_cols <- select(numeric_cols, obs)
+  } # end of engr-format section
 
-	# separate the zero sig dig cols if any
-	non_numeric_logic <- !(names(x) %in% names(numeric_cols))
-	non_numeric_cols  <- select(x, which(non_numeric_logic))
+  # separate the zero sig dig cols if any
+  non_numeric_logic <- !(names(x) %in% names(numeric_cols))
+  non_numeric_cols <- select(x, which(non_numeric_logic))
 
-	zero_sig_cols   <- select_if(non_numeric_cols, is.numeric)
-	m_zero_sig_cols <- dim(zero_sig_cols)[2]
-	zero_sig_cols   <- mutate(zero_sig_cols, obs = obs)
+  zero_sig_cols <- select_if(non_numeric_cols, is.numeric)
+  m_zero_sig_cols <- dim(zero_sig_cols)[2]
+  zero_sig_cols <- mutate(zero_sig_cols, obs = obs)
 
-	if (m_zero_sig_cols > 0) {
-		zero_sig_cols <- zero_sig_cols %>%
-			gather(var, value, 1:m_zero_sig_cols) %>%
-			mutate(value = paste0("$", value, "$")) %>%
-			spread(var, value)
-	}
+  if (m_zero_sig_cols > 0) {
+    zero_sig_cols <- zero_sig_cols %>%
+      gather(var, value, 1:m_zero_sig_cols) %>%
+      mutate(value = paste0("$", value, "$")) %>%
+      spread(var, value)
+  }
 
-	non_numeric_logic0 <- !(names(non_numeric_cols) %in% names(zero_sig_cols))
-	non_numeric_cols  <- select(non_numeric_cols, which(non_numeric_logic0)) %>%
-		mutate(obs = obs)
+  non_numeric_logic0 <- !(names(non_numeric_cols) %in% names(zero_sig_cols))
+  non_numeric_cols <- select(non_numeric_cols, which(non_numeric_logic0)) %>%
+    mutate(obs = obs)
 
-	# rejoin the parts (each part has at least the obs column)
-	df <- left_join(numeric_cols, zero_sig_cols, by = "obs")
-	df <- left_join(df, non_numeric_cols, by = "obs")
-	df <- select(df, -obs)
+  # rejoin the parts (each part has at least the obs column)
+  df <- left_join(numeric_cols, zero_sig_cols, by = "obs")
+  df <- left_join(df, non_numeric_cols, by = "obs")
+  df <- select(df, -obs)
 
-	x <- select(df, match(orig_names, names(df)))
+  x <- select(df, match(orig_names, names(df)))
 
-	# return the df
-	return(x)
+  # return the df
+  return(x)
 }
-
+"format_engr"
