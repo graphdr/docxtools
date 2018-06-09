@@ -13,12 +13,13 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 6.0.1
-Imports: 
+Imports:
     dplyr, 
     ggplot2, 
+    magrittr, 
     pander, 
     stringr, 
-    tidyr 
+    tidyr
 Suggests: 
     knitr,
     rmarkdown,

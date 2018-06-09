@@ -15,11 +15,11 @@ NULL
 #' string length does not match the number of columns in the table.
 #'
 #' The function also sets these pander options as defaults:
-#' \itemize{
-#' \item \code{table.split.table = Inf}
-#' \item \code{keep.trailing.zeros = TRUE}
-#' \item \code{style = 'simple'}
-#' }
+#'   \itemize{
+#'     \item \code{table.split.table = Inf}
+#'     \item \code{keep.trailing.zeros = TRUE}
+#'     \item \code{style = 'simple'}
+#'   }
 #'
 #' @param x A data frame to be printed in the output document.
 #' @param align_idx Optional string made up of \code{l} (left-aligned),

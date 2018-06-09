@@ -1,3 +1,7 @@
+#' @importFrom ggplot2 ggplot geom_segment aes theme coord_fixed
+#' @importFrom ggplot2 coord_cartesian element_blank unit
+NULL
+
 #' Insert a two-dimensional coordinate axes in a document.
 #'
 #' Creates an empty, 2-dimensional, coordinate axes using \code{ggplot2}: no

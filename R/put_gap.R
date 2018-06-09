@@ -1,3 +1,6 @@
+#' @importFrom ggplot2 ggplot element_rect theme
+NULL
+
 #' Insert a gap or whitespace in a document.
 #'
 #' Creates white space in a document by creating an empty plot in
