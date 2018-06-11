@@ -4,36 +4,34 @@
 \alias{format_engr}
 \title{Format numerical variables in engineering notation.}
 \usage{
-format_engr(x, sigdig = NULL)
+format_engr(x, sigdig = NULL, ambig_0_adj = FALSE)
 }
 \arguments{
 \item{x}{: The numeric object to be formatted.}
 
 \item{sigdig}{: An optional vector of significant digits.}
+
+\item{ambig_0_adj}{: An optional logical to adjust the format
+to remove ambiguous trailing zeros. Default is FALSE. If TRUE, the
+decimal point is moved three places to the left.}
 }
 \value{
-The returned object is a data frame with numeric variables converted
-  to formatted strings bounded by \code{"$...$"} and interpreted by R
-  Markdown as an equation.
+A data frame with numeric variables converted
+  to formatted strings bounded by \code{"$...$"}.
 }
 \description{
 Converts numeric objects into character variables formatted in engineering
 notation: base 10 with exponents that are multiples of 3. The input argument
-is a numeric vector or a data frame with at least one numeric variable.
+is a data frame with at least one numeric variable.
 }
 \details{
-The preferred input is a data frame. If the input is a numeric vector, it
-will be formatted and returned as a data frame with the variable name
-\code{value}. To preserve the variable name from the calling script, convert
-the number or vector to a data frame before calling \code{engr_format()}.
-
 Non-numeric variables in a data frame are unaffected and are returned as-is.
 
 Each numeric variable can be assigned its own number of significant digits.
 The default is 4. If \code{sigdig} is a single value, it is used for all
-variables; if an array, an excess number of elements is truncated and a
-shortage of elements is filled with the default 4. Setting \code{sigdig = 0}
-returns the numerical variable as-is.
+variables; if an array, it must have the same number of elements as there
+are numeric variables in the data frame. Setting \code{sigdig = 0}
+returns the numerical variables with no change to the numbers of digits.
 
 The output format is "coefficient x 10^exponent" except for exponents equal
 to 0, 1, or 2. In these cases, the output format is floating-point. In all
@@ -69,18 +67,14 @@ print(x)
 format_engr(x)
 format_engr(x, sigdig = 3)
 format_engr(x, sigdig = c(3, 4, 5))
-format_engr(y, 2)  # numeric vector
-format_engr(n, 3)  # numeric scalar
-
-# using base R data sets
-format_engr(DNase[1:10, ], sigdig = 4)
-format_engr(mtcars[1:5, 1:5], sigdig = c(3, 0, 0, 0, 3))
-format_engr(CO2[1:5,], 3)
 
 \dontrun{
 # if no columns are numeric, an error is thrown, e.g.,
 a
 format_engr(a)
+
+Error if input is not a data frame
+format_engr(y, 2)  # numeric vector
 }
 
 }

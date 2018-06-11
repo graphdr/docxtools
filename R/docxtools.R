@@ -24,6 +24,7 @@ NULL
 if (getRversion() >= "2.15.1") {
 	utils::globalVariables(c(
 		".", "div", "num_sign", "num", "num_left",
-		"num_str", "output", "pow", "value", "var"
+		"num_str", "output", "pow", "value", "var",
+		"dig", "n"
 		))
 }

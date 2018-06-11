@@ -18,7 +18,10 @@ Imports:
     ggplot2, 
     magrittr, 
     pander, 
+    purrr, 
+    rlang, 
     stringr, 
+    tibble, 
     tidyr
 Suggests: 
     knitr,

@@ -9,3 +9,4 @@
 ^images$
 ^docs$
 ^_pkgdown\.yml$
+^holding$
