@@ -32,7 +32,7 @@
 
 <meta property="og:description" content="Converts numeric objects into character variables formatted in engineering
 notation: base 10 with exponents that are multiples of 3. The input argument
-is a numeric vector or a data frame with at least one numeric variable." />
+is a data frame with at least one numeric variable." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -88,12 +88,12 @@ is a numeric vector or a data frame with at least one numeric variable." />
       <a href="../articles/introduction-to-docxtools.html">Introduction to docxtools</a>
     </li>
     <li>
-      <a href="../articles/numbers-in-engineering-format.html">Numbers in engineering format</a>
-    </li>
-    <li>
       <a href="../articles/put-workspace-in-docx.html">Put workspace in docx</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -125,11 +125,11 @@ is a numeric vector or a data frame with at least one numeric variable." />
     
     <p>Converts numeric objects into character variables formatted in engineering
 notation: base 10 with exponents that are multiples of 3. The input argument
-is a numeric vector or a data frame with at least one numeric variable.</p>
+is a data frame with at least one numeric variable.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ambig_0_adj</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,26 +142,27 @@ is a numeric vector or a data frame with at least one numeric variable.</p>
       <th>sigdig</th>
       <td><p>: An optional vector of significant digits.</p></td>
     </tr>
+    <tr>
+      <th>ambig_0_adj</th>
+      <td><p>: An optional logical to adjust the format
+to remove ambiguous trailing zeros. Default is FALSE. If TRUE, the
+decimal point is moved three places to the left.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The returned object is a data frame with numeric variables converted
-  to formatted strings bounded by <code>"$...$"</code> and interpreted by R
-  Markdown as an equation.</p>
+    <p>A data frame with numeric variables converted
+  to formatted strings bounded by <code>"$...$"</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The preferred input is a data frame. If the input is a numeric vector, it
-will be formatted and returned as a data frame with the variable name
-<code>value</code>. To preserve the variable name from the calling script, convert
-the number or vector to a data frame before calling <code>engr_format()</code>.</p>
-<p>Non-numeric variables in a data frame are unaffected and are returned as-is.</p>
+    <p>Non-numeric variables in a data frame are unaffected and are returned as-is.</p>
 <p>Each numeric variable can be assigned its own number of significant digits.
 The default is 4. If <code>sigdig</code> is a single value, it is used for all
-variables; if an array, an excess number of elements is truncated and a
-shortage of elements is filled with the default 4. Setting <code>sigdig = 0</code>
-returns the numerical variable as-is.</p>
+variables; if an array, it must have the same number of elements as there
+are numeric variables in the data frame. Setting <code>sigdig = 0</code>
+returns the numerical variables with no change to the numbers of digits.</p>
 <p>The output format is "coefficient x 10^exponent" except for exponents equal
 to 0, 1, or 2. In these cases, the output format is floating-point. In all
 cases, the decimal point in the coefficient floats.</p>
@@ -195,55 +196,17 @@ data frame to the output document.</p>
 #&gt; 2 28.374092 o  0.000347614 y 4874357.1
 #&gt; 3 -3.849624 i  0.004599897 g -111651.4
 #&gt; 4 44.500979 a -0.003045062 a 1314715.7
-#&gt; 5 92.411835 x -0.001069473 i  417385.0</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;          z b                         y a                        w
-#&gt; 1  $6.501$ c  ${1.052}\\times 10^{-3}$ q  ${2.847}\\times 10^{6}$
-#&gt; 2  $28.37$ o  ${347.6}\\times 10^{-6}$ y  ${4.874}\\times 10^{6}$
-#&gt; 3 $-3.850$ i  ${4.600}\\times 10^{-3}$ g ${-111.7}\\times 10^{3}$
-#&gt; 4  $44.50$ a ${-3.045}\\times 10^{-3}$ a  ${1.315}\\times 10^{6}$
-#&gt; 5  $92.41$ x ${-1.069}\\times 10^{-3}$ i  ${417.4}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;         z b                        y a                      w
-#&gt; 1  $6.50$ c  ${1.05}\\times 10^{-3}$ q ${2.85}\\times 10^{6}$
-#&gt; 2  $28.4$ o   ${348}\\times 10^{-6}$ y ${4.87}\\times 10^{6}$
-#&gt; 3 $-3.85$ i  ${4.60}\\times 10^{-3}$ g ${-112}\\times 10^{3}$
-#&gt; 4  $44.5$ a ${-3.05}\\times 10^{-3}$ a ${1.31}\\times 10^{6}$
-#&gt; 5  $92.4$ x ${-1.07}\\times 10^{-3}$ i  ${417}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;         z b                         y a                         w
-#&gt; 1  $6.50$ c  ${1.052}\\times 10^{-3}$ q  ${2.8465}\\times 10^{6}$
-#&gt; 2  $28.4$ o  ${347.6}\\times 10^{-6}$ y  ${4.8744}\\times 10^{6}$
-#&gt; 3 $-3.85$ i  ${4.600}\\times 10^{-3}$ g ${-111.65}\\times 10^{3}$
-#&gt; 4  $44.5$ a ${-3.045}\\times 10^{-3}$ a  ${1.3147}\\times 10^{6}$
-#&gt; 5  $92.4$ x ${-1.069}\\times 10^{-3}$ i  ${417.38}\\times 10^{3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>y</span>, <span class='fl'>2</span>)  <span class='co'># numeric vector</span></div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;                     value
-#&gt; 1  ${1.1}\\times 10^{-3}$
-#&gt; 2 ${0.35}\\times 10^{-3}$
-#&gt; 3  ${4.6}\\times 10^{-3}$
-#&gt; 4 ${-3.0}\\times 10^{-3}$
-#&gt; 5 ${-1.1}\\times 10^{-3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>n</span>, <span class='fl'>3</span>)  <span class='co'># numeric scalar</span></div><div class='output co'>#&gt;    value
-#&gt; 1 $5.00$</div><div class='input'>
-<span class='co'># using base R data sets</span>
-<span class='fu'>format_engr</span>(<span class='no'>DNase</span>[<span class='fl'>1</span>:<span class='fl'>10</span>, ], <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;    Run                     conc                  density
-#&gt; 1    1 ${48.83}\\times 10^{-3}$ ${17.00}\\times 10^{-3}$
-#&gt; 2    1 ${48.83}\\times 10^{-3}$ ${18.00}\\times 10^{-3}$
-#&gt; 3    1 ${195.3}\\times 10^{-3}$ ${121.0}\\times 10^{-3}$
-#&gt; 4    1 ${195.3}\\times 10^{-3}$ ${124.0}\\times 10^{-3}$
-#&gt; 5    1 ${390.6}\\times 10^{-3}$ ${206.0}\\times 10^{-3}$
-#&gt; 6    1 ${390.6}\\times 10^{-3}$ ${215.0}\\times 10^{-3}$
-#&gt; 7    1 ${781.2}\\times 10^{-3}$ ${377.0}\\times 10^{-3}$
-#&gt; 8    1 ${781.2}\\times 10^{-3}$ ${374.0}\\times 10^{-3}$
-#&gt; 9    1                  $1.562$ ${614.0}\\times 10^{-3}$
-#&gt; 10   1                  $1.562$ ${609.0}\\times 10^{-3}$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fl'>1</span>:<span class='fl'>5</span>], <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;      mpg cyl  disp    hp   drat
-#&gt; 1 $21.0$ $6$ $160$ $110$ $3.90$
-#&gt; 2 $21.0$ $6$ $160$ $110$ $3.90$
-#&gt; 3 $22.8$ $4$ $108$  $93$ $3.85$
-#&gt; 4 $21.4$ $6$ $258$ $110$ $3.08$
-#&gt; 5 $18.7$ $8$ $360$ $175$ $3.15$</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>CO2</span>[<span class='fl'>1</span>:<span class='fl'>5</span>,], <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: the condition has length &gt; 1 and only the first element will be used</span></div><div class='output co'>#&gt;   Plant   Type  Treatment                    conc uptake
-#&gt; 1   Qn1 Quebec nonchilled                  $95.0$ $16.0$
-#&gt; 2   Qn1 Quebec nonchilled                   $175$ $30.4$
-#&gt; 3   Qn1 Quebec nonchilled ${0.250}\\times 10^{3}$ $34.8$
-#&gt; 4   Qn1 Quebec nonchilled ${0.350}\\times 10^{3}$ $37.2$
-#&gt; 5   Qn1 Quebec nonchilled ${0.500}\\times 10^{3}$ $35.3$</div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='co'># if no columns are numeric, an error is thrown, e.g.,</span>
-<span class='no'>a</span>
-<span class='fu'>format_engr</span>(<span class='no'>a</span>)
-<span class='co'># }</span><div class='input'>
+#&gt; 5 92.411835 x -0.001069473 i  417385.0</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>)
+<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>))</div># NOT RUN {
+# if no columns are numeric, an error is thrown, e.g.,
+a
+format_engr(a)
+
+Error if input is not a data frame
+format_engr(y, 2)  # numeric vector
+# }
+<div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Insert a two-dimensional coordinate axes in a document. — put_axes • docxtools</title>
+<title>Changelog • docxtools</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,10 +28,7 @@
 
 
 
-<meta property="og:title" content="Insert a two-dimensional coordinate axes in a document. — put_axes" />
-
-<meta property="og:description" content="Creates an empty, 2-dimensional, coordinate axes using ggplot2: no
-scales, no tick marks, no axis labels." />
+<meta property="og:title" content="Changelog" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -49,7 +46,7 @@ scales, no tick marks, no axis labels." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,73 +112,55 @@ scales, no tick marks, no axis labels." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Insert a two-dimensional coordinate axes in a document.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/graphdr/docxtools/blob/master/R/put_axes.R'><code>R/put_axes.R</code></a></small>
-    <div class="hidden name"><code>put_axes.Rd</code></div>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/graphdr/docxtools/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    
-    <p>Creates an empty, 2-dimensional, coordinate axes using <code>ggplot2</code>: no
-scales, no tick marks, no axis labels.</p>
-    
-    </div>
-
-    <pre class="usage"><span class='fu'>put_axes</span>(<span class='kw'>quadrant</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>quadrant</th>
-      <td><p>: The quadrant to plot, 1, 2, 3, 4, or 0 for all four.
-Default is the first quadrant.</p></td>
-    </tr>
-    <tr>
-      <th>col</th>
-      <td><p>: Line color, default is <code>"gray60"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>size</th>
-      <td><p>: Line width, default is <code>0.5</code>.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>The empty axes.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The size of the figure is determined when printed, e.g., using <code>knitr</code>
-in an R Markdown script, the figure height in inches is set with the
-<code>fig.height</code> code chunk option.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>put_axes</span>()</div><div class='img'><img src='put_axes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>quadrant</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='img'><img src='put_axes-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='img'><img src='put_axes-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>put_axes</span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='img'><img src='put_axes-4.png' alt='' width='700' height='433' /></div><div class='input'>
-</div># NOT RUN {
-# In an R Markdown script
-```{r fig.height = 3.2}
-put_axes()
-```
-# }
-<div class='input'>
-</div></pre>
+    <div id="docxtools-0-1-2-2018-06-11" class="section level2">
+<h2 class="hasAnchor">
+<a href="#docxtools-0-1-2-2018-06-11" class="anchor"></a>docxtools 0.1.2 (2018-06-11)</h2>
+<div id="bug-fixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h3>
+<p>In <code><a href="../reference/format_engr.html">format_engr()</a></code>, corrected an error caused by an incorrect use of <code>str_trunc()</code>.</p>
+</div>
+<div id="new-features" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h3>
+<p>In <code><a href="../reference/format_engr.html">format_engr()</a></code>, added the <code>ambig_0_adj</code> argument. Reformatting exponential notation to remove ambiguous trailing zeros is now an optional setting.</p>
+</div>
+<div id="minor-improvements" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-improvements" class="anchor"></a>Minor improvements</h3>
+<p>In <code><a href="../reference/format_engr.html">format_engr()</a></code></p>
+<ul>
+<li>Replaced the formatting using <code>sprintf()</code> with <code>formatC()</code> for better control of significant trailing zeros.</li>
+<li>Require the input to be a data frame.</li>
+<li>Require the significant digits vector to have length 1 or match the number of numeric variables.</li>
+<li>Replaced some code with tidy evaluation.</li>
+</ul>
+<!-- ### New features --><!-- ### Minor improvements --><!-- ### Bug fixes --><!-- ### Deprecated --><!-- ### Defunct -->
+</div>
+</div>
+    <div id="docxtools-0-1-1-2017-03-10" class="section level2">
+<h2 class="hasAnchor">
+<a href="#docxtools-0-1-1-2017-03-10" class="anchor"></a>docxtools 0.1.1 (2017-03-10)</h2>
+<ul>
+<li>released to CRAN</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#docxtools-0-1-2-2018-06-11">0.1.2</a></li>
+        <li><a href="#docxtools-0-1-1-2017-03-10">0.1.1</a></li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
       <footer>
