@@ -5,4 +5,5 @@
 *.Rproj
 .Renviron
 inst/doc
-holding
+holding/
+data-raw/

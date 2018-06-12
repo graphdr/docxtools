@@ -7,7 +7,6 @@
 #' The package provides two categories of functions: one for formatting numbers
 #' and tables; and one for placing specific objects in a docx output document.
 #'
-#'
 #' @section Number and table formatting:
 #'   \code{format_engr()} Format numerical variables in engineering notation.
 #'   \code{align_pander()} Align the columns of a pander table.
@@ -22,9 +21,9 @@ NULL
 
 ## addresses R CMD check warning "no visible binding"
 if (getRversion() >= "2.15.1") {
-	utils::globalVariables(c(
-		".", "div", "num_sign", "num", "num_left",
-		"num_str", "output", "pow", "value", "var",
-		"dig", "n"
-		))
+  utils::globalVariables(c(
+    ".", "div", "num_sign", "num", "num_left",
+    "num_str", "output", "pow", "value", "var",
+    "dig", "n"
+  ))
 }

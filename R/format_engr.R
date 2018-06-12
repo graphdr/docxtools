@@ -58,185 +58,169 @@ NULL
 #' z <- runif(n, min =  -5, max = 100)
 #' x <- data.frame(z, b, y, a, w, stringsAsFactors = FALSE)
 #'
-#' # format different objects
+#' # format options
 #' print(x)
 #' format_engr(x)
 #' format_engr(x, sigdig = 3)
 #' format_engr(x, sigdig = c(3, 4, 5))
 #'
-#' \dontrun{
-#' # if no columns are numeric, an error is thrown, e.g.,
-#' a
-#' format_engr(a)
-#'
-#' Error if input is not a data frame
-#' format_engr(y, 2)  # numeric vector
-#' }
-#'
 #' @export
 format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 
-	# input argument x must be a data frame
-	if (!is.data.frame(x)) {
-		warning("Argument must be a data frame.")
-		return(x)
-	} else {
-		# if already a df, make sure not a tibble (conflict with format)
-		x <- as.data.frame(x)
-	}
+  # input argument x must be a data frame
+  if (!is.data.frame(x)) {
+    warning("Argument must be a data frame.")
+    return(x)
+  } else {
+    # if already a df, make sure not a tibble (conflict with format)
+    x <- as.data.frame(x)
+  }
 
-	# default significant digits
-	if (is.null(sigdig)) {
-		sigdig <- 4L
-	} else if (any(sigdig < 0)) {
-		warning("Significant digits must be 0 or positive integers.")
-		return(x)
-	} else {
-		sigdig <- as.integer(sigdig) # ensure integer
-	}
+  # default significant digits
+  if (is.null(sigdig)) {
+    sigdig <- 4L
+  } else if (any(sigdig < 0)) {
+    warning("Significant digits must be 0 or positive integers.")
+    return(x)
+  } else {
+    sigdig <- as.integer(sigdig) # ensure integer
+  }
 
-	# at least one column must be numeric
-	var_class <- purrr::map_chr(x, class)
+  # at least one column must be numeric
+  var_class <- purrr::map_chr(x, class)
 
-	if (!"numeric" %in% var_class) {
-		warning("No columns are numeric.")
-		return(x)
-	}
+  if (!"numeric" %in% var_class) {
+    warning("No columns are numeric.")
+    return(x)
+  }
 
-	# obtain list of symbolic variable names to recover column order
-	var_name_list <- rlang::syms(names(x))
+  # obtain list of symbolic variable names to recover column order
+  var_name_list <- rlang::syms(names(x))
 
-	# separate numeric from non-numeric (can be empty)
-	numeric_col <- x[ , var_class == "numeric", drop = FALSE]
-	non_numeric <- x[ , var_class != "numeric", drop = FALSE]
+  # separate numeric from non-numeric (can be empty)
+  numeric_col <- x[, var_class == "numeric", drop = FALSE]
+  non_numeric <- x[, var_class != "numeric", drop = FALSE]
 
-	# sigdig vector length = 1
-	m_numeric_col <- ncol(numeric_col)
-	if (length(sigdig) == 1) {
-		sigdig <- rep(sigdig, m_numeric_col)
-	}
-	# or length must = N numeric col
-	if (length(sigdig) != m_numeric_col) {
-		warning(paste("sigdig must have length 1 or", m_numeric_col))
-		return(x)
-	}
+  # sigdig vector length = 1
+  m_numeric_col <- ncol(numeric_col)
+  if (length(sigdig) == 1) {
+    sigdig <- rep(sigdig, m_numeric_col)
+  }
+  # or length must = N numeric col
+  if (length(sigdig) != m_numeric_col) {
+    warning(paste("sigdig must have length 1 or", m_numeric_col))
+    return(x)
+  }
 
-	# separate cols to be engr formatted
-	numeric_as_is <- numeric_col[ , sigdig == 0, drop = FALSE]
-	m_numeric_as_is <- ncol(numeric_as_is)
+  # separate cols to be engr formatted
+  numeric_as_is <- numeric_col[, sigdig == 0, drop = FALSE]
+  m_numeric_as_is <- ncol(numeric_as_is)
 
-	numeric_engr  <- numeric_col[ , sigdig != 0, drop = FALSE]
-	m_numeric_engr <- ncol(numeric_engr)
-	sigdig_engr <- sigdig[sigdig > 0]
+  numeric_engr <- numeric_col[, sigdig != 0, drop = FALSE]
+  m_numeric_engr <- ncol(numeric_engr)
+  sigdig_engr <- sigdig[sigdig > 0]
 
-	# for rejoining later, add observation numbers to each df
-	obs_add <- function(x) {
-		x <- dplyr::mutate(x, observ_index = 1:n())
-	}
-	numeric_as_is <- obs_add(numeric_as_is)
-	numeric_engr <- obs_add(numeric_engr)
-	non_numeric <- obs_add(non_numeric)
+  # for rejoining later, add observation numbers to each df
+  obs_add <- function(x) {
+    x <- dplyr::mutate(x, observ_index = 1:n())
+  }
+  numeric_as_is <- obs_add(numeric_as_is)
+  numeric_engr <- obs_add(numeric_engr)
+  non_numeric <- obs_add(non_numeric)
 
-	# format the numeric variables for all with sigdig > 0
-	if (m_numeric_engr > 0) {
+  # format the numeric variables for all with sigdig > 0
+  if (m_numeric_engr > 0) {
 
-		# separate significand from the power of ten
-		numeric_engr <- format(numeric_engr, scientific = TRUE) %>%
-			tidyr::gather(var, value, 1:m_numeric_engr) %>%
-			dplyr::mutate(observ_index = as.double(observ_index))	 %>%
-			dplyr::mutate(value = as.character(value))	 %>%
-			# is it possible that separating by "e" varies by platform?
-			tidyr::separate(value, c("num", "pow"), "e", remove = FALSE) %>%
-			mutate(num = as.double(num)) %>%
-			mutate(pow = as.double(pow))
+    # separate significand from the power of ten
+    numeric_engr <- format(numeric_engr, scientific = TRUE) %>%
+      tidyr::gather(var, value, 1:m_numeric_engr) %>%
+      dplyr::mutate(observ_index = as.double(observ_index)) %>%
+      dplyr::mutate(value = as.character(value)) %>%
+      # is it possible that separating by "e" varies by platform?
+      tidyr::separate(value, c("num", "pow"), "e", remove = FALSE) %>%
+      mutate(num = as.double(num)) %>%
+      mutate(pow = as.double(pow))
 
-		# asssign nonzero signif digits
-		numeric_engr <- numeric_engr %>%
-			dplyr::mutate(dig = rep(sigdig_engr, each = max(observ_index)))
+    # assign nonzero signif digits
+    numeric_engr <- numeric_engr %>%
+      dplyr::mutate(dig = rep(sigdig_engr, each = max(observ_index)))
 
-		# power of 10 in multiples of 3
-		numeric_engr <- numeric_engr %>%
-			mutate(div = pow %% 3) %>%
-			mutate(num = num * 10^div) %>%
-			mutate(num_sign = sign(num)) %>%
-			mutate(pow = round(pow - div, 0))
+    # power of 10 in multiples of 3 (pow mod 3)
+    numeric_engr <- numeric_engr %>%
+      mutate(div = pow %% 3) %>%
+      mutate(num = num * 10^div) %>%
+      mutate(pow = round(pow - div, 0))
 
-		# construct strings in batches by sigdig
-		collect <- numeric_engr[FALSE, ]
-		collect$num_str <- character()
+    # construct strings in batches by sigdig
+    collect <- numeric_engr[FALSE, ]
+    collect$num_str <- character()
 
-		for (jj in unique(sigdig_engr)) {
-			numeric_string <- numeric_engr %>%
-				filter(dig == jj) %>%
-				# flag = "#" ensures keeping trailing zeros
-				mutate(num_str = formatC(
-					signif(num, digits = jj),
-					digits = jj,
-					format = "fg",
-					flag = "#")) %>%
-				# delete decimal if it is the last character in the string
-				mutate(num_str = str_replace(num_str, "\\.$", ""))
+    for (jj in unique(sigdig_engr)) {
+      numeric_string <- numeric_engr %>%
+        filter(dig == jj) %>%
+        # flag = "#" ensures keeping trailing zeros
+        mutate(num_str = formatC(
+          signif(num, digits = jj),
+          digits = jj,
+          format = "fg",
+          flag = "#"
+        )) %>%
+        # delete decimal if it is the last character in the string
+        mutate(num_str = str_replace(num_str, "\\.$", ""))
 
-			# identify ambiguous trailing zeros: ends in 0 and no decimal point
-			sel <- stringr::str_detect(numeric_string$num_str, "\\.")
-			sel <- !sel & str_detect(numeric_string$num_str, "0$")
+      # identify ambiguous trailing zeros: ends in 0 and no decimal point
+      sel <- stringr::str_detect(numeric_string$num_str, "\\.")
+      sel <- !sel & str_detect(numeric_string$num_str, "0$")
 
-			# operate on selected num_str and pow only
-			if (any(sel) & ambig_0_adj) {
-			numeric_string$pow[sel] <- numeric_string$pow[sel] + 3
-			temp_num <- as.numeric(numeric_string$num_str[sel]) / 1000
-			numeric_string$num_str[sel] <- formatC(
-				signif(temp_num, digits = jj),
-				digits = jj,
-				format = "fg",
-				flag = "#")
-			}
-			collect <- rbind(collect, numeric_string)
-		}
-		numeric_engr <- collect
+      # operate on selected num_str and pow only
+      if (any(sel) & ambig_0_adj) {
+        numeric_string$pow[sel] <- numeric_string$pow[sel] + 3
+        temp_num <- as.numeric(numeric_string$num_str[sel]) / 1000
+        numeric_string$num_str[sel] <- formatC(
+          signif(temp_num, digits = jj),
+          digits = jj,
+          format = "fg",
+          flag = "#"
+        )
+      }
+      collect <- rbind(collect, numeric_string)
+    }
+    numeric_engr <- collect
 
-		# minus sign added to string if needed
-		numeric_engr <- numeric_engr %>%
-			mutate(num_str = dplyr::if_else(
-				num_sign < 0,
-				stringr::str_c("-", num_str),
-				num_str
-			))
+    # framework for printing as math with $...$
+    numeric_engr <- numeric_engr %>%
+      mutate(output = dplyr::if_else(
+        pow == 0,
+        "$nn$",
+        paste("${nn}\\times 10^{pp}$")
+      ))
 
-		# framework for printing as math with $...$
-		numeric_engr <- numeric_engr %>%
-			mutate(output = dplyr::if_else(
-				pow == 0,
-				"$nn$",
-				paste("${nn}\\times 10^{pp}$")
-			))
+    # place numbers and power of ten in string
+    numeric_engr <- numeric_engr %>%
+      mutate(output = stringr::str_replace(output, "nn", num_str)) %>%
+      mutate(output = stringr::str_replace(output, "pp", as.character(pow)))
 
-		# place numbers and power of ten in string
-		numeric_engr <- numeric_engr %>%
-			mutate(output = stringr::str_replace(output, "nn", num_str)) %>%
-			mutate(output = stringr::str_replace(output, "pp", as.character(pow)))
+    # reformat wide to match input
+    numeric_engr <- numeric_engr %>%
+      dplyr::select(observ_index, var, output) %>%
+      tidyr::spread(var, output)
+  }
 
-		# reformat wide to match input
-		numeric_engr <- numeric_engr %>%
-			dplyr::select(observ_index, var, output) %>%
-			tidyr::spread(var, output)
-	}
+  # place numeric_as_is in $...$, if any
+  if (m_numeric_as_is > 0) {
+    observ_index <- numeric_as_is %>% select(observ_index)
+    num_col <- numeric_as_is %>% select(-observ_index)
 
-	# place numeric_as_is in $...$, if any
-	if (m_numeric_as_is > 0) {
-		observ_index <- numeric_as_is %>%  select(observ_index)
-		num_col   <- numeric_as_is %>%  select(-observ_index)
+    for (jj in 1:m_numeric_as_is) {
+      num_col[, jj] <- str_c("$", num_col[, jj], "$")
+    }
 
-		for (jj in 1:m_numeric_as_is){
-			num_col[ , jj] <- str_c("$", num_col[ , jj], "$")
-		}
+    numeric_as_is <- bind_cols(num_col, observ_index)
+  }
 
-		numeric_as_is <- bind_cols(num_col, observ_index)
-	}
-
-	# rejoin the parts (each part has at least the observ_index column)
-	x <- dplyr::left_join(non_numeric, numeric_as_is, by = "observ_index")
-	x <- dplyr::left_join(x, numeric_engr, by = "observ_index")
-	x <- dplyr::select(x, !!!var_name_list)
+  # rejoin the parts (each part has at least the observ_index column)
+  x <- dplyr::left_join(non_numeric, numeric_as_is, by = "observ_index")
+  x <- dplyr::left_join(x, numeric_engr, by = "observ_index")
+  x <- dplyr::select(x, !!!var_name_list)
 }
 "format_engr"

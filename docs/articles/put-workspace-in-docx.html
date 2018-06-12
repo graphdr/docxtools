@@ -56,6 +56,9 @@
       <a href="../articles/introduction-to-docxtools.html">Introduction to docxtools</a>
     </li>
     <li>
+      <a href="../articles/numbers-in-engineering-format.html">Numbers in engineering format</a>
+    </li>
+    <li>
       <a href="../articles/put-workspace-in-docx.html">Put workspace in docx</a>
     </li>
   </ul>
@@ -95,7 +98,7 @@
     
 <div id="workshop-documents" class="section level2">
 <h2 class="hasAnchor">
-<a href="#workshop-documents" class="anchor"></a>workshop documents</h2>
+<a href="#workshop-documents" class="anchor"></a>Workshop documents</h2>
 <p>Documents designed for workshop or classroom participation typically provide information, examples, and prompts with room for participants to respond. The functions described here provide space in a document for written responses.</p>
 <ul>
 <li>For a prompt that requires a written response, the <code><a href="../reference/put_gap.html">put_gap()</a></code> function inserts a blank space in the document.</li>
@@ -115,15 +118,15 @@
 <pre class="r"><code>```{r fig.height = 0.75}
 put_gap()
 <code>```</code></code></pre>
-<p>produces this output (the border is an HTML artifact and would not appear in a Word document):</p>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<p>produces this output:</p>
+<p><img src="../man/figures/put-workspace-gap1-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>With color and fill arguments and an optional width argument in the code chunk header,</p>
 <pre class="r"><code>```{r fig.height = 0.25, fig.width = 7}
 put_gap(col = "black", fill = "gray")
 <code>```</code></code></pre>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<p><img src="../man/figures/put-workspace-gap2-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>Here’s an image from a Word document where space for written responses was created using <code><a href="../reference/put_gap.html">put_gap()</a></code>.</p>
-<p><img src="example-docx.png"></p>
+<p><img src="../man/figures/example-docx.png"></p>
 <p>A gap can also be used to force a page break. Alternatively, Norbert Köhler shows how to insert page breaks using Word Styles, see <a href="http://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document">R Markdown: How to insert page breaks in a MS Word document</a>.</p>
 </div>
 <div id="put_axes" class="section level2">
@@ -142,84 +145,88 @@ put_gap(col = "black", fill = "gray")
 </ul>
 <div id="quadrants" class="section level3">
 <h3 class="hasAnchor">
-<a href="#quadrants" class="anchor"></a>quadrants</h3>
+<a href="#quadrants" class="anchor"></a>Quadrants</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># all 4 quadrants</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">0</span>)</a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="../man/figures/put-workspace-axes01-1.png" width="70%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># quadrant 2</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># quadrant 1</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">1</span>, <span class="dt">col =</span> <span class="st">"blue"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-5-1.png" width="700"><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># quadrant 3</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># quadrant 4</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">4</span>, <span class="dt">col =</span> <span class="st">"red"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-6-1.png" width="700"><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-6-2.png" width="700"></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># two adjacent quadrants</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co"># two adjacent quadrants</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">41</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes02-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># quadrant 1</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">1</span>, <span class="dt">col =</span> <span class="st">"blue"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes03-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># quadrant 3</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">3</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes04-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># quadrant 4</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">4</span>, <span class="dt">col =</span> <span class="st">"red"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes05-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># two adjacent quadrants</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">12</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes06-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># two adjacent quadrants</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">41</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes07-1.png" width="70%" style="display: block; margin: auto;"></p>
 </div>
 <div id="dimensions" class="section level3">
 <h3 class="hasAnchor">
-<a href="#dimensions" class="anchor"></a>dimensions</h3>
+<a href="#dimensions" class="anchor"></a>Dimensions</h3>
 <p>The size of the figure is determined when printed, e.g., using <code>knitr</code> in an R Markdown script, the figure height in inches is set with the <code>fig.height</code> code chunk option.</p>
 <pre class="r"><code>```{r fig.height = 2}
 put_axes()
 <code>```</code></code></pre>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<p><img src="../man/figures/put-workspace-axes08-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>The default aspect ratio is 1, though it can be edited using <code>coord_fixed()</code> from <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="co"># ratio of y/x</span></a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">    </span><span class="kw">coord_fixed</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="co"># ratio of y/x</span></a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes09-1.png" width="70%" style="display: block; margin: auto;"></p>
 </div>
 <div id="annotations" class="section level3">
 <h3 class="hasAnchor">
-<a href="#annotations" class="anchor"></a>annotations</h3>
+<a href="#annotations" class="anchor"></a>Annotations</h3>
 <p>The graph object can be edited using the usual <code>ggplot2</code> annotations. For example, to place some text in the middle of the graph,</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="fl">0.5</span>, <span class="dt">y =</span> <span class="fl">0.5</span>, <span class="dt">label =</span> <span class="st">"quadrant I"</span>)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">p   </a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="fl">0.5</span>, <span class="dt">y =</span> <span class="fl">0.5</span>, <span class="dt">label =</span> <span class="st">"quadrant I"</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">p   </a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes10-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>We can add text labels to label the axes using <code>annotate()</code></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">        , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">        , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">        , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.5</span>)</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">        , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">        )</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">p</a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">        , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">        , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">        , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.5</span>)</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">        , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">        )</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">p</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes11-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>Or we can use the usual <code>labs()</code> after resetting the theme <code>axis.title</code>,</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.title =</span> <span class="kw">element_text</span>()) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">"new x"</span>, <span class="dt">y =</span> <span class="st">"new y"</span>)</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">p</a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.title =</span> <span class="kw">element_text</span>()) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">"new x"</span>, <span class="dt">y =</span> <span class="st">"new y"</span>)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">p</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes12-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>If we use <code>annotate()</code> and the label exceeds the data rectangle, we can make the plot margin larger and override the plot clipping.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">        , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"Re"</span>, <span class="st">"Im"</span>)</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">        , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">        , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">-0.5</span>)</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">        , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">        ) <span class="op">+</span><span class="st"> </span><span class="co"># top, right, bottom, left</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="st">        </span><span class="kw">theme</span>(<span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="st">"mm"</span>)) </a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co"># override clipping</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="kw">library</span>(grid)</a>
-<a class="sourceLine" id="cb10-12" data-line-number="12">pp &lt;-<span class="st"> </span><span class="kw">ggplot_gtable</span>(<span class="kw">ggplot_build</span>(p))</a>
-<a class="sourceLine" id="cb10-13" data-line-number="13">pp<span class="op">$</span>layout<span class="op">$</span>clip[pp<span class="op">$</span>layout<span class="op">$</span>name <span class="op">==</span><span class="st"> "panel"</span>] &lt;-<span class="st"> "off"</span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="kw">grid.draw</span>(pp)</a></code></pre></div>
-<p><img src="put-workspace-in-docx_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">        , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"Re"</span>, <span class="st">"Im"</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">        , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">        , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">-0.5</span>)</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">        , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">        ) <span class="op">+</span><span class="st"> </span><span class="co"># top, right, bottom, left</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="st">        </span><span class="kw">theme</span>(<span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="st">"mm"</span>)) </a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co"># override clipping</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="kw">library</span>(grid)</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">pp &lt;-<span class="st"> </span><span class="kw">ggplot_gtable</span>(<span class="kw">ggplot_build</span>(p))</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">pp<span class="op">$</span>layout<span class="op">$</span>clip[pp<span class="op">$</span>layout<span class="op">$</span>name <span class="op">==</span><span class="st"> "panel"</span>] &lt;-<span class="st"> "off"</span></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="kw">grid.draw</span>(pp)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes13-1.png" width="70%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>conclusion</h2>
+<a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>These functions help create printed documents with space for written responses. Options are limited; authors needing more control can create their own inserts using <code>ggplot2</code> or other graphics engine.</p>
 </div>
   </div>
@@ -229,10 +236,10 @@ put_axes()
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#workshop-documents">workshop documents</a></li>
+<li><a href="#workshop-documents">Workshop documents</a></li>
       <li><a href="#put_gap">put_gap()</a></li>
       <li><a href="#put_axes">put_axes()</a></li>
-      <li><a href="#conclusion">conclusion</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
       </ul>
 </div>
       </div>

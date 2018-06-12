@@ -11,12 +11,13 @@ In  `format_engr()`, added the `ambig_0_adj` argument.  Reformatting exponential
 
 ### Minor improvements
 
-In  `format_engr()`
+For  `format_engr()`
 
 - Replaced the formatting using `sprintf()` with `formatC()` for better control of significant trailing zeros. 
 - Require the input to be a data frame. 
 - Require the significant digits vector to have length 1 or match the number of numeric variables. 
 - Replaced some code with tidy evaluation. 
+- Revised the vignette. 
 
 
 

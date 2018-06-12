@@ -63,6 +63,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -93,109 +96,490 @@
 
     
     
+<div id="introduction" class="section level2">
+<h2 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h2>
+<p>Packages used in this vignette.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(docxtools)</a></code></pre></div>
 <p>This vignette demonstrates the use of two functions from the <em>docxtools</em> package:</p>
 <ul>
 <li>
 <code><a href="../reference/format_engr.html">format_engr()</a></code> for formatting numbers in engineering notation<br>
 </li>
 <li>
-<code><a href="../reference/align_pander.html">align_pander()</a></code> for aligning table columns using a “simple” pander table style</li>
+<code><a href="../reference/align_pander.html">align_pander()</a></code> for aligning table columns using a simple pander table style</li>
 </ul>
-<div id="format_engr" class="section level2">
-<h2 class="hasAnchor">
-<a href="#format_engr" class="anchor"></a>format_engr()</h2>
 <p>The primary goal of <code><a href="../reference/format_engr.html">format_engr()</a></code> is to present numeric variables in a data frame in <em>engineering format</em>, that is, scientific notation with exponents that are multiples of 3. Compare:</p>
 <table class="table">
 <thead><tr class="header">
-<th>Syntax</th>
-<th>Expression</th>
+<th>syntax</th>
+<th>expression</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>conventional computer syntax</td>
+<td>computer</td>
 <td><span class="math inline">\(1.011e+5\)</span></td>
 </tr>
 <tr class="even">
-<td>mathematical syntax</td>
+<td>mathematical</td>
 <td><span class="math inline">\(1.011\times10^{5}\)</span></td>
 </tr>
 <tr class="odd">
-<td>engineering format</td>
+<td>engineering</td>
 <td><span class="math inline">\(101.1\times10^{3}\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>This example uses a small temperature-pressure data set to compute air density and display the results in a table. Density is computed using the ideal gas law, <span class="math inline">\(\rho = p / (RT)\)</span>.</p>
-<p>Start by loading packages,</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">opts_knit<span class="op">$</span><span class="kw">set</span>(<span class="dt">root.dir =</span> <span class="st">"../"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">suppressPackageStartupMessages</span>(<span class="kw">library</span>(dplyr))</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(docxtools)</a></code></pre></div>
-<p>Create some data for the example,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># temperature in K</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">T_K  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">294.05</span>, <span class="fl">294.15</span>, <span class="fl">294.65</span>, <span class="fl">293.35</span>, <span class="fl">293.85</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># convert pressure from hPa to Pa</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">p_Pa &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1011</span>, <span class="dv">1010</span>, <span class="dv">1011</span>, <span class="dv">1010</span>, <span class="dv">1011</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># gas constant in J / (kg K)</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">R    &lt;-<span class="st"> </span><span class="dv">287</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co"># density in kg / m^3</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">density_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(T_K, p_Pa, R)</a></code></pre></div>
-<p>Compute air density for each observation,</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">density_data &lt;-<span class="st"> </span><span class="kw">mutate</span>(density_data, <span class="dt">density =</span> p_Pa <span class="op">/</span><span class="st"> </span>(R <span class="op">*</span><span class="st"> </span>T_K))</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(density_data)</a></code></pre></div>
+</div>
+<div id="format_engr" class="section level2">
+<h2 class="hasAnchor">
+<a href="#format_engr" class="anchor"></a>format_engr()</h2>
+<p>This example uses a small data set, <code>density</code>, included with docxtools, with temperature in K, pressure in Pa, the gas constant in J kg<sup>-1</sup>K<sup>-1</sup>, and density in kg m<sup>-3</sup>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">density</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></a></code></pre></div>
+<p>Four of the variables are numeric.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">map_chr</span>(density, class)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt;        date       trial         T_K        p_Pa           R     density </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;      "Date" "character"   "numeric"   "numeric"   "numeric"   "numeric"</span></a></code></pre></div>
+<p>Usage is <code><a href="../reference/format_engr.html">format_engr(x, sigdig = NULL, ambig_0_adj = FALSE)</a></code>. The function returns a data frame with all numeric values reformatted as character strings in engineering format with math delimiters <code>$...$</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">density_engr</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;         date trial     T_K                    p_Pa       R density</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; 1 2018-06-12     a $294.0$ ${101.1}\\times 10^{3}$ $287.0$ $1.198$</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 2 2018-06-13     b $294.2$ ${101.0}\\times 10^{3}$ $287.0$ $1.196$</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 3 2018-06-14     c $294.6$ ${101.1}\\times 10^{3}$ $287.0$ $1.196$</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 4 2018-06-15     d $293.4$ ${101.0}\\times 10^{3}$ $287.0$ $1.200$</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 5 2018-06-16     e $293.8$ ${101.1}\\times 10^{3}$ $287.0$ $1.199$</span></a></code></pre></div>
+<p>The formerly numeric variables are now characters. Non-numeric variables are returned unaltered.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">map_chr</span>(density_engr, class)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;        date       trial         T_K        p_Pa           R     density </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;      "Date" "character" "character" "character" "character" "character"</span></a></code></pre></div>
+<p>The math formatting is applied when the data frame is printed in the output document. For example, we can use <code><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code> to print the formatted data.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
-<th align="right">T_K</th>
-<th align="right">p_Pa</th>
-<th align="right">R</th>
-<th align="right">density</th>
+<th align="left">date</th>
+<th align="left">trial</th>
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="right">294.05</td>
-<td align="right">101100</td>
-<td align="right">287</td>
-<td align="right">1.197976</td>
+<td align="left">2018-06-12</td>
+<td align="left">a</td>
+<td align="left"><span class="math inline">\(294.0\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.198\)</span></td>
 </tr>
 <tr class="even">
-<td align="right">294.15</td>
-<td align="right">101000</td>
-<td align="right">287</td>
-<td align="right">1.196384</td>
+<td align="left">2018-06-13</td>
+<td align="left">b</td>
+<td align="left"><span class="math inline">\(294.2\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">294.65</td>
-<td align="right">101100</td>
-<td align="right">287</td>
-<td align="right">1.195536</td>
+<td align="left">2018-06-14</td>
+<td align="left">c</td>
+<td align="left"><span class="math inline">\(294.6\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
 </tr>
 <tr class="even">
-<td align="right">293.35</td>
-<td align="right">101000</td>
-<td align="right">287</td>
-<td align="right">1.199647</td>
+<td align="left">2018-06-15</td>
+<td align="left">d</td>
+<td align="left"><span class="math inline">\(293.4\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.200\)</span></td>
 </tr>
 <tr class="odd">
-<td align="right">293.85</td>
-<td align="right">101100</td>
-<td align="right">287</td>
-<td align="right">1.198791</td>
+<td align="left">2018-06-16</td>
+<td align="left">e</td>
+<td align="left"><span class="math inline">\(293.8\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.199\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>The first argument of <code><a href="../reference/format_engr.html">format_engr()</a></code> is the data frame, the second is the array of significant digits in column order.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">engr_density_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density_data, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">5</span>))</a></code></pre></div>
-<pre><code>## Warning in if (width... &lt; 0) stop("`width` is shorter than `ellipsis`", :
-## the condition has length &gt; 1 and only the first element will be used</code></pre>
-<p>Data frame values are returned as character strings with math formatting. By setting <code>sigdig = 0</code> for <strong>R</strong>, the third column will be displayed in its original form.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">str</span>(engr_density_data)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">## 'data.frame':    5 obs. of  4 variables:</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">##  $ T_K    : chr  "$294.05$" "$294.15$" "$294.65$" "$293.35$" ...</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">##  $ p_Pa   : chr  "${101.1}\\times 10^{3}$" "${101.0}\\times 10^{3}$" "${101.1}\\times 10^{3}$" "${101.0}\\times 10^{3}$" ...</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">##  $ R      : chr  "$287$" "$287$" "$287$" "$287$" ...</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">##  $ density: chr  "$1.1980$" "$1.1964$" "$1.1955$" "$1.1996$" ...</a></code></pre></div>
-<p>The math formatting is applied when the data frame is printed in the output document.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(engr_density_data)</a></code></pre></div>
+<p>The function is compatible with the pipe operator.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">density_engr &lt;-<span class="st"> </span>density <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">    </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>()</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">date</th>
+<th align="left">trial</th>
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">2018-06-12</td>
+<td align="left">a</td>
+<td align="left"><span class="math inline">\(294.0\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.198\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">2018-06-13</td>
+<td align="left">b</td>
+<td align="left"><span class="math inline">\(294.2\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">2018-06-14</td>
+<td align="left">c</td>
+<td align="left"><span class="math inline">\(294.6\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">2018-06-15</td>
+<td align="left">d</td>
+<td align="left"><span class="math inline">\(293.4\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.200\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">2018-06-16</td>
+<td align="left">e</td>
+<td align="left"><span class="math inline">\(293.8\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.199\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Comments:</p>
+<ul>
+<li>as illustrated by the temperature column, scientific notation is omitted when the exponent is 0, 1, or 2</li>
+<li>trailing zeros after a decimal point are significant</li>
+</ul>
+</div>
+<div id="significant-digits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#significant-digits" class="anchor"></a>Significant digits</h2>
+<p><code><a href="../reference/format_engr.html">format_engr()</a></code> has three arguments:</p>
+<ul>
+<li>
+<code>x</code>, a data frame with at least one numerical variable.</li>
+<li>
+<code>sigdig</code>, an optional vector of significant digits. Default is 4.</li>
+<li>
+<code>ambig_0_adj</code>, an optional logical to adjust the notation in the event of ambiguous trailing zeros. Default is FALSE.</li>
+</ul>
+<p>The <code>sigdig</code> argument can be a single value, applied to all numeric columns.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">date</th>
+<th align="left">trial</th>
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">2018-06-12</td>
+<td align="left">a</td>
+<td align="left"><span class="math inline">\(294\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">2018-06-13</td>
+<td align="left">b</td>
+<td align="left"><span class="math inline">\(294\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">2018-06-14</td>
+<td align="left">c</td>
+<td align="left"><span class="math inline">\(295\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">2018-06-15</td>
+<td align="left">d</td>
+<td align="left"><span class="math inline">\(293\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">2018-06-16</td>
+<td align="left">e</td>
+<td align="left"><span class="math inline">\(294\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively, significant digits can be assigned to every numeric column. A zero returns the variable in its original form.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">date</th>
+<th align="left">trial</th>
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">2018-06-12</td>
+<td align="left">a</td>
+<td align="left"><span class="math inline">\(294.05\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1980\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">2018-06-13</td>
+<td align="left">b</td>
+<td align="left"><span class="math inline">\(294.15\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1964\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">2018-06-14</td>
+<td align="left">c</td>
+<td align="left"><span class="math inline">\(294.65\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1955\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">2018-06-15</td>
+<td align="left">d</td>
+<td align="left"><span class="math inline">\(293.35\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1996\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">2018-06-16</td>
+<td align="left">e</td>
+<td align="left"><span class="math inline">\(293.85\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1988\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ambiguous-trailing-zeros" class="section level2">
+<h2 class="hasAnchor">
+<a href="#ambiguous-trailing-zeros" class="anchor"></a>Ambiguous trailing zeros</h2>
+<p>Subset the data to look at just the numerical variables.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">x &lt;-<span class="st"> </span>density <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">    </span><span class="kw">select</span>(T_K, p_Pa, R, density)</a></code></pre></div>
+<p>Print the data with incrementally decreasing significant digits.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">4</span>), <span class="dt">caption =</span> <span class="st">"4 digits"</span>)</a></code></pre></div>
+<table class="table">
+<caption>4 digits</caption>
+<thead><tr class="header">
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(294.0\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.198\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(294.2\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(294.6\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(293.4\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.200\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(293.8\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287.0\)</span></td>
+<td align="left"><span class="math inline">\(1.199\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Three digits creates no ambiguity.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">3</span>), <span class="dt">caption =</span> <span class="st">"3 digits"</span>)</a></code></pre></div>
+<table class="table">
+<caption>3 digits</caption>
+<thead><tr class="header">
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(294\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(294\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(295\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(293\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(294\)</span></td>
+<td align="left"><span class="math inline">\({101}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>With 2 digits, we have three columns with ambiguous trailing zeros.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">2</span>), <span class="dt">caption =</span> <span class="st">"2 digits"</span>)</a></code></pre></div>
+<table class="table">
+<caption>2 digits</caption>
+<thead><tr class="header">
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(290\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>By setting the <code>ambig_0_adj</code> argument to TRUE, scientific notation is used to remove the ambiguity.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">2</span>, <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>), <span class="dt">caption =</span> <span class="st">"Removing ambiguity"</span>)</a></code></pre></div>
+<table class="table">
+<caption>Removing ambiguity</caption>
+<thead><tr class="header">
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\({0.29}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(1.2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The ambiguous trailing zero adjustment is applied only to those variables for which the condition exists. For example, if the pressure were known to only 2 digits, it is the only variable with ambiguous trailing zeros.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">T_K</th>
@@ -205,43 +589,79 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><span class="math inline">\(294.05\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(294.0\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
 <td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1980\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
 </tr>
 <tr class="even">
-<td align="left"><span class="math inline">\(294.15\)</span></td>
-<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(294.2\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
 <td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1964\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
 </tr>
 <tr class="odd">
-<td align="left"><span class="math inline">\(294.65\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(294.6\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
 <td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1955\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
 </tr>
 <tr class="even">
-<td align="left"><span class="math inline">\(293.35\)</span></td>
-<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(293.4\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
 <td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1996\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
 </tr>
 <tr class="odd">
-<td align="left"><span class="math inline">\(293.85\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(293.8\)</span></td>
+<td align="left"><span class="math inline">\({100}\times 10^{3}\)</span></td>
 <td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1988\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Comments:</p>
-<ul>
-<li>scientific notation is omitted when the exponent is 0, 1, or 2, hence temperature <strong>T_K</strong> is reported with 5 digits but without scientific notation</li>
-<li>pressure data <strong>p_Pa</strong> is correctly shown in engineering format</li>
-<li>trailing zeros are significant</li>
-</ul>
+<p>With <code>ambig_0_adj = TRUE</code>, only the pressure variable has a reformatted power of ten.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(294.0\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(294.2\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(294.6\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(293.4\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(293.8\)</span></td>
+<td align="left"><span class="math inline">\({0.10}\times 10^{6}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.20\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="align_pander" class="section level2">
 <h2 class="hasAnchor">
@@ -255,94 +675,122 @@
 <li>
 <code>caption</code> is an optional string used as the <code>pander()</code> caption argument</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(engr_density_data, <span class="dt">align_idx =</span> <span class="st">"cccc"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(density_engr)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
-<th align="center">T_K</th>
-<th align="center">p_Pa</th>
-<th align="center">R</th>
-<th align="center">density</th>
+<th align="left">date</th>
+<th align="left">trial</th>
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="center"><span class="math inline">\(294.05\)</span></td>
-<td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1980\)</span></td>
+<td align="left">2018-06-12</td>
+<td align="left">a</td>
+<td align="left"><span class="math inline">\(294.05\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1980\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(294.15\)</span></td>
-<td align="center"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1964\)</span></td>
+<td align="left">2018-06-13</td>
+<td align="left">b</td>
+<td align="left"><span class="math inline">\(294.15\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1964\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(294.65\)</span></td>
-<td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1955\)</span></td>
+<td align="left">2018-06-14</td>
+<td align="left">c</td>
+<td align="left"><span class="math inline">\(294.65\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1955\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><span class="math inline">\(293.35\)</span></td>
-<td align="center"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1996\)</span></td>
+<td align="left">2018-06-15</td>
+<td align="left">d</td>
+<td align="left"><span class="math inline">\(293.35\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1996\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(293.85\)</span></td>
-<td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1988\)</span></td>
+<td align="left">2018-06-16</td>
+<td align="left">e</td>
+<td align="left"><span class="math inline">\(293.85\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.1988\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Finally, the heading can be edited for presentation. The heading row, like the numeric variables, are formatted in R Markdown math format.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">names</span>(engr_density_data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"$T</span><span class="ch">\\</span><span class="st">text{ (K)}$"</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">    , <span class="st">"$p</span><span class="ch">\\</span><span class="st">text{ (Pa)}$"</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">    , <span class="st">"$R</span><span class="ch">\\</span><span class="st">text{ (J kg}^{-1}</span><span class="ch">\\</span><span class="st">text{ K}^{-1}</span><span class="ch">\\</span><span class="st">text{)}$"</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">    , <span class="st">"$</span><span class="ch">\\</span><span class="st">rho</span><span class="ch">\\</span><span class="st">text{ (kg/m}^{3}</span><span class="ch">\\</span><span class="st">text{)}$"</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">    )</a></code></pre></div>
+<p>Finally, the heading can be edited for presentation.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">names</span>(density_engr) &lt;-<span class="st"> </span><span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">    <span class="st">"Date"</span>, </a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">    <span class="st">"Trial"</span>, </a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">    <span class="st">"Temp (K)"</span>, </a>
+<a class="sourceLine" id="cb18-5" data-line-number="5">    <span class="st">"Press (Pa)"</span>, </a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">    <span class="st">"R (J kg^-1^K^-1^)"</span>, </a>
+<a class="sourceLine" id="cb18-7" data-line-number="7">    <span class="st">"$</span><span class="ch">\\</span><span class="st">rho$ (kg/m^3^)"</span></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">    )</a></code></pre></div>
 <ul>
-<li>backslashes have to be escaped, hence <code>\\text{}</code> and <code>\\rho</code>
+<li>backslashes have to be escaped, hence <code>\\rho</code>
 </li>
-<li>
-<code>\text{}</code> produces “roman” (non-italic) type inside the math environment</li>
+<li>superscripts like m<sup>3</sup> in R Markdown are produced with <code>m^3^</code>
+</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(engr_density_data, <span class="st">"cccc"</span>, <span class="dt">caption =</span> <span class="st">"Air density measurements"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(density_engr, <span class="st">"lccccc"</span>, <span class="dt">caption =</span> <span class="st">"Air density measurements"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Air density measurements</caption>
 <thead><tr class="header">
-<th align="center"><span class="math inline">\(T\text{ (K)}\)</span></th>
-<th align="center"><span class="math inline">\(p\text{ (Pa)}\)</span></th>
-<th align="center"><span class="math inline">\(R\text{ (J kg}^{-1}\text{ K}^{-1}\text{)}\)</span></th>
-<th align="center"><span class="math inline">\(\rho\text{ (kg/m}^{3}\text{)}\)</span></th>
+<th align="left">Date</th>
+<th align="center">Trial</th>
+<th align="center">Temp (K)</th>
+<th align="center">Press (Pa)</th>
+<th align="center">R (J kg<sup>-1</sup>K<sup>-1</sup>)</th>
+<th align="center">
+<span class="math inline">\(\rho\)</span> (kg/m<sup>3</sup>)</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
+<td align="left">2018-06-12</td>
+<td align="center">a</td>
 <td align="center"><span class="math inline">\(294.05\)</span></td>
 <td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
 <td align="center"><span class="math inline">\(287\)</span></td>
 <td align="center"><span class="math inline">\(1.1980\)</span></td>
 </tr>
 <tr class="even">
+<td align="left">2018-06-13</td>
+<td align="center">b</td>
 <td align="center"><span class="math inline">\(294.15\)</span></td>
 <td align="center"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
 <td align="center"><span class="math inline">\(287\)</span></td>
 <td align="center"><span class="math inline">\(1.1964\)</span></td>
 </tr>
 <tr class="odd">
+<td align="left">2018-06-14</td>
+<td align="center">c</td>
 <td align="center"><span class="math inline">\(294.65\)</span></td>
 <td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
 <td align="center"><span class="math inline">\(287\)</span></td>
 <td align="center"><span class="math inline">\(1.1955\)</span></td>
 </tr>
 <tr class="even">
+<td align="left">2018-06-15</td>
+<td align="center">d</td>
 <td align="center"><span class="math inline">\(293.35\)</span></td>
 <td align="center"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
 <td align="center"><span class="math inline">\(287\)</span></td>
 <td align="center"><span class="math inline">\(1.1996\)</span></td>
 </tr>
 <tr class="odd">
+<td align="left">2018-06-16</td>
+<td align="center">e</td>
 <td align="center"><span class="math inline">\(293.85\)</span></td>
 <td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
 <td align="center"><span class="math inline">\(287\)</span></td>
@@ -351,237 +799,9 @@
 </tbody>
 </table>
 </div>
-<div id="non-numeric-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#non-numeric-variables" class="anchor"></a>non-numeric variables</h2>
-<p>Create some alphanumeric test data,</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># create test input arguments</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">20161221</span>)</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">n  &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">a  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, n)</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">b  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, n)</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">x  &lt;-<span class="st"> </span><span class="kw">runif</span>(n, <span class="dt">min =</span>  <span class="dv">-5</span>, <span class="dt">max =</span>  <span class="dv">50</span>) <span class="op">*</span><span class="st"> </span><span class="fl">1e+5</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">y  &lt;-<span class="st"> </span><span class="kw">runif</span>(n, <span class="dt">min =</span> <span class="dv">-25</span>, <span class="dt">max =</span>  <span class="dv">40</span>) <span class="op">/</span><span class="st"> </span><span class="fl">1e+3</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">z  &lt;-<span class="st"> </span><span class="kw">runif</span>(n, <span class="dt">min =</span>  <span class="dv">-5</span>, <span class="dt">max =</span> <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">alpha_num &lt;-<span class="st"> </span><span class="kw">data.frame</span>(z, b, y, a, x, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p>Format the entire data frame with the default 4 significant digits.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">engr_alpha_num &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(alpha_num)</a></code></pre></div>
-<pre><code>## Warning in if (width... &lt; 0) stop("`width` is shorter than `ellipsis`", :
-## the condition has length &gt; 1 and only the first element will be used</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(engr_alpha_num, <span class="st">"rcrcr"</span>)</a></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">z</th>
-<th align="center">b</th>
-<th align="right">y</th>
-<th align="center">a</th>
-<th align="right">x</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="right"><span class="math inline">\(6.501\)</span></td>
-<td align="center">c</td>
-<td align="right"><span class="math inline">\({1.052}\times 10^{-3}\)</span></td>
-<td align="center">q</td>
-<td align="right"><span class="math inline">\({2.847}\times 10^{6}\)</span></td>
-</tr>
-<tr class="even">
-<td align="right"><span class="math inline">\(28.37\)</span></td>
-<td align="center">o</td>
-<td align="right"><span class="math inline">\({347.6}\times 10^{-6}\)</span></td>
-<td align="center">y</td>
-<td align="right"><span class="math inline">\({4.874}\times 10^{6}\)</span></td>
-</tr>
-<tr class="odd">
-<td align="right"><span class="math inline">\(-3.850\)</span></td>
-<td align="center">i</td>
-<td align="right"><span class="math inline">\({4.600}\times 10^{-3}\)</span></td>
-<td align="center">g</td>
-<td align="right"><span class="math inline">\({-111.7}\times 10^{3}\)</span></td>
-</tr>
-<tr class="even">
-<td align="right"><span class="math inline">\(44.50\)</span></td>
-<td align="center">a</td>
-<td align="right"><span class="math inline">\({-3.045}\times 10^{-3}\)</span></td>
-<td align="center">a</td>
-<td align="right"><span class="math inline">\({1.315}\times 10^{6}\)</span></td>
-</tr>
-<tr class="odd">
-<td align="right"><span class="math inline">\(92.41\)</span></td>
-<td align="center">x</td>
-<td align="right"><span class="math inline">\({-1.069}\times 10^{-3}\)</span></td>
-<td align="center">i</td>
-<td align="right"><span class="math inline">\({417.4}\times 10^{3}\)</span></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>character variables <code>b</code> and <code>a</code> are unaffected by <code>engr_format()</code><br>
-</li>
-<li>coefficients have floating decimal points</li>
-</ul>
-<p>Variables can be re-ordered in the usual way, e.g.,</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">alpha_num &lt;-<span class="st"> </span><span class="kw">select</span>(alpha_num, a, b, x, y, z)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">engr_alpha_num &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(alpha_num)</a></code></pre></div>
-<pre><code>## Warning in if (width... &lt; 0) stop("`width` is shorter than `ellipsis`", :
-## the condition has length &gt; 1 and only the first element will be used</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(engr_alpha_num, <span class="st">"ccrrr"</span>)</a></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="center">a</th>
-<th align="center">b</th>
-<th align="right">x</th>
-<th align="right">y</th>
-<th align="right">z</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="center">q</td>
-<td align="center">c</td>
-<td align="right"><span class="math inline">\({2.847}\times 10^{6}\)</span></td>
-<td align="right"><span class="math inline">\({1.052}\times 10^{-3}\)</span></td>
-<td align="right"><span class="math inline">\(6.501\)</span></td>
-</tr>
-<tr class="even">
-<td align="center">y</td>
-<td align="center">o</td>
-<td align="right"><span class="math inline">\({4.874}\times 10^{6}\)</span></td>
-<td align="right"><span class="math inline">\({347.6}\times 10^{-6}\)</span></td>
-<td align="right"><span class="math inline">\(28.37\)</span></td>
-</tr>
-<tr class="odd">
-<td align="center">g</td>
-<td align="center">i</td>
-<td align="right"><span class="math inline">\({-111.7}\times 10^{3}\)</span></td>
-<td align="right"><span class="math inline">\({4.600}\times 10^{-3}\)</span></td>
-<td align="right"><span class="math inline">\(-3.850\)</span></td>
-</tr>
-<tr class="even">
-<td align="center">a</td>
-<td align="center">a</td>
-<td align="right"><span class="math inline">\({1.315}\times 10^{6}\)</span></td>
-<td align="right"><span class="math inline">\({-3.045}\times 10^{-3}\)</span></td>
-<td align="right"><span class="math inline">\(44.50\)</span></td>
-</tr>
-<tr class="odd">
-<td align="center">i</td>
-<td align="center">x</td>
-<td align="right"><span class="math inline">\({417.4}\times 10^{3}\)</span></td>
-<td align="right"><span class="math inline">\({-1.069}\times 10^{-3}\)</span></td>
-<td align="right"><span class="math inline">\(92.41\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="significant-zeros" class="section level2">
-<h2 class="hasAnchor">
-<a href="#significant-zeros" class="anchor"></a>significant zeros</h2>
-<p>Leading zeros are not significant.</p>
-<p>Trailing zeros generally should be significant. For example, isolate a number from the <code>y</code> column:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">y2 &lt;-<span class="st"> </span>alpha_num<span class="op">$</span>y[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">y2</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">## [1] 0.000347614</a></code></pre></div>
-<p>Formatting <code>y2</code> with different significant digits using <code><a href="../reference/format_engr.html">format_engr(y2, sigdig)</a></code> yields the table below. With 3 digits, <code>y2</code> has 3 unambiguous significant digits. However, reducing the number of digits to 2 would produce a coefficient of <span class="math inline">\(350\)</span> with an ambiguous zero before the decimal point. In such cases, <code><a href="../reference/format_engr.html">format_engr()</a></code> changes the exponent to produce <span class="math inline">\({0.35}\times 10^{-3}\)</span> with two unambiguous significant digits.</p>
-<table class="table">
-<thead><tr class="header">
-<th><code>sigdig</code></th>
-<th><span class="math inline">\(y_2\)</span></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>4</td>
-<td><span class="math inline">\({347.6}\times 10^{-6}\)</span></td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td><span class="math inline">\({348}\times 10^{-6}\)</span></td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td><span class="math inline">\({0.35}\times 10^{-3}\)</span></td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td><span class="math inline">\({0.3}\times 10^{-3}\)</span></td>
-</tr>
-</tbody>
-</table>
-<p><em>Exceptions to the significant trailing zero rule.</em> Consider <span class="math inline">\(z_2\)</span> from the data frame,</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">z2 &lt;-<span class="st"> </span>alpha_num<span class="op">$</span>z[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">z2</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">## [1] 28.37409</a></code></pre></div>
-<p>For numbers like <code>z2</code> that in scientific notation would have exponents = 0, 1, or 2, <code><a href="../reference/format_engr.html">format_engr()</a></code> foregoes powers of ten notation.</p>
-<table class="table">
-<thead><tr class="header">
-<th><code>sigdig</code></th>
-<th><span class="math inline">\(z_2\)</span></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>4</td>
-<td><span class="math inline">\(28.37\)</span></td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td><span class="math inline">\(28.4\)</span></td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td><span class="math inline">\(28\)</span></td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td><span class="math inline">\(30\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>As we reduce the number of significant digits, we can eventually obtain a trailing zero whose significance is ambiguous, as in <span class="math inline">\(z_2 =\)</span> <span class="math inline">\(30\)</span>. In such cases, <code><a href="../reference/format_engr.html">format_engr()</a></code> leaves the ambiguous significant zero instead of imposing scientific notation that the audience might find distracting.</p>
-</div>
-<div id="scalars-and-vectors-are-returned-as-data-frames" class="section level2">
-<h2 class="hasAnchor">
-<a href="#scalars-and-vectors-are-returned-as-data-frames" class="anchor"></a>scalars and vectors are returned as data frames</h2>
-<p>The preferred input to <code><a href="../reference/format_engr.html">format_engr()</a></code> is a data frame. If the input is a numeric vector, it will be formatted and returned as a data frame with the variable name <code>value</code>.</p>
-<p>For example, using <code>y2</code> again,</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">str</span>(y2)</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">##  num 0.000348</a></code></pre></div>
-<p>Now formatting the number returns a data frame with one row and column.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">engr_y2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(y2, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">str</span>(engr_y2)</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">## 'data.frame':    1 obs. of  1 variable:</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">##  $ value: chr "${347.6}\\times 10^{-6}$"</a></code></pre></div>
-<p>which can be used in an inline code chunk, e.g.,</p>
-<pre><code>$y_2 =$ `r engr_y2$value`</code></pre>
-<p>to produce <span class="math inline">\(y_2 =\)</span> <span class="math inline">\({347.6}\times 10^{-6}\)</span>.</p>
-<p>A numeric vector is also returned as a data frame.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="co"># the x array</span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">cat</span>(x, <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">## 2846529</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">## 4874357</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">## -111651.4</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">## 1314716</a>
-<a class="sourceLine" id="cb23-7" data-line-number="7">## 417385</a>
-<a class="sourceLine" id="cb23-8" data-line-number="8"><span class="kw">class</span>(x)</a>
-<a class="sourceLine" id="cb23-9" data-line-number="9">## [1] "numeric"</a>
-<a class="sourceLine" id="cb23-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb23-11" data-line-number="11"><span class="co"># formatted </span></a>
-<a class="sourceLine" id="cb23-12" data-line-number="12">engr_x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb23-13" data-line-number="13">## Warning in if (width... &lt; 0) stop("`width` is shorter than `ellipsis`", :</a>
-<a class="sourceLine" id="cb23-14" data-line-number="14">## the condition has length &gt; 1 and only the first element will be used</a>
-<a class="sourceLine" id="cb23-15" data-line-number="15"><span class="kw">class</span>(engr_x)</a>
-<a class="sourceLine" id="cb23-16" data-line-number="16">## [1] "data.frame"</a>
-<a class="sourceLine" id="cb23-17" data-line-number="17">engr_x</a>
-<a class="sourceLine" id="cb23-18" data-line-number="18">##                    value</a>
-<a class="sourceLine" id="cb23-19" data-line-number="19">## 1 ${2.85}\\times 10^{6}$</a>
-<a class="sourceLine" id="cb23-20" data-line-number="20">## 2 ${4.87}\\times 10^{6}$</a>
-<a class="sourceLine" id="cb23-21" data-line-number="21">## 3 ${-112}\\times 10^{3}$</a>
-<a class="sourceLine" id="cb23-22" data-line-number="22">## 4 ${1.31}\\times 10^{6}$</a>
-<a class="sourceLine" id="cb23-23" data-line-number="23">## 5  ${417}\\times 10^{3}$</a></code></pre></div>
-<p>The input to <code><a href="../reference/format_engr.html">format_engr()</a></code> must have at least one numeric variable, or an error is thrown, e.g., running <code><a href="../reference/format_engr.html">format_engr(a)</a></code> produces the error</p>
-<p><code>Error: m_numeric_cols &gt; 0 is not TRUE Execution halted</code>.</p>
-</div>
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>conclusion</h2>
+<a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>These two functions provide the means for consistently rendering numbers with the desired number of significant digits, including trailing zeros, and align them in output tables without affecting character data in the same data frame.</p>
 </div>
   </div>
@@ -591,12 +811,12 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#format_engr">format_engr()</a></li>
+<li><a href="#introduction">Introduction</a></li>
+      <li><a href="#format_engr">format_engr()</a></li>
+      <li><a href="#significant-digits">Significant digits</a></li>
+      <li><a href="#ambiguous-trailing-zeros">Ambiguous trailing zeros</a></li>
       <li><a href="#align_pander">align_pander()</a></li>
-      <li><a href="#non-numeric-variables">non-numeric variables</a></li>
-      <li><a href="#significant-zeros">significant zeros</a></li>
-      <li><a href="#scalars-and-vectors-are-returned-as-data-frames">scalars and vectors are returned as data frames</a></li>
-      <li><a href="#conclusion">conclusion</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
       </ul>
 </div>
       </div>

@@ -59,7 +59,7 @@ align_pander <- function(x, align_idx = NULL, caption = NULL) {
     pander::panderOptions("table.alignment.default", align_idx)
   }
 
-	pander::panderOptions("table.split.table", Inf)
+  pander::panderOptions("table.split.table", Inf)
   pander::panderOptions("keep.trailing.zeros", TRUE)
   pander::pander(x, caption = caption, style = "simple")
 }
