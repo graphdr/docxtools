@@ -26,6 +26,7 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
+    rprojroot, 
     testthat
 VignetteBuilder: knitr
 URL: https://CRAN.R-project.org/package=docxtools, 

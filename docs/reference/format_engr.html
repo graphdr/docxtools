@@ -30,9 +30,9 @@
 
 <meta property="og:title" content="Format numerical variables in engineering notation. — format_engr" />
 
-<meta property="og:description" content="Converts numeric objects into character variables formatted in engineering
-notation: base 10 with exponents that are multiples of 3. The input argument
-is a data frame with at least one numeric variable." />
+<meta property="og:description" content="Converts numeric variables in a data frame into character variables
+formatted in engineering notation. The formatted character variables
+are delimited with $...$ for rendering as inline math." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -126,9 +126,9 @@ is a data frame with at least one numeric variable." />
 
     <div class="ref-description">
     
-    <p>Converts numeric objects into character variables formatted in engineering
-notation: base 10 with exponents that are multiples of 3. The input argument
-is a data frame with at least one numeric variable.</p>
+    <p>Converts numeric variables in a data frame into character variables
+formatted in engineering notation. The formatted character variables
+are delimited with <code>$...$</code> for rendering as inline math.</p>
     
     </div>
 
@@ -139,17 +139,17 @@ is a data frame with at least one numeric variable.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>: The numeric object to be formatted.</p></td>
+      <td><p>A data frame with numeric variables to be formatted.</p></td>
     </tr>
     <tr>
       <th>sigdig</th>
-      <td><p>: An optional vector of significant digits.</p></td>
+      <td><p>An optional vector of significant digits.</p></td>
     </tr>
     <tr>
       <th>ambig_0_adj</th>
-      <td><p>: An optional logical to adjust the format
-to remove ambiguous trailing zeros. Default is FALSE. If TRUE, the
-decimal point is moved three places to the left.</p></td>
+      <td><p>An optional logical to adjust the format
+to remove ambiguous trailing zeros. If TRUE, the decimal point is
+moved three places to the left. Default is FALSE.</p></td>
     </tr>
     </table>
     
@@ -160,57 +160,50 @@ decimal point is moved three places to the left.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Non-numeric variables in a data frame are unaffected and are returned as-is.</p>
-<p>Each numeric variable can be assigned its own number of significant digits.
-The default is 4. If <code>sigdig</code> is a single value, it is used for all
-variables; if an array, it must have the same number of elements as there
-are numeric variables in the data frame. Setting <code>sigdig = 0</code>
-returns the numerical variables with no change to the numbers of digits.</p>
+    <p>Engineering notation is a subset of scientific notation: the exponent of
+ten must be divisible by three. Powers of ten are written with a product
+symbol (the LaTeX <code>\times</code> symbol), not computer E-notation. The
+numerical output strings are bounded by <code>$...$</code> for rendering in
+math mode.</p>
 <p>The output format is "coefficient x 10^exponent" except for exponents equal
-to 0, 1, or 2. In these cases, the output format is floating-point. In all
-cases, the decimal point in the coefficient floats.</p>
-<p>Trailing zeros to the right of a decimal are significant. A trailing zero
-before a decimal is ambiguous; such numbers are reported with the decimal
-moved an additional three places to the left except for cases in which doing
-so results in a zero coefficient due to a small number of significant
-digits.</p>
-<p>The numerical output strings are bounded by <code>"$...$"</code> for rendering in
-an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the
-Rmd code chunk  <code><a href='http://www.rdocumentation.org/packages/knitr/topics/kable'>knitr::kable(engr_format(df))</a></code> prints the formatted
-data frame to the output document.</p>
+to 0, 1, or 2. In these cases, the output format is floating-point.</p>
+<p>The input argument is a data frame with at least one numeric variable.
+Only double variables (not integers) are formatted in powers of ten.</p>
+<p>The function distinguishes between integers that represent factors and
+those that represent numerical integers. Numerical integers are returned
+as characters in math mode. Factors and other non-numeric variables
+are returned unaffected.</p>
+<p>Each double variable can be assigned its own number of significant digits.
+The default is 4. If <code>sigdig</code> is a single value, it is used for all
+variables; if a vector, it must have the same number of elements as there
+are double variables in the data frame. Setting <code>sigdig = 0</code>
+returns the double variables as characters but unaltered.</p>
+<p>For numbers with no decimal point, trailing zeros can be ambiguous.
+Such numbers can be optionally reported with the decimal moved an
+additional three places to the left.</p>
 <p>To learn more about docxtools, start with the vignettes:
 <code>browseVignettes(package = "docxtools")</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># create test input arguments</span>
-<span class='fu'>set.seed</span>(<span class='fl'>20161221</span>)
-<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fl'>5</span>
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='no'>letters</span>, <span class='no'>n</span>)
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='no'>letters</span>, <span class='no'>n</span>)
-<span class='no'>w</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='no'>n</span>, <span class='kw'>min</span> <span class='kw'>=</span>  -<span class='fl'>5</span>, <span class='kw'>max</span> <span class='kw'>=</span>  <span class='fl'>50</span>) * <span class='fl'>1e+5</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='no'>n</span>, <span class='kw'>min</span> <span class='kw'>=</span> -<span class='fl'>25</span>, <span class='kw'>max</span> <span class='kw'>=</span>  <span class='fl'>40</span>) / <span class='fl'>1e+3</span>
-<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'>runif</span>(<span class='no'>n</span>, <span class='kw'>min</span> <span class='kw'>=</span>  -<span class='fl'>5</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>100</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='no'>z</span>, <span class='no'>b</span>, <span class='no'>y</span>, <span class='no'>a</span>, <span class='no'>w</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="examples"><div class='input'><span class='co'># Factors unaffected; ambiguous trailing zeros.</span>
+<span class='fu'>data</span>(<span class='st'>"CO2"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>CO2</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5L</span>)
+<span class='fu'>format_engr</span>(<span class='no'>x</span>)
+<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>3</span>))
+<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>3</span>), <span class='kw'>ambig_0_adj</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='co'># format different objects</span>
-<span class='fu'>print</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;           z b            y a         w
-#&gt; 1  6.501440 c  0.001051893 q 2846529.3
-#&gt; 2 28.374092 o  0.000347614 y 4874357.1
-#&gt; 3 -3.849624 i  0.004599897 g -111651.4
-#&gt; 4 44.500979 a -0.003045062 a 1314715.7
-#&gt; 5 92.411835 x -0.001069473 i  417385.0</div><div class='input'><span class='fu'>format_engr</span>(<span class='no'>x</span>)
-<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>5</span>))</div># NOT RUN {
-# if no columns are numeric, an error is thrown, e.g.,
-a
-format_engr(a)
+<span class='co'># Ordered factor unaffected; ambiguous trailing zeros.</span>
+<span class='fu'>data</span>(<span class='st'>"DNase"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>tail</span>(<span class='no'>DNase</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5L</span>)
+<span class='fu'>format_engr</span>(<span class='no'>x</span>)
+<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>6</span>, <span class='fl'>3</span>))
+<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>6</span>, <span class='fl'>3</span>), <span class='kw'>ambig_0_adj</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-Error if input is not a data frame
-format_engr(y, 2)  # numeric vector
-# }
-<div class='input'>
-</div></pre>
+<span class='co'># Integers returned unchanged but delimited; NA unchanged.</span>
+<span class='fu'>data</span>(<span class='st'>"airquality"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>head</span>(<span class='no'>airquality</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6L</span>)
+<span class='fu'>format_engr</span>(<span class='no'>x</span>, <span class='kw'>sigdig</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

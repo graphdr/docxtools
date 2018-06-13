@@ -7,74 +7,72 @@
 format_engr(x, sigdig = NULL, ambig_0_adj = FALSE)
 }
 \arguments{
-\item{x}{: The numeric object to be formatted.}
+\item{x}{A data frame with numeric variables to be formatted.}
 
-\item{sigdig}{: An optional vector of significant digits.}
+\item{sigdig}{An optional vector of significant digits.}
 
-\item{ambig_0_adj}{: An optional logical to adjust the format
-to remove ambiguous trailing zeros. Default is FALSE. If TRUE, the
-decimal point is moved three places to the left.}
+\item{ambig_0_adj}{An optional logical to adjust the format
+to remove ambiguous trailing zeros. If TRUE, the decimal point is
+moved three places to the left. Default is FALSE.}
 }
 \value{
 A data frame with numeric variables converted
   to formatted strings bounded by \code{"$...$"}.
 }
 \description{
-Converts numeric objects into character variables formatted in engineering
-notation: base 10 with exponents that are multiples of 3. The input argument
-is a data frame with at least one numeric variable.
+Converts numeric variables in a data frame into character variables
+formatted in engineering notation. The formatted character variables
+are delimited with \code{$...$} for rendering as inline math.
 }
 \details{
-Non-numeric variables in a data frame are unaffected and are returned as-is.
-
-Each numeric variable can be assigned its own number of significant digits.
-The default is 4. If \code{sigdig} is a single value, it is used for all
-variables; if an array, it must have the same number of elements as there
-are numeric variables in the data frame. Setting \code{sigdig = 0}
-returns the numerical variables with no change to the numbers of digits.
+Engineering notation is a subset of scientific notation: the exponent of
+ten must be divisible by three. Powers of ten are written with a product
+symbol (the LaTeX \code{\\times} symbol), not computer E-notation. The
+numerical output strings are bounded by \code{$...$} for rendering in
+math mode.
 
 The output format is "coefficient x 10^exponent" except for exponents equal
-to 0, 1, or 2. In these cases, the output format is floating-point. In all
-cases, the decimal point in the coefficient floats.
+to 0, 1, or 2. In these cases, the output format is floating-point.
 
-Trailing zeros to the right of a decimal are significant. A trailing zero
-before a decimal is ambiguous; such numbers are reported with the decimal
-moved an additional three places to the left except for cases in which doing
-so results in a zero coefficient due to a small number of significant
-digits.
+The input argument is a data frame with at least one numeric variable.
+Only double variables (not integers) are formatted in powers of ten.
 
-The numerical output strings are bounded by \code{"$...$"} for rendering in
-an R markdown output document, e.g., HTML, PDF, or DOCX. For example, the
-Rmd code chunk  \code{knitr::kable(engr_format(df))} prints the formatted
-data frame to the output document.
+The function distinguishes between integers that represent factors and
+those that represent numerical integers. Numerical integers are returned
+as characters in math mode. Factors and other non-numeric variables
+are returned unaffected.
+
+Each double variable can be assigned its own number of significant digits.
+The default is 4. If \code{sigdig} is a single value, it is used for all
+variables; if a vector, it must have the same number of elements as there
+are double variables in the data frame. Setting \code{sigdig = 0}
+returns the double variables as characters but unaltered.
+
+For numbers with no decimal point, trailing zeros can be ambiguous.
+Such numbers can be optionally reported with the decimal moved an
+additional three places to the left.
 
 To learn more about docxtools, start with the vignettes:
 \code{browseVignettes(package = "docxtools")}.
 }
 \examples{
-# create test input arguments
-set.seed(20161221)
-n <- 5
-a <- sample(letters, n)
-b <- sample(letters, n)
-w <- runif(n, min =  -5, max =  50) * 1e+5
-y <- runif(n, min = -25, max =  40) / 1e+3
-z <- runif(n, min =  -5, max = 100)
-x <- data.frame(z, b, y, a, w, stringsAsFactors = FALSE)
-
-# format different objects
-print(x)
+# Factors unaffected; ambiguous trailing zeros.
+data("CO2")
+x <- head(CO2, n = 5L)
 format_engr(x)
+format_engr(x, sigdig = c(0, 3))
+format_engr(x, sigdig = c(3, 3), ambig_0_adj = TRUE)
+
+# Ordered factor unaffected; ambiguous trailing zeros.
+data("DNase")
+x <- tail(DNase, n = 5L)
+format_engr(x)
+format_engr(x, sigdig = c(6, 3))
+format_engr(x, sigdig = c(6, 3), ambig_0_adj = TRUE)
+
+# Integers returned unchanged but delimited; NA unchanged.
+data("airquality")
+x <- head(airquality, n = 6L)
 format_engr(x, sigdig = 3)
-format_engr(x, sigdig = c(3, 4, 5))
-
-\dontrun{
-# if no columns are numeric, an error is thrown, e.g.,
-a
-format_engr(a)
-
-Error if input is not a data frame
-format_engr(y, 2)  # numeric vector
-}
 
 }

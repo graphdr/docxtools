@@ -2,6 +2,8 @@
 output:
   github_document:
     html_preview: TRUE
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -55,19 +57,12 @@ devtools::install_github("graphdr/docxtools")
 ```{r 003}
 library(docxtools)
 
-set.seed(20170913)
-n <- 5
-a <- sample(letters, n)
-b <- sample(letters, n)
-w <- runif(n, min = -5, max = 50) * 1e+5
-y <- runif(n, min = -25, max = 40) / 1e+3
-z <- runif(n, min = -5, max = 100)
-x <- data.frame(w, a, y, b, z, stringsAsFactors = FALSE)
-
-output <- format_engr(x, sigdig = c(3, 4, 5))
+data("DNase")
+x <- tail(DNase, n = 5L)
+output <- format_engr(x, sigdig = c(6, 3), ambig_0_adj = TRUE)
 output
 
-align_pander(output, align_idx = "rcrcr")
+align_pander(output, align_idx = "crr")
 ```
 
 Using `put_gap()` with knitr and R markdown, the gap height is specified in the R code-chunk header. 
