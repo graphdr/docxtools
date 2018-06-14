@@ -66,7 +66,7 @@ in the R code-chunk header.
 put_gap(col = "gray", fill = NULL)
 <code>```</code></code></pre>
 
-<img src="../man/figures/README-004-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="man/figures/README-004-1.png" width="70%" style="display: block; margin: auto;" />
 
 For `put_axes()` with knitr and R markdown, the axis height is specified
 in the R code-chunk header.
@@ -76,7 +76,7 @@ in the R code-chunk header.
 put_axes(1, col = "blue", size = 2)
 <code>```</code></code></pre>
 
-<img src="../man/figures/README-005-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="man/figures/README-005-1.png" width="70%" style="display: block; margin: auto;" />
 
 -----
 
