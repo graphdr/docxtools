@@ -16,12 +16,12 @@ RoxygenNote: 6.0.1
 Imports:
     dplyr, 
     ggplot2, 
+    lubridate, 
     magrittr, 
     pander, 
     purrr, 
     rlang, 
     stringr, 
-    tibble, 
     tidyr
 Suggests: 
     knitr,

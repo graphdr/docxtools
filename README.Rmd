@@ -1,20 +1,35 @@
 ---
-output:
-  github_document:
-    html_preview: TRUE
-editor_options: 
-  chunk_output_type: console
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r 001, echo = FALSE}
+```{r setup, echo = FALSE, message = FALSE}
+knitr::opts_knit$set(root.dir = ".")
 knitr::opts_chunk$set(
+  echo = TRUE, # varies from one Rmd to another
+  message = FALSE,
+  warning = FALSE,
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-"
+  error = TRUE,
+  purl = FALSE,
+  fig.width = 6,
+  fig.asp = 1 / 1.6,
+  out.width = "70%",
+  fig.align = "center",
+  fig.path = "../man/figures/README-"
 )
-options(tibble.print_min = 5, tibble.print_max = 5)
+knitr::knit_hooks$set(inline = function(x) {
+  if (!is.numeric(x)) {
+    x
+  } else if (x >= 10000) {
+    prettyNum(round(x, 2), big.mark = ",")
+  } else {
+    prettyNum(round(x, 2))
+  }
+})
+options(tibble.print_min = 8L, tibble.print_max = 8L)
 ```
 
 # docxtools <img src="man/figures/logo.png" align="right" />
@@ -23,7 +38,7 @@ options(tibble.print_min = 5, tibble.print_max = 5)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
 [![Build Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
 [![Coverage Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
-[![Rdoc](http://www.rdocumentation.org/badges/version/docxtools)](http://www.rdocumentation.org/packages/docxtools)
+
 
 
 
@@ -57,12 +72,10 @@ devtools::install_github("graphdr/docxtools")
 ```{r 003}
 library(docxtools)
 
-data("DNase")
-x <- tail(DNase, n = 5L)
-output <- format_engr(x, sigdig = c(6, 3), ambig_0_adj = TRUE)
-output
+data("density")
+y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
 
-align_pander(output, align_idx = "crr")
+align_pander(y)
 ```
 
 Using `put_gap()` with knitr and R markdown, the gap height is specified in the R code-chunk header. 

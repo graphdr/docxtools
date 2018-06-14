@@ -54,7 +54,7 @@ The primary goal of `format_engr()` is to present numeric variables in a data fr
 
 |syntax         |expression           |
 |---------------|---------------------|
-|computer       |$1.011e+5$           | 
+|computer       |$1.011E+5$           | 
 |mathematical   |$1.011\times10^{5}$  |
 |engineering    |$101.1\times10^{3}$  |
 
@@ -67,10 +67,11 @@ This example uses a small data set, `density`, included with docxtools, with tem
 density
 ```
 
-Four of the variables are numeric. 
+Four of the variables are numeric. The `date` variable is of type "double" but class "Date", so it is not reformatted. 
 
 ```{r}
 map_chr(density, class)
+map_chr(density, typeof)
 ```
 
 Usage is `format_engr(x, sigdig = NULL, ambig_0_adj = FALSE)`. The function returns a data frame with all numeric values reformatted as character strings in engineering format with math delimiters `$...$`.  

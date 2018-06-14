@@ -2,8 +2,9 @@
 #' @importFrom dplyr mutate filter select left_join if_else bind_cols
 #' @importFrom tidyr gather separate spread
 #' @importFrom stringr  str_replace str_c str_detect str_trim
-#' @importFrom rlang syms
-#' @importFrom purrr map flatten_chr
+#' @importFrom rlang syms is_double is_integer is_character
+#' @importFrom purrr map
+#' @importFrom lubridate is.Date
 NULL
 
 #' Format numerical variables in engineering notation.
@@ -99,48 +100,32 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 	# separate columns into three groups: double, numerical integer, others
 	# double will be engr formatted, integer delimited $...$, others as-is
 	# if no columns are of type double, return with warning
-	yes_double <- purrr::map(x, rlang::is_double) %>% unlist()
+
+	double_TF  <- purrr::map(x, rlang::is_double) %>% unlist()
+	integer_TF <- purrr::map(x, rlang::is_integer) %>% unlist()
+	ordered_TF <- purrr::map(x, is.ordered) %>% unlist()
+	factor_TF  <- purrr::map(x, is.factor) %>% unlist()
+	charac_TF  <- purrr::map(x, rlang::is_character) %>% unlist()
+	date_TF    <- purrr::map(x, lubridate::is.Date) %>% unlist()
+
+	# double but not Date
+	yes_double <- double_TF & !ordered_TF & !integer_TF &
+		!factor_TF & !charac_TF & !date_TF
+	# integers but not factors
+	yes_integer <- integer_TF & !double_TF & !ordered_TF &
+		!factor_TF & !charac_TF & !date_TF
+	# everything else
+	yes_others <- !yes_double & !yes_integer
+
 	if (!any(yes_double)) {
 		warning("No columns are of type double")
 		return(x)
 	}
 
-	# separate double from non-double
-	double_col <- x[ ,  yes_double, drop = FALSE]
-	other_col  <- x[ , !yes_double, drop = FALSE]
-
-	# separate integers from non-double df
-	yes_integer <- purrr::map(other_col, rlang::is_integer) %>% unlist()
-	integer_col   <- other_col[ ,  yes_integer, drop = FALSE]
-	all_other_col <- other_col[ , !yes_integer, drop = FALSE]
-
-	# separate factors from numerical integers
-	yes_factor <- purrr::map(integer_col, is.factor) %>% unlist()
-	factor_col  <- integer_col[ ,  yes_factor, drop = FALSE]
-	integer_col <- integer_col[ , !yes_factor, drop = FALSE]
-
-	# bind factors and all others
-	all_other_col <- bind_cols(all_other_col, factor_col)
-
-	# at this point we have three data frames:
-	# double_col: apply engr formatting
-	# integer_col: apply delimiters $...$ so fonts match
-	# all_other_col: no change, return as-is
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	non_numeric <- all_other_col
+	# sort columns of input into three mutually exclusive data frames
+	double_col    <- x[ ,  yes_double,  drop = FALSE]
+	integer_col   <- x[ ,  yes_integer, drop = FALSE]
+	all_other_col <- x[ ,  yes_others,  drop = FALSE]
 
 	# sigdig vector length = 1
 	m_double_col <- ncol(double_col)
@@ -151,7 +136,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 	if (length(sigdig) != m_double_col) {
 		warning(paste(
 			"Incorrect length sigdif vector. Applies only to numeric class 'double'."
-			))
+		))
 		return(x)
 	}
 
@@ -165,18 +150,13 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 	numeric_as_is <- bind_cols(numeric_as_is, integer_col)
 	m_numeric_as_is <- ncol(numeric_as_is)
 
-
-
-
-
-
 	# for rejoining later, add observation numbers to each df
 	obs_add <- function(x) {
 		x <- dplyr::mutate(x, observ_index = 1:n())
 	}
 	numeric_as_is <- obs_add(numeric_as_is)
-	numeric_engr <- obs_add(numeric_engr)
-	non_numeric <- obs_add(non_numeric)
+	numeric_engr  <- obs_add(numeric_engr)
+	all_other_col <- obs_add(all_other_col)
 
 	# format the numeric variables for all with sigdig > 0
 	if (m_numeric_engr > 0) {
@@ -189,7 +169,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 				is.na(value),
 				NA_character_,
 				as.character(value)
-				)) %>%
+			)) %>%
 			# is it possible that separating by "e" varies by platform?
 			# fill = right helps with an NA condition
 			tidyr::separate(value, c("num", "pow"), "e",
@@ -233,16 +213,17 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 			sel <- !sel & str_detect(numeric_string$num_str, "0$")
 
 			# operate on selected num_str and pow only
-			if (any(sel) & ambig_0_adj) {
-				numeric_string$pow[sel] <- numeric_string$pow[sel] + 3
-				temp_num <- as.numeric(numeric_string$num_str[sel]) / 1000
-				numeric_string$num_str[sel] <- formatC(
-					signif(temp_num, digits = jj),
-					digits = jj,
-					format = "fg",
-					flag = "#"
-				)
-			}
+			if (any(sel) & !is.null(ambig_0_adj)) {
+				if (ambig_0_adj) {
+					numeric_string$pow[sel] <- numeric_string$pow[sel] + 3
+					temp_num <- as.numeric(numeric_string$num_str[sel]) / 1000
+					numeric_string$num_str[sel] <- formatC(
+						signif(temp_num, digits = jj),
+						digits = jj,
+						format = "fg",
+						flag = "#"
+					)
+				}}
 			collect <- rbind(collect, numeric_string)
 		}
 		numeric_engr <- collect
@@ -279,7 +260,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 	}
 
 	# rejoin the parts (each part has at least the observ_index column)
-	x <- dplyr::left_join(non_numeric, numeric_as_is, by = "observ_index")
+	x <- dplyr::left_join(all_other_col, numeric_as_is, by = "observ_index")
 	x <- dplyr::left_join(x, numeric_engr, by = "observ_index")
 	x <- dplyr::select(x, !!!var_name_list)
 }

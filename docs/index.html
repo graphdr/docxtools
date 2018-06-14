@@ -127,49 +127,59 @@
 <a href="#usage" class="anchor"></a>Usage</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(docxtools)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">data</span>(<span class="st">"DNase"</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">x &lt;-<span class="st"> </span><span class="kw">tail</span>(DNase, <span class="dt">n =</span> 5L)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">output &lt;-<span class="st"> </span><span class="kw"><a href="reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">output</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;   Run      conc density</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 1  11 $3.12500$ $0.980$</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 2  11 $6.25000$  $1.42$</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 3  11 $6.25000$  $1.38$</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 4  11 $12.5000$  $1.72$</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 5  11 $12.5000$  $1.72$</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="kw"><a href="reference/align_pander.html">align_pander</a></span>(output, <span class="dt">align_idx =</span> <span class="st">"crr"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">data</span>(<span class="st">"density"</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw"><a href="reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">4</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="reference/align_pander.html">align_pander</a></span>(y)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
-<th align="center">Run</th>
-<th align="right">conc</th>
-<th align="right">density</th>
+<th align="left">date</th>
+<th align="left">trial</th>
+<th align="left">T_K</th>
+<th align="left">p_Pa</th>
+<th align="left">R</th>
+<th align="left">density</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="center">11</td>
-<td align="right"><span class="math inline">\(3.12500\)</span></td>
-<td align="right"><span class="math inline">\(0.980\)</span></td>
+<td align="left">2018-06-12</td>
+<td align="left">a</td>
+<td align="left"><span class="math inline">\(294.05\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.198\)</span></td>
 </tr>
 <tr class="even">
-<td align="center">11</td>
-<td align="right"><span class="math inline">\(6.25000\)</span></td>
-<td align="right"><span class="math inline">\(1.42\)</span></td>
+<td align="left">2018-06-13</td>
+<td align="left">b</td>
+<td align="left"><span class="math inline">\(294.15\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center">11</td>
-<td align="right"><span class="math inline">\(6.25000\)</span></td>
-<td align="right"><span class="math inline">\(1.38\)</span></td>
+<td align="left">2018-06-14</td>
+<td align="left">c</td>
+<td align="left"><span class="math inline">\(294.65\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.196\)</span></td>
 </tr>
 <tr class="even">
-<td align="center">11</td>
-<td align="right"><span class="math inline">\(12.5000\)</span></td>
-<td align="right"><span class="math inline">\(1.72\)</span></td>
+<td align="left">2018-06-15</td>
+<td align="left">d</td>
+<td align="left"><span class="math inline">\(293.35\)</span></td>
+<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.200\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center">11</td>
-<td align="right"><span class="math inline">\(12.5000\)</span></td>
-<td align="right"><span class="math inline">\(1.72\)</span></td>
+<td align="left">2018-06-16</td>
+<td align="left">e</td>
+<td align="left"><span class="math inline">\(293.85\)</span></td>
+<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
+<td align="left"><span class="math inline">\(287\)</span></td>
+<td align="left"><span class="math inline">\(1.199\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -178,13 +188,13 @@
 # a gap with a border
 put_gap(col = "gray", fill = NULL)
 <code>```</code></code></pre>
-<p><img src="reference/figures/README-004-1.png" width="700"></p>
+<p><img src="../man/figures/README-004-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>For <code><a href="reference/put_axes.html">put_axes()</a></code> with knitr and R markdown, the axis height is specified in the R code-chunk header.</p>
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
 put_axes(1, col = "blue", size = 2)
 <code>```</code></code></pre>
-<p><img src="reference/figures/README-005-1.png" width="700"></p>
+<p><img src="../man/figures/README-005-1.png" width="70%" style="display: block; margin: auto;"></p>
 <hr>
 <p>License: MIT + File LICENSE<br> Richard Layton</p>
 </div>
@@ -225,7 +235,6 @@ put_axes(1, col = "blue", size = 2)
 <li><a href="http://cran.r-project.org/package=docxtools"><img src="http://www.r-pkg.org/badges/version/docxtools" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/graphdr/docxtools"><img src="https://travis-ci.org/graphdr/docxtools.svg?branch=master" alt="Build Status"></a></li>
 <li><a href="https://codecov.io/github/graphdr/docxtools?branch=master"><img src="https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg" alt="Coverage Status"></a></li>
-<li><a href="http://www.rdocumentation.org/packages/docxtools"><img src="http://www.rdocumentation.org/badges/version/docxtools" alt="Rdoc"></a></li>
 </ul>
 </div>
 </div>

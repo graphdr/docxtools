@@ -1,32 +1,32 @@
 # helper function for using rprojroot
-
 get_my_path <- function(filename) {
 	rprojroot::find_testthat_root_file(
 		"testing_data", filename
 	)
 }
 
-### create argumnents and expected result
-### arguments in a list to be use with do.call
+# ## create argumnents and expected result
+# ## arguments in a list to be use with do.call
 # data("CO2")
 # x <- as.data.frame(head(CO2, n = 5L))
-# y <- format_engr(x, sigdig = sigdig, ambig_0_adj = ambig_0_adj)
 # sigdig <- c(3, 3)
 # ambig_0_adj <- TRUE
-
-### for testing format_engr()
+# y <- format_engr(x, sigdig = sigdig, ambig_0_adj = ambig_0_adj)
+# rm("CO2")
+#
+# ## for testing format_engr()
 # my_args <- list(x, sigdig, ambig_0_adj)
 # save(my_args, file = "tests/testthat/testing_data/my_args_01.rda")
 # exp_out <- format_engr(x, sigdig = sigdig, ambig_0_adj = ambig_0_adj)
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_01.rda")
-
-### for testing align_pander()
+#
+# ## for testing align_pander()
 # my_args <- list(y)
 # save(my_args, file = "tests/testthat/testing_data/my_args_02.rda")
 # exp_out <- capture_output(align_pander(y))
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_02.rda")
-
-### for testing put_axes()
+#
+# ## for testing put_axes()
 # my_args <- list(quadrant = NULL, col = NULL, size = NULL)
 # save(my_args, file = "tests/testthat/testing_data/my_args_03.rda")
 # exp_out <- do.call(docxtools::put_axes, my_args)
@@ -51,7 +51,7 @@ get_my_path <- function(filename) {
 # save(my_args, file = "tests/testthat/testing_data/my_args_07.rda")
 # exp_out <- do.call(docxtools::put_axes, my_args)
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_07.rda")
-
+#
 # my_args <- list(quadrant = 0)
 # save(my_args, file = "tests/testthat/testing_data/my_args_08.rda")
 # exp_out <- do.call(docxtools::put_axes, my_args)
@@ -76,3 +76,14 @@ get_my_path <- function(filename) {
 # save(my_args, file = "tests/testthat/testing_data/my_args_12.rda")
 # exp_out <- do.call(docxtools::put_axes, my_args)
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_12.rda")
+#
+## for testing put_gap()
+# my_args <- list(col = NULL, fill = NULL)
+# save(my_args, file = "tests/testthat/testing_data/my_args_13.rda")
+# exp_out <- do.call(docxtools::put_gap, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_13.rda")
+#
+# my_args <- list(col = "red", fill = "red")
+# save(my_args, file = "tests/testthat/testing_data/my_args_14.rda")
+# exp_out <- do.call(docxtools::put_gap, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_14.rda")

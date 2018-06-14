@@ -1,5 +1,6 @@
 #' @importFrom pander pander panderOptions
 #' @importFrom stringr str_length str_split str_replace_all
+#' @importFrom purrr map
 NULL
 
 #' Align the columns of a pander table.

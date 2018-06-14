@@ -17,22 +17,6 @@ test_that("Input arguments have correct form", {
 # create my_args.Rdata and expected_output.Rdata
 # see helper.R file
 
-# run the function with saved arguments
-# path_to_my_args_file <- get_my_path("my_args_03.rda")
-# load(file = path_to_my_args_file)
-# my_fun_run <- do.call(docxtools::put_axes, my_args)
-#
-# # get the expected output and test
-# load(file = get_my_path("exp_out_03.rda"))
-#
-# testthat::test_that(
-# 	"put_axes() returns expected output",
-# 	testthat::expect_equal(
-# 		my_fun_run,
-# 		exp_out
-# 	)
-# )
-
 testthat::test_that("put_axes() returns expected output", {
 
 	load(file = get_my_path("my_args_03.rda"))
@@ -77,5 +61,15 @@ testthat::test_that("put_axes() returns expected output", {
 
 })
 
+testthat::test_that("put_gap() returns expected output", {
 
+	load(file = get_my_path("my_args_13.rda"))
+	load(file = get_my_path("exp_out_13.rda"))
+	testthat::expect_equal(do.call(docxtools::put_gap, my_args), exp_out)
+
+	load(file = get_my_path("my_args_14.rda"))
+	load(file = get_my_path("exp_out_14.rda"))
+	testthat::expect_equal(do.call(docxtools::put_gap, my_args), exp_out)
+
+})
 

@@ -10,7 +10,6 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
-[![Rdoc](http://www.rdocumentation.org/badges/version/docxtools)](http://www.rdocumentation.org/packages/docxtools)
 
 ## Overview
 
@@ -45,36 +44,19 @@ devtools::install_github("graphdr/docxtools")
 ``` r
 library(docxtools)
 
-set.seed(20170913)
-n <- 5
-a <- sample(letters, n)
-b <- sample(letters, n)
-w <- runif(n, min = -5, max = 50) * 1e+5
-y <- runif(n, min = -25, max = 40) / 1e+3
-z <- runif(n, min = -5, max = 100)
-x <- data.frame(w, a, y, b, z, stringsAsFactors = FALSE)
+data("density")
+y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
 
-output <- format_engr(x, sigdig = c(3, 4, 5))
-#> Warning in if (width... < 0) stop("`width` is shorter than `ellipsis`", :
-#> the condition has length > 1 and only the first element will be used
-output
-#>                        w a                         y b        z
-#> 1  ${327}\\times 10^{3}$ f ${-21.43}\\times 10^{-3}$ j $26.425$
-#> 2 ${3.35}\\times 10^{6}$ o  ${32.69}\\times 10^{-3}$ u $88.005$
-#> 3 ${1.70}\\times 10^{6}$ a  ${4.895}\\times 10^{-3}$ b $80.499$
-#> 4 ${1.02}\\times 10^{6}$ q  ${6.986}\\times 10^{-3}$ y $93.280$
-#> 5 ${1.80}\\times 10^{6}$ w ${-13.86}\\times 10^{-3}$ v $37.444$
-
-align_pander(output, align_idx = "rcrcr")
+align_pander(y)
 ```
 
-|                       w | a |                          y | b |          z |
-| ----------------------: | :-: | -------------------------: | :-: | ---------: |
-|  \({327}\times 10^{3}\) | f | \({-21.43}\times 10^{-3}\) | j | \(26.425\) |
-| \({3.35}\times 10^{6}\) | o |  \({32.69}\times 10^{-3}\) | u | \(88.005\) |
-| \({1.70}\times 10^{6}\) | a |  \({4.895}\times 10^{-3}\) | b | \(80.499\) |
-| \({1.02}\times 10^{6}\) | q |  \({6.986}\times 10^{-3}\) | y | \(93.280\) |
-| \({1.80}\times 10^{6}\) | w | \({-13.86}\times 10^{-3}\) | v | \(37.444\) |
+| date       | trial | T\_K       | p\_Pa                    | R       | density   |
+| :--------- | :---- | :--------- | :----------------------- | :------ | :-------- |
+| 2018-06-12 | a     | \(294.05\) | \({101.1}\times 10^{3}\) | \(287\) | \(1.198\) |
+| 2018-06-13 | b     | \(294.15\) | \({101.0}\times 10^{3}\) | \(287\) | \(1.196\) |
+| 2018-06-14 | c     | \(294.65\) | \({101.1}\times 10^{3}\) | \(287\) | \(1.196\) |
+| 2018-06-15 | d     | \(293.35\) | \({101.0}\times 10^{3}\) | \(287\) | \(1.200\) |
+| 2018-06-16 | e     | \(293.85\) | \({101.1}\times 10^{3}\) | \(287\) | \(1.199\) |
 
 Using `put_gap()` with knitr and R markdown, the gap height is specified
 in the R code-chunk header.
@@ -84,7 +66,7 @@ in the R code-chunk header.
 put_gap(col = "gray", fill = NULL)
 <code>```</code></code></pre>
 
-![](man/figures/README-004-1.png)<!-- -->
+<img src="../man/figures/README-004-1.png" width="70%" style="display: block; margin: auto;" />
 
 For `put_axes()` with knitr and R markdown, the axis height is specified
 in the R code-chunk header.
@@ -94,7 +76,7 @@ in the R code-chunk header.
 put_axes(1, col = "blue", size = 2)
 <code>```</code></code></pre>
 
-![](man/figures/README-005-1.png)<!-- -->
+<img src="../man/figures/README-005-1.png" width="70%" style="display: block; margin: auto;" />
 
 -----
 
