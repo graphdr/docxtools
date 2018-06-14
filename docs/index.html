@@ -118,19 +118,27 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>From CRAN,</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"docxtools"</span>)</a></code></pre></div>
-<p>Or you can obtain the latest devlopment version from GitHub</p>
+<p>Or you can obtain the most recent devlopment version from GitHub.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"devtools"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"graphdr/docxtools"</span>)</a></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
+<p>The <code>density</code> data set is part of the package.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(docxtools)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">data</span>(<span class="st">"density"</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw"><a href="reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">4</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="reference/align_pander.html">align_pander</a></span>(y)</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">data</span>(<span class="st">"density"</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">density</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></a></code></pre></div>
+<p><code><a href="reference/format_engr.html">format_engr()</a></code> applies engineering notation to numeric variables, assigns significant digits, and adjusts for ambiguous trailing zeros.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw"><a href="reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">4</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><code><a href="reference/align_pander.html">align_pander()</a></code> uses the pander package for aligning columns and producing the table output. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/">website</a>.)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/align_pander.html">align_pander</a></span>(y)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
