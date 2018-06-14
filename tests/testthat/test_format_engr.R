@@ -14,6 +14,11 @@ test_that("Factors are returned unaffected", {
 	x <- format_engr(head(CO2, n = 5L))
 	expect_equal(class(x$Plant), c("ordered", "factor"))
 	expect_equal(class(x$Type), "factor")
+	y <- CO2[ , 1:3]
+	expect_warning(
+		format_engr(y),
+		"No columns are of type double"
+	)
 })
 
 test_that("Integers are returned as characters but unformatted", {
@@ -24,29 +29,39 @@ test_that("Integers are returned as characters but unformatted", {
 	expect_equal(class(y$Ozone), "character")
 })
 
+test_that("sigdig vector is correct", {
+	data("airquality")
+	x <- head(airquality, n = 1L)
+	y <- format_engr(x, sigdig = 6)
+	expect_equal(y$Wind, "$7.40000$")
+	expect_warning(
+		format_engr(x, sigdig = c(4, 3)),
+		"Incorrect length sigdif vector. Applies only to numeric class 'double'."
+		)
+	expect_warning(
+		format_engr(x, sigdig = -1),
+		"Significant digits must be 0 or positive integers."
+	)
+		})
+
 # trying the rprojroot stuff
 # http://r-lib.github.io/rprojroot/articles/rprojroot.html#testthat-files
-#
 # create my_args.Rdata and expected_output.Rdata
 # see helper.R file
 
-# Find the correct path with the rprojroot helper function
-path_to_my_args_file <- get_my_path("my_args.rda")
-
-# Load the input arguments
+# run the function with saved arguments
+path_to_my_args_file <- get_my_path("my_args_01.rda")
 load(file = path_to_my_args_file)
-
-# Run the function with those arguments in a list
 my_fun_run <- do.call(docxtools::format_engr, my_args)
 
 # Load the historical expectation with the helper
-load(file = get_my_path("expected_output.rda"))
+load(file = get_my_path("exp_out_01.rda"))
 
 # Pass all tests and achieve nirvana
 testthat::test_that(
 	"format_engr() returns expected output",
 	testthat::expect_equal(
 		my_fun_run,
-		expected_output
+		exp_out
 	)
 )
