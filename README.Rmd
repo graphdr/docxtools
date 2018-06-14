@@ -41,9 +41,6 @@ options(tibble.print_min = 8L, tibble.print_max = 8L)
 [![Build Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
 [![Coverage Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
 
-
-
-
 ## Overview
 
 docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to does one own's work reproducibly but has collaborators who work with Office software exclusively.  
@@ -53,7 +50,6 @@ docxtools is a small set of helper functions for using R Markdown to create docu
 - `put_gap()`  to create white space in a document 
 - `put_axes()` to place unlabeled axes in a document 
 
-
 ## Installation  
 
 From CRAN, 
@@ -62,7 +58,7 @@ From CRAN,
 install.packages("docxtools")
 ```
 
-Or you can obtain the latest devlopment version from GitHub 
+Or you can obtain the most recent devlopment version from GitHub.  
 
 ```r
 install.packages("devtools")
@@ -71,12 +67,23 @@ devtools::install_github("graphdr/docxtools")
 
 ## Usage 
 
+The `density` data set is part of the package.  
+
 ```{r 003}
 library(docxtools)
-
 data("density")
-y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
+density
+```
 
+`format_engr()` applies engineering notation to numeric variables, assigns significant digits, and adjusts for ambiguous trailing zeros.  
+
+```{r}
+y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
+```
+
+`align_pander()` uses the pander package for aligning columns and producing the table output. (Note: The table can be seen correctly rendered at the package [website](https://graphdr.github.io/docxtools/).)
+
+```{r}
 align_pander(y)
 ```
 
@@ -103,7 +110,6 @@ put_axes(1, col = "blue", size = 2)
 # first quadrant axes
 put_axes(1, col = "blue", size = 0.5)
 ```
-
 
 ---
 License: MIT + File LICENSE<br> 

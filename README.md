@@ -32,7 +32,7 @@ From CRAN,
 install.packages("docxtools")
 ```
 
-Or you can obtain the latest devlopment version from GitHub
+Or you can obtain the most recent devlopment version from GitHub.
 
 ``` r
 install.packages("devtools")
@@ -41,12 +41,33 @@ devtools::install_github("graphdr/docxtools")
 
 ## Usage
 
+The `density` data set is part of the package.
+
 ``` r
 library(docxtools)
-
 data("density")
-y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
+density
+#>         date trial    T_K   p_Pa   R  density
+#> 1 2018-06-12     a 294.05 101100 287 1.197976
+#> 2 2018-06-13     b 294.15 101000 287 1.196384
+#> 3 2018-06-14     c 294.65 101100 287 1.195536
+#> 4 2018-06-15     d 293.35 101000 287 1.199647
+#> 5 2018-06-16     e 293.85 101100 287 1.198791
+```
 
+`format_engr()` applies engineering notation to numeric variables,
+assigns significant digits, and adjusts for ambiguous trailing zeros.
+
+``` r
+y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
+```
+
+`align_pander()` uses the pander package for aligning columns and
+producing the table output. (Note: The table can be seen correctly
+rendered at the package
+[website](https://graphdr.github.io/docxtools/).)
+
+``` r
 align_pander(y)
 ```
 
