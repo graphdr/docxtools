@@ -119,18 +119,22 @@
       <small>Source: <a href='https://github.com/graphdr/docxtools/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="docxtools-0-1-2-2018-06-11" class="section level2">
+    <div id="docxtools-0-1-2-2018-06-14" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-0-1-2-2018-06-11" class="anchor"></a>docxtools 0.1.2 (2018-06-11)</h2>
+<a href="#docxtools-0-1-2-2018-06-14" class="anchor"></a>docxtools 0.1.2 (2018-06-14)</h2>
 <div id="bug-fixes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h3>
-<p>In <code><a href="../reference/format_engr.html">format_engr()</a></code>, corrected an error caused by an incorrect use of <code>str_trunc()</code>.</p>
+<p>In <code><a href="../reference/format_engr.html">format_engr()</a></code></p>
+<ul>
+<li>Corrected an error caused by an incorrect use of <code>str_trunc()</code>.</li>
+<li>Variable types date, factor, ordered factor, and character are now correctly ignored by the formatting routine.</li>
+</ul>
 </div>
 <div id="new-features" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>New features</h3>
-<p>In <code><a href="../reference/format_engr.html">format_engr()</a></code>, added the <code>ambig_0_adj</code> argument. Reformatting exponential notation to remove ambiguous trailing zeros is now an optional setting.</p>
+<p>In <code><a href="../reference/format_engr.html">format_engr()</a></code>, added the <code>ambig_0_adj</code> argument. An optional argument to reformat (or not) to address ambiguous trailing zeros.</p>
 </div>
 <div id="minor-improvements" class="section level3">
 <h3 class="hasAnchor">
@@ -141,7 +145,8 @@
 <li>Require the input to be a data frame.</li>
 <li>Require the significant digits vector to have length 1 or match the number of numeric variables.</li>
 <li>Replaced some code with tidy evaluation.</li>
-<li>Revised the vignette.</li>
+<li>Revised the vignettes and examples.</li>
+<li>Unit testing to provide 100% coverage.</li>
 </ul>
 <!-- ### New features --><!-- ### Minor improvements --><!-- ### Bug fixes --><!-- ### Deprecated --><!-- ### Defunct -->
 </div>
@@ -159,7 +164,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#docxtools-0-1-2-2018-06-11">0.1.2</a></li>
+        <li><a href="#docxtools-0-1-2-2018-06-14">0.1.2</a></li>
         <li><a href="#docxtools-0-1-1-2017-03-10">0.1.1</a></li>
       </ul>
     </div>

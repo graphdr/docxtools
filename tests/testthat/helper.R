@@ -1,8 +1,8 @@
 # helper function for using rprojroot
 get_my_path <- function(filename) {
-	rprojroot::find_testthat_root_file(
-		"testing_data", filename
-	)
+  rprojroot::find_testthat_root_file(
+    "testing_data", filename
+  )
 }
 
 # ## create argumnents and expected result

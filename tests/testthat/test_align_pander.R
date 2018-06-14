@@ -19,20 +19,17 @@ my_fun_run <- do.call(docxtools::align_pander, my_args)
 load(file = get_my_path("exp_out_02.rda"))
 
 testthat::test_that(
-	"align_pander() returns expected output",
-	testthat::expect_equal(
-		my_fun_run,
-		cat(exp_out)
-	)
+  "align_pander() returns expected output",
+  testthat::expect_equal(
+    my_fun_run,
+    cat(exp_out)
+  )
 )
 
 test_that("Input arguments have correct form", {
-	x <- mtcars[1, 1:5]
-	expect_warning(
-		align_pander(x, align_idx = "rcrr")
-		, "The length of align_idx should be 5 characters."
-		)
+  x <- mtcars[1, 1:5]
+  expect_warning(
+    align_pander(x, align_idx = "rcrr")
+    , "The length of align_idx should be 5 characters."
+  )
 })
-
-
-

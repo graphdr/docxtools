@@ -35,18 +35,20 @@ The output format is "coefficient x 10^exponent" except for exponents equal
 to 0, 1, or 2. In these cases, the output format is floating-point.
 
 The input argument is a data frame with at least one numeric variable.
-Only double variables (not integers) are formatted in powers of ten.
+Only double variables (not integers and not dates) are formatted in
+powers of ten.
 
 The function distinguishes between integers that represent factors and
 those that represent numerical integers. Numerical integers are returned
 as characters in math mode. Factors and other non-numeric variables
 are returned unaffected.
 
-Each double variable can be assigned its own number of significant digits.
-The default is 4. If \code{sigdig} is a single value, it is used for all
-variables; if a vector, it must have the same number of elements as there
-are double variables in the data frame. Setting \code{sigdig = 0}
-returns the double variables as characters but unaltered.
+Each double variable (except dates) can be assigned its own number
+of significant digits. The default is 4. If \code{sigdig} is a single
+value, it is used for all variables; if a vector, it must have the
+same number of elements as there are double variables in the data frame.
+Setting \code{sigdig = 0} returns the double variables as characters
+but unaltered.
 
 For numbers with no decimal point, trailing zeros can be ambiguous.
 Such numbers can be optionally reported with the decimal moved an

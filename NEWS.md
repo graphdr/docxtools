@@ -1,13 +1,16 @@
 
-## docxtools 0.1.2 (2018-06-11)
+## docxtools 0.1.2 (2018-06-14)
 
 ### Bug fixes
 
-In `format_engr()`, corrected an error caused by an incorrect use of `str_trunc()`. 
+In `format_engr()` 
+
+- Corrected an error caused by an incorrect use of `str_trunc()`. 
+- Variable types date, factor, ordered factor, and character are now correctly ignored by the formatting routine. 
 
 ### New features
 
-In  `format_engr()`, added the `ambig_0_adj` argument.  Reformatting exponential notation to remove ambiguous trailing zeros is now an optional setting. 
+In  `format_engr()`, added the `ambig_0_adj` argument.  An optional argument to reformat (or not) to address ambiguous trailing zeros. 
 
 ### Minor improvements
 
@@ -17,7 +20,8 @@ For  `format_engr()`
 - Require the input to be a data frame. 
 - Require the significant digits vector to have length 1 or match the number of numeric variables. 
 - Replaced some code with tidy evaluation. 
-- Revised the vignette. 
+- Revised the vignettes and examples. 
+- Unit testing to provide 100% coverage. 
 
 
 

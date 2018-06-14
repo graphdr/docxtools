@@ -3,11 +3,11 @@ title: "Introduction to docxtools"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction to docxtools}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
-This package is a collection of helper functions for designing Word documents used in a classroom or workshop setting. These are particularly useful when my collaborators work with Office software only. 
+A collection of helper functions for designing Word documents used in a classroom or workshop setting. These are particularly useful when my collaborators work with Office software only. 
 
 The package has these functions for formatting numbers and aligning table columns, 
 
@@ -18,4 +18,3 @@ and these for putting workspace in a printed document to create space for writte
 
 - `put_axes()` 
 - `put_gap()` 
-
