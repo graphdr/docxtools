@@ -1,5 +1,8 @@
 ---
 output: github_document
+resource_files:
+  - man/figures/README-004-1.png
+  - man/figures/README-005-1.png
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
