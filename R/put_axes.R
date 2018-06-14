@@ -63,7 +63,7 @@ put_axes <- function(quadrant = NULL, col = NULL, size = NULL) {
     x_lim <- c(0, 1)
     y_lim <- c(-1, 1)
   } else {
-    stop("put_axes(): Incorrect quadrant argument.")
+    stop("Incorrect quadrant argument.")
   }
   p <- ggplot() +
     geom_segment(aes(x = x_lim[1], y = 0, xend = x_lim[2], yend = 0),

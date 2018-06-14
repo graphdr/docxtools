@@ -25,3 +25,54 @@ get_my_path <- function(filename) {
 # save(my_args, file = "tests/testthat/testing_data/my_args_02.rda")
 # exp_out <- capture_output(align_pander(y))
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_02.rda")
+
+### for testing put_axes()
+# my_args <- list(quadrant = NULL, col = NULL, size = NULL)
+# save(my_args, file = "tests/testthat/testing_data/my_args_03.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_03.rda")
+#
+# my_args <- list(quadrant = 1, col = "red", size = 1)
+# save(my_args, file = "tests/testthat/testing_data/my_args_04.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_04.rda")
+#
+# my_args <- list(quadrant = 2)
+# save(my_args, file = "tests/testthat/testing_data/my_args_05.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_05.rda")
+#
+# my_args <- list(quadrant = 3)
+# save(my_args, file = "tests/testthat/testing_data/my_args_06.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_06.rda")
+#
+# my_args <- list(quadrant = 4)
+# save(my_args, file = "tests/testthat/testing_data/my_args_07.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_07.rda")
+
+# my_args <- list(quadrant = 0)
+# save(my_args, file = "tests/testthat/testing_data/my_args_08.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_08.rda")
+#
+# my_args <- list(quadrant = 12)
+# save(my_args, file = "tests/testthat/testing_data/my_args_09.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_09.rda")
+#
+# my_args <- list(quadrant = 23)
+# save(my_args, file = "tests/testthat/testing_data/my_args_10.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_10.rda")
+#
+# my_args <- list(quadrant = 34)
+# save(my_args, file = "tests/testthat/testing_data/my_args_11.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_11.rda")
+#
+# my_args <- list(quadrant = 14)
+# save(my_args, file = "tests/testthat/testing_data/my_args_12.rda")
+# exp_out <- do.call(docxtools::put_axes, my_args)
+# save(exp_out, file = "tests/testthat/testing_data/exp_out_12.rda")
