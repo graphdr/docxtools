@@ -1,5 +1,5 @@
 #' @importFrom ggplot2 ggplot geom_segment aes theme coord_fixed
-#' @importFrom ggplot2 coord_cartesian element_blank unit
+#' @importFrom ggplot2 element_blank unit
 NULL
 
 #' Insert a two-dimensional coordinate axes in a document.
@@ -80,8 +80,7 @@ put_axes <- function(quadrant = NULL, col = NULL, size = NULL) {
       panel.background = element_blank(),
       plot.margin = unit(c(0, 0, 0, 0), "mm")
     ) +
-    coord_cartesian(xlim = x_lim, ylim = y_lim) +
-    coord_fixed()
+    coord_fixed(xlim = x_lim, ylim = y_lim)
   return(p)
 }
 "put_axes"

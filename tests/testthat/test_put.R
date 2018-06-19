@@ -12,59 +12,52 @@ test_that("Input arguments have correct form", {
   )
 })
 
+test_that("put_axes() attributes match expectations",{
+
+	p <- put_axes(0)
+  expect_identical(class(p$data), "waiver")
+  expect_identical(p$theme$plot.margin, unit(c(0, 0, 0, 0), "mm"))
+
+  p <- put_axes(col = "blue", size = 1)
+  expect_identical(p$layers[[1]]$geom$non_missing_aes, c("linetype", "size",      "shape"))
+
+  p <- put_axes(2)
+  expect_true(purrr::is_empty(p$mapping))
+  p <- put_axes(3)
+  expect_true(purrr::is_empty(p$mapping))
+  p <- put_axes(4)
+  expect_true(purrr::is_empty(p$mapping))
+  p <- put_axes(12)
+  expect_true(purrr::is_empty(p$mapping))
+  p <- put_axes(23)
+  expect_true(purrr::is_empty(p$mapping))
+  p <- put_axes(34)
+  expect_true(purrr::is_empty(p$mapping))
+  p <- put_axes(14)
+  expect_true(purrr::is_empty(p$mapping))
+})
+
+test_that("put_gap() attributes match expectations",{
+
+	p <- put_gap()
+	# expect_identical(class(p$data), "waiver")
+	expect_identical(p$theme$plot.margin, NULL)
+
+	p <- put_gap(col = "blue", fill = "blue")
+	expect_true(purrr::is_empty(p$layers))
+})
+
 # rprojroot stuff
 # http://r-lib.github.io/rprojroot/articles/rprojroot.html#testthat-files
 # create my_args.Rdata and expected_output.Rdata
 # see helper.R file
 
-testthat::test_that("put_axes() returns expected output", {
-  load(file = get_my_path("my_args_03.rda"))
-  load(file = get_my_path("exp_out_03.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_04.rda"))
-  load(file = get_my_path("exp_out_04.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_05.rda"))
-  load(file = get_my_path("exp_out_05.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_06.rda"))
-  load(file = get_my_path("exp_out_06.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_07.rda"))
-  load(file = get_my_path("exp_out_07.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_08.rda"))
-  load(file = get_my_path("exp_out_08.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_09.rda"))
-  load(file = get_my_path("exp_out_09.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_10.rda"))
-  load(file = get_my_path("exp_out_10.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_11.rda"))
-  load(file = get_my_path("exp_out_11.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-
-  load(file = get_my_path("my_args_12.rda"))
-  load(file = get_my_path("exp_out_12.rda"))
-  testthat::expect_equal(do.call(docxtools::put_axes, my_args), exp_out)
-})
-
-testthat::test_that("put_gap() returns expected output", {
-  load(file = get_my_path("my_args_13.rda"))
-  load(file = get_my_path("exp_out_13.rda"))
-  testthat::expect_equal(do.call(docxtools::put_gap, my_args), exp_out)
-
-  load(file = get_my_path("my_args_14.rda"))
-  load(file = get_my_path("exp_out_14.rda"))
-  testthat::expect_equal(do.call(docxtools::put_gap, my_args), exp_out)
-})
+# testthat::test_that("put_gap() returns expected output", {
+#   load(file = get_my_path("my_args_13.rda"))
+#   load(file = get_my_path("exp_out_13.rda"))
+#   testthat::expect_equal(do.call(docxtools::put_gap, my_args), exp_out)
+#
+#   load(file = get_my_path("my_args_14.rda"))
+#   load(file = get_my_path("exp_out_14.rda"))
+#   testthat::expect_equal(do.call(docxtools::put_gap, my_args), exp_out)
+# })
