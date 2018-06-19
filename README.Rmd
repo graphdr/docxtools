@@ -36,18 +36,18 @@ options(tibble.print_min = 8L, tibble.print_max = 8L)
 
 # docxtools <img src="man/figures/logo.png" align="right" />
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
-[![Build Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
-[![Coverage Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/docxtools)](https://cran.r-project.org/package=docxtools)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools) 
+[![Build Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools) 
+[![Coverage Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) 
+[![](https://cranlogs.r-pkg.org/badges/grand-total/docxtools)](https://cran.r-project.org/package=docxtools) 
 
 ## Overview
 
 docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to does one own's work reproducibly but has collaborators who work with Office software exclusively.  
 
-- `format_engr()` to apply engineering format to numbers  
-- `align_pander()` to print a table of numbers using pander
+- `format_engr()` to apply engineering format to numbers 
+- `align_pander()` to print a table of numbers using pander 
 - `put_gap()`  to create white space in a document 
 - `put_axes()` to place unlabeled axes in a document 
 

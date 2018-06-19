@@ -20,7 +20,7 @@ classroom or workshop setting. These are particularly useful when one
 tries to does one own’s work reproducibly but has collaborators who work
 with Office software exclusively.
 
-  - `format_engr()` to apply engineering format to numbers  
+  - `format_engr()` to apply engineering format to numbers
   - `align_pander()` to print a table of numbers using pander
   - `put_gap()` to create white space in a document
   - `put_axes()` to place unlabeled axes in a document
