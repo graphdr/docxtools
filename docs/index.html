@@ -8,8 +8,8 @@
 <title>Tools for R Markdown to Docx Documents • docxtools</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Tools for R Markdown to Docx Documents">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><meta property="og:title" content="Tools for R Markdown to Docx Documents">
 <meta property="og:description" content="A set of helper functions for using R Markdown to create documents
     in docx format, especially documents for use in a classroom or workshop
     setting.">
@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">docxtools</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.3</span>
       </span>
     </div>
 
@@ -200,9 +200,9 @@ put_gap(col = "gray", fill = NULL)
 <p>For <code><a href="reference/put_axes.html">put_axes()</a></code> with knitr and R markdown, the axis height is specified in the R code-chunk header.</p>
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
-put_axes(1, col = "blue", size = 2)
+put_axes(1, col = "blue", size = 0.5)
 <code>```</code></code></pre>
-<p><img src="reference/figures/README-005-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p><img src="reference/figures/README-005-1.png" width="33%" style="display: block; margin: auto;"></p>
 <hr>
 <p>License: MIT + File LICENSE<br> Richard Layton</p>
 </div>
@@ -239,10 +239,11 @@ put_axes(1, col = "blue", size = 2)
       <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
 <li><a href="http://cran.r-project.org/package=docxtools"><img src="http://www.r-pkg.org/badges/version/docxtools" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/graphdr/docxtools"><img src="https://travis-ci.org/graphdr/docxtools.svg?branch=master" alt="Build Status"></a></li>
 <li><a href="https://codecov.io/github/graphdr/docxtools?branch=master"><img src="https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a></li>
+<li><a href="https://cran.r-project.org/package=docxtools"><img src="https://cranlogs.r-pkg.org/badges/grand-total/docxtools"></a></li>
 </ul>
 </div>
 </div>

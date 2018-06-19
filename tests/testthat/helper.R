@@ -77,13 +77,13 @@ get_my_path <- function(filename) {
 # exp_out <- do.call(docxtools::put_axes, my_args)
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_12.rda")
 #
-## for testing put_gap()
+# # for testing put_gap()
 # my_args <- list(col = NULL, fill = NULL)
 # save(my_args, file = "tests/testthat/testing_data/my_args_13.rda")
 # exp_out <- do.call(docxtools::put_gap, my_args)
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_13.rda")
-#
-# my_args <- list(col = "red", fill = "red")
+# #
+# my_args <- list(col = "gray30", fill = "gray70")
 # save(my_args, file = "tests/testthat/testing_data/my_args_14.rda")
 # exp_out <- do.call(docxtools::put_gap, my_args)
 # save(exp_out, file = "tests/testthat/testing_data/exp_out_14.rda")

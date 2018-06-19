@@ -95,10 +95,10 @@ in the R code-chunk header.
 
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
-put_axes(1, col = "blue", size = 2)
+put_axes(1, col = "blue", size = 0.5)
 <code>```</code></code></pre>
 
-<img src="man/figures/README-005-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="man/figures/README-005-1.png" width="33%" style="display: block; margin: auto;" />
 
 -----
 

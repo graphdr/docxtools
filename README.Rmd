@@ -36,7 +36,6 @@ options(tibble.print_min = 8L, tibble.print_max = 8L)
 
 # docxtools <img src="man/figures/logo.png" align="right" />
 
-
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
 [![Build Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
 [![Coverage Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
@@ -96,7 +95,7 @@ Using `put_gap()` with knitr and R markdown, the gap height is specified in the 
 put_gap(col = "gray", fill = NULL)
 <code>```</code></code></pre>
 
-```{r 004, fig.height = 0.75, echo=FALSE}
+```{r 004, fig.asp = 0.75 / 6, echo = FALSE}
 # a gap with a border
 put_gap(col = "gray", fill = NULL)
 ```
@@ -105,10 +104,10 @@ For `put_axes()` with knitr and R markdown, the axis height is specified in the 
 
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
-put_axes(1, col = "blue", size = 2)
+put_axes(1, col = "blue", size = 0.5)
 <code>```</code></code></pre>
 
-```{r 005, fig.height = 2, echo = FALSE}
+```{r 005, fig.width = 2, fig.asp = 1, out.width = "33%", echo = FALSE}
 # first quadrant axes
 put_axes(1, col = "blue", size = 0.5)
 ```
