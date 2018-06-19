@@ -121,12 +121,13 @@ put_gap()
 <p>produces this output:</p>
 <p><img src="../man/figures/put-workspace-gap1-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>With color and fill arguments and an optional width argument in the code chunk header,</p>
-<pre class="r"><code>```{r fig.height = 0.25, fig.width = 7}
+<pre class="r"><code>```{r fig.height = 0.75, fig.width = 6}
 put_gap(col = "black", fill = "gray")
 <code>```</code></code></pre>
 <p><img src="../man/figures/put-workspace-gap2-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>Here’s an image from a Word document where space for written responses was created using <code><a href="../reference/put_gap.html">put_gap()</a></code>.</p>
-<p><img src="../man/figures/example-docx.png"></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/include_graphics">include_graphics</a></span>(<span class="st">"../man/figures/example-docx.png"</span>)</a></code></pre></div>
+<p><img src="../man/figures/example-docx.png" width="70%" style="display: block; margin: auto;"></p>
 <p>A gap can also be used to force a page break. Alternatively, Norbert Köhler shows how to insert page breaks using Word Styles, see <a href="http://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document">R Markdown: How to insert page breaks in a MS Word document</a>.</p>
 </div>
 <div id="put_axes" class="section level2">
@@ -146,27 +147,27 @@ put_gap(col = "black", fill = "gray")
 <div id="quadrants" class="section level3">
 <h3 class="hasAnchor">
 <a href="#quadrants" class="anchor"></a>Quadrants</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># all 4 quadrants</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">0</span>)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes01-1.png" width="70%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># quadrant 2</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes02-1.png" width="70%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># quadrant 1</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">1</span>, <span class="dt">col =</span> <span class="st">"blue"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes03-1.png" width="70%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># quadrant 3</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">3</span>)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes04-1.png" width="70%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># quadrant 4</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">4</span>, <span class="dt">col =</span> <span class="st">"red"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes05-1.png" width="70%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># two adjacent quadrants</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">12</span>)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes06-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># all 4 quadrants</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">0</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes01-1.png" width="50%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># quadrant 2</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes02-1.png" width="50%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># quadrant 1</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">1</span>, <span class="dt">col =</span> <span class="st">"blue"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes03-1.png" width="50%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># quadrant 3</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">3</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes04-1.png" width="50%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># quadrant 4</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">4</span>, <span class="dt">col =</span> <span class="st">"red"</span>, <span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes05-1.png" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># two adjacent quadrants</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">41</span>)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes07-1.png" width="70%" style="display: block; margin: auto;"></p>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">12</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes06-1.png" width="50%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># two adjacent quadrants</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">41</span>)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes07-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div id="dimensions" class="section level3">
 <h3 class="hasAnchor">
@@ -175,55 +176,55 @@ put_gap(col = "black", fill = "gray")
 <pre class="r"><code>```{r fig.height = 2}
 put_axes()
 <code>```</code></code></pre>
-<p><img src="../man/figures/put-workspace-axes08-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/put-workspace-axes08-1.png" width="50%" style="display: block; margin: auto;"></p>
 <p>The default aspect ratio is 1, though it can be edited using <code>coord_fixed()</code> from <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">coord_fixed</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="co"># ratio of y/x</span></a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes09-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span><span class="kw">coord_fixed</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>) <span class="co"># ratio of y/x</span></a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes09-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div id="annotations" class="section level3">
 <h3 class="hasAnchor">
 <a href="#annotations" class="anchor"></a>Annotations</h3>
 <p>The graph object can be edited using the usual <code>ggplot2</code> annotations. For example, to place some text in the middle of the graph,</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="fl">0.5</span>, <span class="dt">y =</span> <span class="fl">0.5</span>, <span class="dt">label =</span> <span class="st">"quadrant I"</span>)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">p</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes10-1.png" width="70%" style="display: block; margin: auto;"></p>
-<p>We can add text labels to label the axes using <code>annotate()</code></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>,</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">    <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">    , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">    , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">    , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.5</span>)</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">    , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">p</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes11-1.png" width="70%" style="display: block; margin: auto;"></p>
-<p>Or we can use the usual <code>labs()</code> after resetting the theme <code>axis.title</code>,</p>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>, <span class="dt">x =</span> <span class="fl">0.5</span>, <span class="dt">y =</span> <span class="fl">0.5</span>, <span class="dt">label =</span> <span class="st">"quadrant I"</span>)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">p</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes10-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p>We can add text labels to label the axes using <code>annotate()</code></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title =</span> <span class="kw">element_text</span>()) <span class="op">+</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">"new x"</span>, <span class="dt">y =</span> <span class="st">"new y"</span>)</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">p</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes12-1.png" width="70%" style="display: block; margin: auto;"></p>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>,</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">    <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">    , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">    , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">    , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">1.5</span>)</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">    , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">p</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes11-1.png" width="50%" style="display: block; margin: auto;"></p>
+<p>Or we can use the usual <code>labs()</code> after resetting the theme <code>axis.title</code>,</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title =</span> <span class="kw">element_text</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">"new x"</span>, <span class="dt">y =</span> <span class="st">"new y"</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">p</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes12-1.png" width="50%" style="display: block; margin: auto;"></p>
 <p>If we use <code>annotate()</code> and the label exceeds the data rectangle, we can make the plot margin larger and override the plot clipping.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>,</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">    <span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">    , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"Re"</span>, <span class="st">"Im"</span>)</a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">    , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">    , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">-0.5</span>)</a>
-<a class="sourceLine" id="cb13-7" data-line-number="7">    , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8">  ) <span class="op">+</span><span class="st"> </span><span class="co"># top, right, bottom, left</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="st">"mm"</span>))</a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co"># override clipping</span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="kw">library</span>(grid)</a>
-<a class="sourceLine" id="cb13-13" data-line-number="13">pp &lt;-<span class="st"> </span><span class="kw">ggplot_gtable</span>(<span class="kw">ggplot_build</span>(p))</a>
-<a class="sourceLine" id="cb13-14" data-line-number="14">pp<span class="op">$</span>layout<span class="op">$</span>clip[pp<span class="op">$</span>layout<span class="op">$</span>name <span class="op">==</span><span class="st"> "panel"</span>] &lt;-<span class="st"> "off"</span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="kw">grid.draw</span>(pp)</a></code></pre></div>
-<p><img src="../man/figures/put-workspace-axes13-1.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>,</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">    <span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">    , <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">"Re"</span>, <span class="st">"Im"</span>)</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">    , <span class="dt">vjust =</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">    , <span class="dt">hjust =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">-0.5</span>)</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">    , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">  ) <span class="op">+</span><span class="st"> </span><span class="co"># top, right, bottom, left</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="st">"mm"</span>))</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co"># override clipping</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="kw">library</span>(grid)</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">pp &lt;-<span class="st"> </span><span class="kw">ggplot_gtable</span>(<span class="kw">ggplot_build</span>(p))</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">pp<span class="op">$</span>layout<span class="op">$</span>clip[pp<span class="op">$</span>layout<span class="op">$</span>name <span class="op">==</span><span class="st"> "panel"</span>] &lt;-<span class="st"> "off"</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="kw">grid.draw</span>(pp)</a></code></pre></div>
+<p><img src="../man/figures/put-workspace-axes13-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div id="conclusion" class="section level2">
