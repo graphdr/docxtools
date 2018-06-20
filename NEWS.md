@@ -5,6 +5,7 @@
 
 
 
+
 ## docxtools 0.1.3 (2018-06-19)
 
 - Updated unit testing for compatibility with latest version of ggplot2 
