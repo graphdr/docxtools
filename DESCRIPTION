@@ -1,6 +1,6 @@
 Package: docxtools
 Title: Tools for R Markdown to Docx Documents
-Version: 0.1.3
+Version: 0.1.4
 Language: en-US
 Authors@R: c(
     person("Richard", "Layton", email = "graphdoctor@gmail.com", role = c("aut", "cre"))
@@ -31,5 +31,5 @@ Suggests:
     testthat
 VignetteBuilder: knitr
 URL: https://CRAN.R-project.org/package=docxtools, 
-    https://github.com/graphdr/docxtools
+    https://graphdr.github.io/docxtools
 BugReports: https://github.com/graphdr/docxtools/issues
