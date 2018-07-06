@@ -1,17 +1,17 @@
+## Release summary
+
+This minor update removes the dependency on CRAN package pander, now scheduled for archival on 2018--07--19.  
+
 ## Test environments
 
-* local install x86_64, mingw32, R 3.5.0 
-* ubuntu 14.04 (on travis-ci) R 3.5.0 
-* win-builder 
+* local install x86_64, mingw32, R 3.5.1 
+* win-builder: R-devel 
+* travis-ci: R 3.5.0 
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+No ERRORs, WARNINGs, or NOTEs 
 
-## Reverse dependencies
+## revdep_check results
 
-Running `devtools::revdep_check()`: No ERRORs or WARNINGs found. 
-
-
-
-
+No ERRORs or WARNINGs 

@@ -1,8 +1,20 @@
+<!-- major . minor . patch . dev -->
+<!-- MAJOR version when you make incompatible API changes -->
+<!-- MINOR version add functionality in a backwards-compatible manner -->
+<!-- PATCH version backwards-compatible bug fixes -->
+
+
+
+
+
+
 ## docxtools 0.2.0 (2018-07-05)
+
+This update removes the dependency on CRAN package pander, now scheduled for archival on 2018--07--19.  
 
 ### Deprecated
 
-- `align_pander()` deprecated because pander package scheduled for archival on 2018--07--19 
+- `align_pander()` deprecated, suggest using `knitr::kable()` instead
 
 ### Minor improvements
 
