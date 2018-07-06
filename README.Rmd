@@ -113,6 +113,4 @@ put_axes(1, col = "blue", size = 0.5)
 put_axes(1, col = "blue", size = 0.5)
 ```
 
----
-License: MIT + File LICENSE<br> 
-Richard Layton
+

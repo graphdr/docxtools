@@ -1,3 +1,7 @@
 template:
   params:
     bootswatch: spacelab
+
+navbar:
+  title: docxtools
+  type:  default

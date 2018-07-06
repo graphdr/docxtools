@@ -101,7 +101,3 @@ put_axes(1, col = "blue", size = 0.5)
 <code>```</code></code></pre>
 
 <img src="man/figures/README-005-1.png" width="33%" style="display: block; margin: auto;" />
-
------
-
-License: MIT + File LICENSE<br> Richard Layton
