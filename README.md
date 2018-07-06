@@ -21,7 +21,7 @@ tries to does one own’s work reproducibly but has collaborators who work
 with Office software exclusively.
 
   - `format_engr()` to apply engineering format to numbers
-  - `align_pander()` to print a table of numbers using pander
+    <!-- - `align_pander()` to print a table of numbers using pander (deprecated) -->
   - `put_gap()` to create white space in a document
   - `put_axes()` to place unlabeled axes in a document
 
@@ -63,13 +63,15 @@ assigns significant digits, and adjusts for ambiguous trailing zeros.
 y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
 ```
 
-`align_pander()` uses the pander package for aligning columns and
-producing the table output. (Note: The table can be seen correctly
-rendered at the package
-[website](https://graphdr.github.io/docxtools/).)
+For printing the table, I suggest using `knitr::kable()`. (Note: The
+table can be seen correctly rendered at the package
+[website](https://graphdr.github.io/docxtools/).) docxtools \< 0.1.4
+used the `align_pander()` function that is now deprecated and soon to be
+defunct.
 
 ``` r
-align_pander(y)
+# align_pander(y) # deprecated
+knitr::kable(y)
 ```
 
 | date       | trial | T\_K       | p\_Pa                    | R       | density   |

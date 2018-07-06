@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">docxtools</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
       </span>
     </div>
 
@@ -69,14 +69,7 @@
   <a href="news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/graphdr/docxtools">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -103,9 +96,8 @@
 <p>docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to does one own’s work reproducibly but has collaborators who work with Office software exclusively.</p>
 <ul>
 <li>
-<code><a href="reference/format_engr.html">format_engr()</a></code> to apply engineering format to numbers</li>
-<li>
-<code><a href="reference/align_pander.html">align_pander()</a></code> to print a table of numbers using pander</li>
+<code><a href="reference/format_engr.html">format_engr()</a></code> to apply engineering format to numbers <!-- - `align_pander()` to print a table of numbers using pander (deprecated) -->
+</li>
 <li>
 <code><a href="reference/put_gap.html">put_gap()</a></code> to create white space in a document</li>
 <li>
@@ -136,8 +128,9 @@
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></a></code></pre></div>
 <p><code><a href="reference/format_engr.html">format_engr()</a></code> applies engineering notation to numeric variables, assigns significant digits, and adjusts for ambiguous trailing zeros.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw"><a href="reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">4</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><code><a href="reference/align_pander.html">align_pander()</a></code> uses the pander package for aligning columns and producing the table output. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/">website</a>.)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="reference/align_pander.html">align_pander</a></span>(y)</a></code></pre></div>
+<p>For printing the table, I suggest using <code><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code>. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/">website</a>.) docxtools &lt; 0.1.4 used the <code><a href="reference/docxtools-deprecated.html">align_pander()</a></code> function that is now deprecated and soon to be defunct.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># align_pander(y) # deprecated</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(y)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -213,8 +206,6 @@ put_axes(1, col = "blue", size = 0.5)
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=docxtools">https://​cloud.r-project.org/​package=docxtools</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/graphdr/docxtools">https://​github.com/​graphdr/​docxtools</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/graphdr/docxtools/issues">https://​github.com/​graphdr/​docxtools/​issues</a>
 </li>

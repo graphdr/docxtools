@@ -1,5 +1,4 @@
-#' @importFrom magrittr %>%
-#' @importFrom dplyr mutate filter select left_join if_else bind_cols
+#' @importFrom dplyr mutate filter select left_join if_else bind_cols %>%
 #' @importFrom tidyr gather separate spread
 #' @importFrom stringr  str_replace str_c str_detect str_trim
 #' @importFrom rlang syms is_double is_integer is_character

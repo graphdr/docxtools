@@ -12,14 +12,13 @@ test_that("Input arguments have correct form", {
   )
 })
 
-test_that("put_axes() attributes match expectations",{
-
-	p <- put_axes(0)
+test_that("put_axes() attributes match expectations", {
+  p <- put_axes(0)
   expect_identical(class(p$data), "waiver")
   expect_identical(p$theme$plot.margin, unit(c(0, 0, 0, 0), "mm"))
 
   p <- put_axes(col = "blue", size = 1)
-  expect_identical(p$layers[[1]]$geom$non_missing_aes, c("linetype", "size",      "shape"))
+  expect_identical(p$layers[[1]]$geom$non_missing_aes, c("linetype", "size", "shape"))
 
   p <- put_axes(2)
   expect_true(purrr::is_empty(p$mapping))
@@ -37,14 +36,13 @@ test_that("put_axes() attributes match expectations",{
   expect_true(purrr::is_empty(p$mapping))
 })
 
-test_that("put_gap() attributes match expectations",{
+test_that("put_gap() attributes match expectations", {
+  p <- put_gap()
+  # expect_identical(class(p$data), "waiver")
+  expect_identical(p$theme$plot.margin, NULL)
 
-	p <- put_gap()
-	# expect_identical(class(p$data), "waiver")
-	expect_identical(p$theme$plot.margin, NULL)
-
-	p <- put_gap(col = "blue", fill = "blue")
-	expect_true(purrr::is_empty(p$layers))
+  p <- put_gap(col = "blue", fill = "blue")
+  expect_true(purrr::is_empty(p$layers))
 })
 
 # rprojroot stuff

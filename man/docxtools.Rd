@@ -17,7 +17,6 @@ and tables; and one for placing specific objects in a docx output document.
 \section{Number and table formatting}{
 
   \code{format_engr()} Format numerical variables in engineering notation.
-  \code{align_pander()} Align the columns of a pander table.
 }
 
 \section{Insert objects into docx documents}{

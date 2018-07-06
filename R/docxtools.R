@@ -9,7 +9,6 @@
 #'
 #' @section Number and table formatting:
 #'   \code{format_engr()} Format numerical variables in engineering notation.
-#'   \code{align_pander()} Align the columns of a pander table.
 #'
 #' @section Insert objects into docx documents:
 #'   \code{put_axes()} Insert a two-dimensional coordinate axes in a document.

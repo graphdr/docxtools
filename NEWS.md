@@ -1,7 +1,12 @@
-## docxtools 0.1.4 (2018)
+## docxtools 0.2.0 (2018-07-05)
 
+### Deprecated
 
+- `align_pander()` deprecated because pander package scheduled for archival on 2018--07--19 
 
+### Minor improvements
+
+- Switched pipe dependency from magrittr to dplyr 
 
 
 

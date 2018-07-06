@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">docxtools</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
       </span>
     </div>
 
@@ -67,14 +67,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/graphdr/docxtools">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -89,7 +82,7 @@
       <h1>Numbers in engineering format</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/graphdr/docxtools/blob/master/vignettes/numbers-in-engineering-format.Rmd"><code>vignettes/numbers-in-engineering-format.Rmd</code></a></small>
+      
       <div class="hidden name"><code>numbers-in-engineering-format.Rmd</code></div>
 
     </div>
@@ -109,7 +102,7 @@
 <code><a href="../reference/format_engr.html">format_engr()</a></code> for formatting numbers in engineering notation<br>
 </li>
 <li>
-<code><a href="../reference/align_pander.html">align_pander()</a></code> for aligning table columns using a simple pander table style</li>
+<code><a href="../reference/docxtools-deprecated.html">align_pander()</a></code> for aligning table columns using a simple pander table style</li>
 </ul>
 <p>The primary goal of <code><a href="../reference/format_engr.html">format_engr()</a></code> is to present numeric variables in a data frame in <em>engineering format</em>, that is, scientific notation with exponents that are multiples of 3. Compare:</p>
 <table class="table">
@@ -669,7 +662,7 @@
 <div id="align_pander" class="section level2">
 <h2 class="hasAnchor">
 <a href="#align_pander" class="anchor"></a>align_pander()</h2>
-<p>This function uses <code>pander()</code> to print a table and <code>panderOptions('table.alignment.default')</code> to align columns. Usage is: <code><a href="../reference/align_pander.html">align_pander(x, align_idx = NULL, caption = NULL)</a></code></p>
+<p>This function uses <code>pander()</code> to print a table and <code>panderOptions('table.alignment.default')</code> to align columns. Usage is: <code><a href="../reference/docxtools-deprecated.html">align_pander(x, align_idx = NULL, caption = NULL)</a></code></p>
 <ul>
 <li>
 <code>x</code> is the data frame</li>
@@ -678,59 +671,7 @@
 <li>
 <code>caption</code> is an optional string used as the <code>pander()</code> caption argument</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(density_engr)</a></code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="left">date</th>
-<th align="left">trial</th>
-<th align="left">T_K</th>
-<th align="left">p_Pa</th>
-<th align="left">R</th>
-<th align="left">density</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">2018-06-12</td>
-<td align="left">a</td>
-<td align="left"><span class="math inline">\(294.05\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1980\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">2018-06-13</td>
-<td align="left">b</td>
-<td align="left"><span class="math inline">\(294.15\)</span></td>
-<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1964\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">2018-06-14</td>
-<td align="left">c</td>
-<td align="left"><span class="math inline">\(294.65\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1955\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">2018-06-15</td>
-<td align="left">d</td>
-<td align="left"><span class="math inline">\(293.35\)</span></td>
-<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1996\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">2018-06-16</td>
-<td align="left">e</td>
-<td align="left"><span class="math inline">\(293.85\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.1988\)</span></td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/docxtools-deprecated.html">align_pander</a></span>(density_engr)</a></code></pre></div>
 <p>Finally, the heading can be edited for presentation.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">names</span>(density_engr) &lt;-<span class="st"> </span><span class="kw">c</span>(</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2">  <span class="st">"Date"</span>,</a>
@@ -746,61 +687,7 @@
 <li>superscripts like m<sup>3</sup> in R Markdown are produced with <code>m^3^</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/align_pander.html">align_pander</a></span>(density_engr, <span class="st">"lccccc"</span>, <span class="dt">caption =</span> <span class="st">"Air density measurements"</span>)</a></code></pre></div>
-<table class="table">
-<caption>Air density measurements</caption>
-<thead><tr class="header">
-<th align="left">Date</th>
-<th align="center">Trial</th>
-<th align="center">Temp (K)</th>
-<th align="center">Press (Pa)</th>
-<th align="center">R (J kg<sup>-1</sup>K<sup>-1</sup>)</th>
-<th align="center">
-<span class="math inline">\(\rho\)</span> (kg/m<sup>3</sup>)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">2018-06-12</td>
-<td align="center">a</td>
-<td align="center"><span class="math inline">\(294.05\)</span></td>
-<td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1980\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">2018-06-13</td>
-<td align="center">b</td>
-<td align="center"><span class="math inline">\(294.15\)</span></td>
-<td align="center"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1964\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">2018-06-14</td>
-<td align="center">c</td>
-<td align="center"><span class="math inline">\(294.65\)</span></td>
-<td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1955\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">2018-06-15</td>
-<td align="center">d</td>
-<td align="center"><span class="math inline">\(293.35\)</span></td>
-<td align="center"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1996\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">2018-06-16</td>
-<td align="center">e</td>
-<td align="center"><span class="math inline">\(293.85\)</span></td>
-<td align="center"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="center"><span class="math inline">\(287\)</span></td>
-<td align="center"><span class="math inline">\(1.1988\)</span></td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/docxtools-deprecated.html">align_pander</a></span>(density_engr, <span class="st">"lccccc"</span>, <span class="dt">caption =</span> <span class="st">"Air density measurements"</span>)</a></code></pre></div>
 </div>
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">

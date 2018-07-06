@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">docxtools</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.4</span>
       </span>
     </div>
 
@@ -100,12 +100,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/graphdr/docxtools">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -119,14 +114,33 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/graphdr/docxtools/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      
     </div>
 
+    <div id="docxtools-0-2-0-2018-07-05" class="section level2">
+<h2 class="hasAnchor">
+<a href="#docxtools-0-2-0-2018-07-05" class="anchor"></a>docxtools 0.2.0 (2018-07-05)</h2>
+<div id="deprecated" class="section level3">
+<h3 class="hasAnchor">
+<a href="#deprecated" class="anchor"></a>Deprecated</h3>
+<ul>
+<li>
+<code><a href="../reference/docxtools-deprecated.html">align_pander()</a></code> deprecated because pander package scheduled for archival on 2018–07–19</li>
+</ul>
+</div>
+<div id="minor-improvements" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-improvements" class="anchor"></a>Minor improvements</h3>
+<ul>
+<li>Switched pipe dependency from magrittr to dplyr</li>
+</ul>
+</div>
+</div>
     <div id="docxtools-0-1-3-2018-06-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#docxtools-0-1-3-2018-06-19" class="anchor"></a>docxtools 0.1.3 (2018-06-19)</h2>
 <ul>
-<li>Updated tests of <code><a href="../reference/put_axes.html">put_axes()</a></code> for compatibility with latest version of ggplot2</li>
+<li>Updated unit testing for compatibility with latest version of ggplot2</li>
 </ul>
 </div>
     <div id="docxtools-0-1-2-2018-06-14" class="section level2">
@@ -146,9 +160,9 @@
 <a href="#new-features" class="anchor"></a>New features</h3>
 <p>In <code><a href="../reference/format_engr.html">format_engr()</a></code>, added the <code>ambig_0_adj</code> argument. An optional argument to reformat (or not) to address ambiguous trailing zeros.</p>
 </div>
-<div id="minor-improvements" class="section level3">
+<div id="minor-improvements-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"></a>Minor improvements</h3>
+<a href="#minor-improvements-1" class="anchor"></a>Minor improvements</h3>
 <p>For <code><a href="../reference/format_engr.html">format_engr()</a></code></p>
 <ul>
 <li>Replaced the formatting using <code>sprintf()</code> with <code>formatC()</code> for better control of significant trailing zeros.</li>
@@ -174,6 +188,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#docxtools-0-2-0-2018-07-05">0.2.0</a></li>
         <li><a href="#docxtools-0-1-3-2018-06-19">0.1.3</a></li>
         <li><a href="#docxtools-0-1-2-2018-06-14">0.1.2</a></li>
         <li><a href="#docxtools-0-1-1-2017-03-10">0.1.1</a></li>
