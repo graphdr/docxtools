@@ -6,7 +6,7 @@
 
 ## docxtools 0.2.0.9000
 
-
+- Edited vignette to accommodate deprecated function `align_pander()`. Help pages for deprecated functions are available by running `help("docxtools-deprecated")`.
 
 
 

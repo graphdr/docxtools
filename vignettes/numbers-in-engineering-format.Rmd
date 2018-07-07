@@ -161,56 +161,16 @@ By setting the `ambig_0_adj` argument to TRUE, scientific notation is used to re
 kable(format_engr(x, sigdig = 2, ambig_0_adj = TRUE), caption = "Removing ambiguity")
 ```
 
-The ambiguous trailing zero adjustment is applied only to those variables for which the condition exists. For example, if the pressure were known to only 2 digits, it is the only variable with ambiguous trailing zeros. 
+The ambiguous trailing zero adjustment is applied only to those variables for which the condition exists. For example, consider these data without the adjustment,
 
 ```{r}
 kable(format_engr(x, sigdig = c(4, 2, 0, 3), ambig_0_adj = FALSE))
 ```
 
-With `ambig_0_adj = TRUE`, only the pressure variable has a reformatted power of ten. 
-
+The same numbers with `ambig_0_adj = TRUE`, 
 
 ```{r}
 kable(format_engr(x, sigdig = c(4, 2, 0, 3), ambig_0_adj = TRUE))
 ```
 
-## align_pander() 
-
-This function uses `pander()` to print a table and `panderOptions('table.alignment.default')` to align columns.  Usage is: `align_pander(x, align_idx = NULL, caption = NULL)` 
-
-- `x` is the data frame 
-- `align_idx` is a string comprised of any combination of  "r", "l", and "c"  The default alignments are numeric right and everything else left 
-- `caption` is an optional string used as the `pander()` caption argument 
-
-```{r}
-align_pander(density_engr)
-```
-
-Finally, the heading can be edited for presentation. 
-
-```{r}
-names(density_engr) <- c(
-  "Date",
-  "Trial",
-  "Temp (K)",
-  "Press (Pa)",
-  "R (J kg^-1^K^-1^)",
-  "$\\rho$ (kg/m^3^)"
-)
-```
-
-- backslashes have to be escaped, hence `\\rho` 
-- superscripts like m^3^ in R Markdown are produced with `m^3^`
-
-
-```{r}
-align_pander(density_engr, "lccccc", caption = "Air density measurements")
-```
-
-## Conclusion 
-
-These two functions provide the means for consistently rendering numbers with the desired number of significant digits, including trailing zeros, and align them in output tables without affecting character data in the same data frame. 
-
-
-
-
+and only the pressure variable has a reformatted power of ten because it is the only variable that had ambiguous trailing zeros.

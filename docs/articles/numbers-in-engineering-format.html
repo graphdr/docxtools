@@ -571,7 +571,7 @@
 </tr>
 </tbody>
 </table>
-<p>The ambiguous trailing zero adjustment is applied only to those variables for which the condition exists. For example, if the pressure were known to only 2 digits, it is the only variable with ambiguous trailing zeros.</p>
+<p>The ambiguous trailing zero adjustment is applied only to those variables for which the condition exists. For example, consider these data without the adjustment,</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -613,7 +613,7 @@
 </tr>
 </tbody>
 </table>
-<p>With <code>ambig_0_adj = TRUE</code>, only the pressure variable has a reformatted power of ten.</p>
+<p>The same numbers with <code>ambig_0_adj = TRUE</code>,</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -655,41 +655,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div id="align_pander" class="section level2">
-<h2 class="hasAnchor">
-<a href="#align_pander" class="anchor"></a>align_pander()</h2>
-<p>This function uses <code>pander()</code> to print a table and <code>panderOptions('table.alignment.default')</code> to align columns. Usage is: <code><a href="../reference/docxtools-deprecated.html">align_pander(x, align_idx = NULL, caption = NULL)</a></code></p>
-<ul>
-<li>
-<code>x</code> is the data frame</li>
-<li>
-<code>align_idx</code> is a string comprised of any combination of “r”, “l”, and “c” The default alignments are numeric right and everything else left</li>
-<li>
-<code>caption</code> is an optional string used as the <code>pander()</code> caption argument</li>
-</ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/docxtools-deprecated.html">align_pander</a></span>(density_engr)</a></code></pre></div>
-<p>Finally, the heading can be edited for presentation.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">names</span>(density_engr) &lt;-<span class="st"> </span><span class="kw">c</span>(</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">  <span class="st">"Date"</span>,</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">  <span class="st">"Trial"</span>,</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">  <span class="st">"Temp (K)"</span>,</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5">  <span class="st">"Press (Pa)"</span>,</a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">  <span class="st">"R (J kg^-1^K^-1^)"</span>,</a>
-<a class="sourceLine" id="cb18-7" data-line-number="7">  <span class="st">"$</span><span class="ch">\\</span><span class="st">rho$ (kg/m^3^)"</span></a>
-<a class="sourceLine" id="cb18-8" data-line-number="8">)</a></code></pre></div>
-<ul>
-<li>backslashes have to be escaped, hence <code>\\rho</code>
-</li>
-<li>superscripts like m<sup>3</sup> in R Markdown are produced with <code>m^3^</code>
-</li>
-</ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/docxtools-deprecated.html">align_pander</a></span>(density_engr, <span class="st">"lccccc"</span>, <span class="dt">caption =</span> <span class="st">"Air density measurements"</span>)</a></code></pre></div>
-</div>
-<div id="conclusion" class="section level2">
-<h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h2>
-<p>These two functions provide the means for consistently rendering numbers with the desired number of significant digits, including trailing zeros, and align them in output tables without affecting character data in the same data frame.</p>
+<p>and only the pressure variable has a reformatted power of ten because it is the only variable that had ambiguous trailing zeros.</p>
 </div>
   </div>
 
@@ -702,8 +668,6 @@
       <li><a href="#format_engr">format_engr()</a></li>
       <li><a href="#significant-digits">Significant digits</a></li>
       <li><a href="#ambiguous-trailing-zeros">Ambiguous trailing zeros</a></li>
-      <li><a href="#align_pander">align_pander()</a></li>
-      <li><a href="#conclusion">Conclusion</a></li>
       </ul>
 </div>
       </div>
