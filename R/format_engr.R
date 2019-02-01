@@ -73,6 +73,7 @@ NULL
 #' x <- head(airquality, n = 6L)
 #' format_engr(x, sigdig = 3)
 #'
+#' @importFrom dplyr n
 #' @export
 format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 
