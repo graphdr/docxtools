@@ -17,7 +17,7 @@ MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/
 docxtools is a small set of helper functions for using R Markdown to
 create documents in docx format, especially documents for use in a
 classroom or workshop setting. These are particularly useful when one
-tries to does one own’s work reproducibly but has collaborators who work
+tries to do one’s own work reproducibly but has collaborators who work
 with Office software exclusively.
 
   - `format_engr()` to apply engineering format to numbers
@@ -33,7 +33,7 @@ From CRAN,
 install.packages("docxtools")
 ```
 
-Or you can obtain the most recent devlopment version from GitHub.
+Or you can obtain the most recent development version from GitHub.
 
 ``` r
 install.packages("devtools")

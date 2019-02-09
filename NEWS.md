@@ -4,9 +4,11 @@
 <!-- PATCH version backwards-compatible bug fixes -->
 
 
-## docxtools 0.2.0.9000
+## docxtools 0.2.1 (2019-02-09)
 
 - Edited vignette to accommodate deprecated function `align_pander()`. Help pages for deprecated functions are available by running `help("docxtools-deprecated")`.
+
+- Edited function `n()` as `dplyr::n()` for compatibility with dplyr release 0.8.0
 
 
 

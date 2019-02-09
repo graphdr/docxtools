@@ -65,8 +65,7 @@ Documents designed for workshop or classroom participation typically provide inf
 Both functions work by creating and returning a `ggplot2` object. 
 
 ```{r packages}
-# packages used in the vignette
-library(docxtools)
+library("docxtools")
 ```
 
 ## put_gap()

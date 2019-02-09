@@ -1,11 +1,10 @@
 docx
 Docx
+dplyr
 engr
+ggplot
 knitr
 Köhler
-png
-rmarkdown
+magrittr
+reproducibly
 Rmd
-VignetteEncoding
-VignetteEngine
-VignetteIndexEntry

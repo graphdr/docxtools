@@ -1,6 +1,6 @@
 Package: docxtools
 Title: Tools for R Markdown to Docx Documents
-Version: 0.2.0.9000
+Version: 0.2.1
 Language: en-US
 Authors@R: c(
     person("Richard", "Layton", email = "graphdoctor@gmail.com", role = c("aut", "cre"))
@@ -12,7 +12,7 @@ Depends: R (>= 3.1.2)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Imports:
     dplyr, 
     ggplot2, 
@@ -28,5 +28,5 @@ Suggests:
     rprojroot, 
     testthat
 VignetteBuilder: knitr
-URL: https://graphdr.github/docxtools
+URL: https://graphdr.github.io/docxtools
 BugReports: https://github.com/graphdr/docxtools/issues

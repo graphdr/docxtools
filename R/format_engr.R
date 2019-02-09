@@ -1,4 +1,4 @@
-#' @importFrom dplyr mutate filter select left_join if_else bind_cols %>%
+#' @importFrom dplyr n mutate filter select left_join if_else bind_cols %>%
 #' @importFrom tidyr gather separate spread
 #' @importFrom stringr  str_replace str_c str_detect str_trim
 #' @importFrom rlang syms is_double is_integer is_character
@@ -153,7 +153,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 
   # for rejoining later, add observation numbers to each df
   obs_add <- function(x) {
-    x <- dplyr::mutate(x, observ_index = 1:n())
+    x <- dplyr::mutate(x, observ_index = 1:dplyr::n())
   }
   numeric_as_is <- obs_add(numeric_as_is)
   numeric_engr <- obs_add(numeric_engr)
