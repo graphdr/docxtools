@@ -73,17 +73,260 @@ used the `align_pander()` function that is now deprecated and soon to be
 defunct.
 
 ``` r
-# align_pander(y) # deprecated
-knitr::kable(y)
+knitr::kable(y, align = "ccrrrr")
 ```
 
-| date       | trial | T\_K       | p\_Pa                    | R       | density   |
-| :--------- | :---- | :--------- | :----------------------- | :------ | :-------- |
-| 2018-06-12 | a     | \(294.05\) | \({101.1}\times 10^{3}\) | \(287\) | \(1.198\) |
-| 2018-06-13 | b     | \(294.15\) | \({101.0}\times 10^{3}\) | \(287\) | \(1.196\) |
-| 2018-06-14 | c     | \(294.65\) | \({101.1}\times 10^{3}\) | \(287\) | \(1.196\) |
-| 2018-06-15 | d     | \(293.35\) | \({101.0}\times 10^{3}\) | \(287\) | \(1.200\) |
-| 2018-06-16 | e     | \(293.85\) | \({101.1}\times 10^{3}\) | \(287\) | \(1.199\) |
+<table>
+
+<thead>
+
+<tr>
+
+<th style="text-align:center;">
+
+date
+
+</th>
+
+<th style="text-align:center;">
+
+trial
+
+</th>
+
+<th style="text-align:right;">
+
+T\_K
+
+</th>
+
+<th style="text-align:right;">
+
+p\_Pa
+
+</th>
+
+<th style="text-align:right;">
+
+R
+
+</th>
+
+<th style="text-align:right;">
+
+density
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:center;">
+
+2018-06-12
+
+</td>
+
+<td style="text-align:center;">
+
+a
+
+</td>
+
+<td style="text-align:right;">
+
+\(294.05\)
+
+</td>
+
+<td style="text-align:right;">
+
+\({101.1}\times 10^{3}\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(287\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(1.198\)
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">
+
+2018-06-13
+
+</td>
+
+<td style="text-align:center;">
+
+b
+
+</td>
+
+<td style="text-align:right;">
+
+\(294.15\)
+
+</td>
+
+<td style="text-align:right;">
+
+\({101.0}\times 10^{3}\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(287\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(1.196\)
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">
+
+2018-06-14
+
+</td>
+
+<td style="text-align:center;">
+
+c
+
+</td>
+
+<td style="text-align:right;">
+
+\(294.65\)
+
+</td>
+
+<td style="text-align:right;">
+
+\({101.1}\times 10^{3}\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(287\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(1.196\)
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">
+
+2018-06-15
+
+</td>
+
+<td style="text-align:center;">
+
+d
+
+</td>
+
+<td style="text-align:right;">
+
+\(293.35\)
+
+</td>
+
+<td style="text-align:right;">
+
+\({101.0}\times 10^{3}\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(287\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(1.200\)
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:center;">
+
+2018-06-16
+
+</td>
+
+<td style="text-align:center;">
+
+e
+
+</td>
+
+<td style="text-align:right;">
+
+\(293.85\)
+
+</td>
+
+<td style="text-align:right;">
+
+\({101.1}\times 10^{3}\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(287\)
+
+</td>
+
+<td style="text-align:right;">
+
+\(1.199\)
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 Using `put_gap()` with knitr and R markdown, the gap height is specified
 in the R code-chunk header.

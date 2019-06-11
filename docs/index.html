@@ -134,57 +134,128 @@
 <p><code><a href="reference/format_engr.html">format_engr()</a></code> applies engineering notation to numeric variables, assigns significant digits, and adjusts for ambiguous trailing zeros.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">y &lt;-<span class="st"> </span><span class="kw"><a href="reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">4</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>For printing the table, I suggest using <code><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code>. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/">website</a>.) docxtools &lt; 0.1.4 used the <code><a href="reference/docxtools-deprecated.html">align_pander()</a></code> function that is now deprecated and soon to be defunct.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># align_pander(y) # deprecated</span></a>
-<a class="sourceLine" id="cb5-2" title="2">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(y, <span class="dt">align =</span> <span class="st">"ccrrrr"</span>)</a></code></pre></div>
 <table class="table table">
-<thead><tr class="header">
-<th align="left">date</th>
-<th align="left">trial</th>
-<th align="left">T_K</th>
-<th align="left">p_Pa</th>
-<th align="left">R</th>
-<th align="left">density</th>
+<thead><tr>
+<th style="text-align:center;">
+date
+</th>
+<th style="text-align:center;">
+trial
+</th>
+<th style="text-align:right;">
+T_K
+</th>
+<th style="text-align:right;">
+p_Pa
+</th>
+<th style="text-align:right;">
+R
+</th>
+<th style="text-align:right;">
+density
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">2018-06-12</td>
-<td align="left">a</td>
-<td align="left"><span class="math inline">\(294.05\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.198\)</span></td>
+<tr>
+<td style="text-align:center;">
+2018-06-12
+</td>
+<td style="text-align:center;">
+a
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(294.05\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\({101.1}\times 10^{3}\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(287\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(1.198\)</span>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2018-06-13</td>
-<td align="left">b</td>
-<td align="left"><span class="math inline">\(294.15\)</span></td>
-<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.196\)</span></td>
+<tr>
+<td style="text-align:center;">
+2018-06-13
+</td>
+<td style="text-align:center;">
+b
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(294.15\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\({101.0}\times 10^{3}\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(287\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(1.196\)</span>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2018-06-14</td>
-<td align="left">c</td>
-<td align="left"><span class="math inline">\(294.65\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.196\)</span></td>
+<tr>
+<td style="text-align:center;">
+2018-06-14
+</td>
+<td style="text-align:center;">
+c
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(294.65\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\({101.1}\times 10^{3}\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(287\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(1.196\)</span>
+</td>
 </tr>
-<tr class="even">
-<td align="left">2018-06-15</td>
-<td align="left">d</td>
-<td align="left"><span class="math inline">\(293.35\)</span></td>
-<td align="left"><span class="math inline">\({101.0}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.200\)</span></td>
+<tr>
+<td style="text-align:center;">
+2018-06-15
+</td>
+<td style="text-align:center;">
+d
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(293.35\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\({101.0}\times 10^{3}\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(287\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(1.200\)</span>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2018-06-16</td>
-<td align="left">e</td>
-<td align="left"><span class="math inline">\(293.85\)</span></td>
-<td align="left"><span class="math inline">\({101.1}\times 10^{3}\)</span></td>
-<td align="left"><span class="math inline">\(287\)</span></td>
-<td align="left"><span class="math inline">\(1.199\)</span></td>
+<tr>
+<td style="text-align:center;">
+2018-06-16
+</td>
+<td style="text-align:center;">
+e
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(293.85\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\({101.1}\times 10^{3}\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(287\)</span>
+</td>
+<td style="text-align:right;">
+<span class="math inline">\(1.199\)</span>
+</td>
 </tr>
 </tbody>
 </table>
