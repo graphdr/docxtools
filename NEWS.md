@@ -6,7 +6,8 @@
 
 ## docxtools 0.2.1.9001 (2019-06-11)
 
-- Added CRAN check badge 
+- Add CRAN check badge 
+- Add dependency badge 
 
 
 ## docxtools 0.2.1 (2019-02-09)

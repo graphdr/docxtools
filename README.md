@@ -8,6 +8,7 @@
 checks](https://cranchecks.info/badges/summary/rhub)](https://cran.r-project.org/web/checks/check_results_rhub.html)
 [![Build
 Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
+[![status](https://tinyverse.netlify.com/badge/docxtools)](https://CRAN.R-project.org/package=docxtools)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
 [![License:
