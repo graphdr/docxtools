@@ -1,6 +1,6 @@
 Package: docxtools
 Title: Tools for R Markdown to Docx Documents
-Version: 0.2.1.9000
+Version: 0.2.1.9001
 Language: en-US
 Authors@R: c(
     person("Richard", "Layton", email = "graphdoctor@gmail.com", role = c("aut", "cre"))

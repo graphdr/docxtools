@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">docxtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9001</span>
       </span>
     </div>
 
@@ -91,9 +91,9 @@
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>Packages used in this vignette.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"knitr"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"docxtools"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"knitr"</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"docxtools"</span>)</a></code></pre></div>
 <p>This vignette demonstrates the use of two functions from the <em>docxtools</em> package:</p>
 <ul>
 <li>
@@ -128,32 +128,32 @@
 <h2 class="hasAnchor">
 <a href="#format_engr" class="anchor"></a>format_engr()</h2>
 <p>This example uses a small data set, <code>density</code>, included with docxtools, with temperature in K, pressure in Pa, the gas constant in J kg<sup>-1</sup>K<sup>-1</sup>, and density in kg m<sup>-3</sup>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">density</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">density</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></a></code></pre></div>
 <p>Four of the variables are numeric. The <code>date</code> variable is of type “double” but class “Date”, so it is not reformatted.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">map_chr</span>(density, class)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; Error in map_chr(density, class): could not find function "map_chr"</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">map_chr</span>(density, typeof)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Error in map_chr(density, typeof): could not find function "map_chr"</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">map_chr</span>(density, class)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; Error in map_chr(density, class): could not find function "map_chr"</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">map_chr</span>(density, typeof)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; Error in map_chr(density, typeof): could not find function "map_chr"</span></a></code></pre></div>
 <p>Usage is <code><a href="../reference/format_engr.html">format_engr(x, sigdig = NULL, ambig_0_adj = FALSE)</a></code>. The function returns a data frame with all numeric values reformatted as character strings in engineering format with math delimiters <code>$...$</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">density_engr</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;         date trial     T_K                    p_Pa       R density</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; 1 2018-06-12     a $294.0$ ${101.1}\\times 10^{3}$ $287.0$ $1.198$</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 2 2018-06-13     b $294.2$ ${101.0}\\times 10^{3}$ $287.0$ $1.196$</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 3 2018-06-14     c $294.6$ ${101.1}\\times 10^{3}$ $287.0$ $1.196$</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 4 2018-06-15     d $293.4$ ${101.0}\\times 10^{3}$ $287.0$ $1.200$</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 5 2018-06-16     e $293.8$ ${101.1}\\times 10^{3}$ $287.0$ $1.199$</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density)</a>
+<a class="sourceLine" id="cb4-2" title="2">density_engr</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;         date trial     T_K                    p_Pa       R density</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; 1 2018-06-12     a $294.0$ ${101.1}\\times 10^{3}$ $287.0$ $1.198$</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; 2 2018-06-13     b $294.2$ ${101.0}\\times 10^{3}$ $287.0$ $1.196$</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 3 2018-06-14     c $294.6$ ${101.1}\\times 10^{3}$ $287.0$ $1.196$</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; 4 2018-06-15     d $293.4$ ${101.0}\\times 10^{3}$ $287.0$ $1.200$</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 5 2018-06-16     e $293.8$ ${101.1}\\times 10^{3}$ $287.0$ $1.199$</span></a></code></pre></div>
 <p>The formerly numeric variables are now characters. Non-numeric variables are returned unaltered.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">map_chr</span>(density_engr, class)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Error in map_chr(density_engr, class): could not find function "map_chr"</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">map_chr</span>(density_engr, class)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt; Error in map_chr(density_engr, class): could not find function "map_chr"</span></a></code></pre></div>
 <p>The math formatting is applied when the data frame is printed in the output document. For example, we can use <code><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code> to print the formatted data.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -207,9 +207,9 @@
 </tbody>
 </table>
 <p>The function is compatible with the pipe operator.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">density_engr &lt;-<span class="st"> </span>density <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>()</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">density_engr &lt;-<span class="st"> </span>density <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>()</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -281,8 +281,8 @@
 <code>ambig_0_adj</code>, an optional logical to adjust the notation in the event of ambiguous trailing zeros. Default is FALSE.</li>
 </ul>
 <p>The <code>sigdig</code> argument can be a single value, applied to all numeric columns.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -336,8 +336,8 @@
 </tbody>
 </table>
 <p>Alternatively, significant digits can be assigned to every numeric column. A zero returns the variable in its original form.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">density_engr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">kable</span>(density_engr)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -395,10 +395,10 @@
 <h2 class="hasAnchor">
 <a href="#ambiguous-trailing-zeros" class="anchor"></a>Ambiguous trailing zeros</h2>
 <p>Subset the data to look at just the numerical variables.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">x &lt;-<span class="st"> </span>density <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(T_K, p_Pa, R, density)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">x &lt;-<span class="st"> </span>density <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">select</span>(T_K, p_Pa, R, density)</a></code></pre></div>
 <p>Print the data with incrementally decreasing significant digits.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">4</span>), <span class="dt">caption =</span> <span class="st">"4 digits"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">4</span>), <span class="dt">caption =</span> <span class="st">"4 digits"</span>)</a></code></pre></div>
 <table class="table">
 <caption>4 digits</caption>
 <thead><tr class="header">
@@ -441,7 +441,7 @@
 </tbody>
 </table>
 <p>Three digits creates no ambiguity.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">3</span>), <span class="dt">caption =</span> <span class="st">"3 digits"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">3</span>), <span class="dt">caption =</span> <span class="st">"3 digits"</span>)</a></code></pre></div>
 <table class="table">
 <caption>3 digits</caption>
 <thead><tr class="header">
@@ -484,7 +484,7 @@
 </tbody>
 </table>
 <p>With 2 digits, we have three columns with ambiguous trailing zeros.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">2</span>), <span class="dt">caption =</span> <span class="st">"2 digits"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">2</span>), <span class="dt">caption =</span> <span class="st">"2 digits"</span>)</a></code></pre></div>
 <table class="table">
 <caption>2 digits</caption>
 <thead><tr class="header">
@@ -527,7 +527,7 @@
 </tbody>
 </table>
 <p>By setting the <code>ambig_0_adj</code> argument to TRUE, scientific notation is used to remove the ambiguity.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">2</span>, <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>), <span class="dt">caption =</span> <span class="st">"Removing ambiguity"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="dv">2</span>, <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>), <span class="dt">caption =</span> <span class="st">"Removing ambiguity"</span>)</a></code></pre></div>
 <table class="table">
 <caption>Removing ambiguity</caption>
 <thead><tr class="header">
@@ -570,7 +570,7 @@
 </tbody>
 </table>
 <p>The ambiguous trailing zero adjustment is applied only to those variables for which the condition exists. For example, consider these data without the adjustment,</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">FALSE</span>))</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">T_K</th>
@@ -612,7 +612,7 @@
 </tbody>
 </table>
 <p>The same numbers with <code>ambig_0_adj = TRUE</code>,</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">kable</span>(<span class="kw"><a href="../reference/format_engr.html">format_engr</a></span>(x, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">T_K</th>

@@ -4,6 +4,11 @@
 <!-- PATCH version backwards-compatible bug fixes -->
 
 
+## docxtools 0.2.1.9001 (2019-06-11)
+
+- Added CRAN check badge 
+
+
 ## docxtools 0.2.1 (2019-02-09)
 
 - Edited vignette to accommodate deprecated function `align_pander()`. Help pages for deprecated functions are available by running `help("docxtools-deprecated")`.

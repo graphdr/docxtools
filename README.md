@@ -4,6 +4,8 @@
 # docxtools <img src="man/figures/logo.png" align="right" />
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
+[![cran
+checks](https://cranchecks.info/badges/summary/rhub)](https://cran.r-project.org/web/checks/check_results_rhub.html)
 [![Build
 Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
 [![Coverage
