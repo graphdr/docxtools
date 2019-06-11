@@ -65,7 +65,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/graphdr/docxtools">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -80,7 +87,7 @@
       <h1>Put workspace in docx</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/graphdr/docxtools/blob/master/vignettes/put-workspace-in-docx.Rmd"><code>vignettes/put-workspace-in-docx.Rmd</code></a></small>
       <div class="hidden name"><code>put-workspace-in-docx.Rmd</code></div>
 
     </div>
@@ -184,11 +191,11 @@ put_axes()
 <p>We can add text labels to label the axes using <code>annotate()</code></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb12-2" title="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>,</a>
-<a class="sourceLine" id="cb12-3" title="3">    <span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb12-4" title="4">    , <span class="dt">label =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</a>
-<a class="sourceLine" id="cb12-5" title="5">    , <span class="dt">vjust =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb12-6" title="6">    , <span class="dt">hjust =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="fl">1.5</span>)</a>
-<a class="sourceLine" id="cb12-7" title="7">    , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
+<a class="sourceLine" id="cb12-3" title="3">    <span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span></a>
+<a class="sourceLine" id="cb12-4" title="4">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">label =</span></a>
+<a class="sourceLine" id="cb12-5" title="5">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="dt">vjust =</span></a>
+<a class="sourceLine" id="cb12-6" title="6">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="fl">0.5</span>), <span class="dt">hjust =</span></a>
+<a class="sourceLine" id="cb12-7" title="7">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="fl">1.5</span>), <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
 <a class="sourceLine" id="cb12-8" title="8">  )</a>
 <a class="sourceLine" id="cb12-9" title="9">p</a></code></pre></div>
 <p><img src="../man/figures/put-workspace-axes11-1.png" width="50%" style="display: block; margin: auto;"></p>
@@ -201,11 +208,11 @@ put_axes()
 <p>If we use <code>annotate()</code> and the label exceeds the data rectangle, we can make the plot margin larger and override the plot clipping.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="dv">2</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw">annotate</span>(<span class="st">"text"</span>,</a>
-<a class="sourceLine" id="cb14-3" title="3">    <span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-4" title="4">    , <span class="dt">label =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Re"</span>, <span class="st">"Im"</span>)</a>
-<a class="sourceLine" id="cb14-5" title="5">    , <span class="dt">vjust =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb14-6" title="6">    , <span class="dt">hjust =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">-0.5</span>)</a>
-<a class="sourceLine" id="cb14-7" title="7">    , <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
+<a class="sourceLine" id="cb14-3" title="3">    <span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="dt">y =</span></a>
+<a class="sourceLine" id="cb14-4" title="4">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">label =</span></a>
+<a class="sourceLine" id="cb14-5" title="5">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Re"</span>, <span class="st">"Im"</span>), <span class="dt">vjust =</span></a>
+<a class="sourceLine" id="cb14-6" title="6">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>), <span class="dt">hjust =</span></a>
+<a class="sourceLine" id="cb14-7" title="7">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="fl">-0.5</span>), <span class="dt">fontface =</span> <span class="st">"italic"</span></a>
 <a class="sourceLine" id="cb14-8" title="8">  ) <span class="op">+</span><span class="st"> </span><span class="co"># top, right, bottom, left</span></a>
 <a class="sourceLine" id="cb14-9" title="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>), <span class="st">"mm"</span>))</a>
 <a class="sourceLine" id="cb14-10" title="10"></a>

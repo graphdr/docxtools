@@ -191,11 +191,11 @@ We can add text labels to label the axes using `annotate()`
 ```{r axes11, out.width = "50%"}
 p <- put_axes() +
   annotate("text",
-    x = c(1, 0), y = c(0, 1)
-    , label = c("x", "y")
-    , vjust = c(1, 0.5)
-    , hjust = c(1, 1.5)
-    , fontface = "italic"
+    x = c(1, 0), y =
+      c(0, 1), label =
+      c("x", "y"), vjust =
+      c(1, 0.5), hjust =
+      c(1, 1.5), fontface = "italic"
   )
 p
 ```
@@ -214,11 +214,11 @@ If we use `annotate()` and the label exceeds the data rectangle, we can make the
 ```{r axes13, out.width = "50%"}
 p <- put_axes(2) +
   annotate("text",
-    x = c(-1, 0), y = c(0, 1)
-    , label = c("Re", "Im")
-    , vjust = c(1.5, 0.5)
-    , hjust = c(0, -0.5)
-    , fontface = "italic"
+    x = c(-1, 0), y =
+      c(0, 1), label =
+      c("Re", "Im"), vjust =
+      c(1.5, 0.5), hjust =
+      c(0, -0.5), fontface = "italic"
   ) + # top, right, bottom, left
   theme(plot.margin = unit(c(0, 5, 2, 0), "mm"))
 

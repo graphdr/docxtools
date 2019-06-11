@@ -28,5 +28,5 @@ Suggests:
     rprojroot, 
     testthat
 VignetteBuilder: knitr
-URL: https://graphdr.github.io/docxtools
+URL: https://github.com/graphdr/docxtools
 BugReports: https://github.com/graphdr/docxtools/issues
