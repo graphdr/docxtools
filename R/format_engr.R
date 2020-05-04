@@ -154,7 +154,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 
   # for rejoining later, add observation numbers to each df
   obs_add <- function(x) {
-    x <- dplyr::mutate(x, observ_index = 1:dplyr::n())
+    x <- dplyr::mutate(x, observ_index = dplyr::row_number())
   }
   numeric_as_is <- obs_add(numeric_as_is)
   numeric_engr <- obs_add(numeric_engr)
