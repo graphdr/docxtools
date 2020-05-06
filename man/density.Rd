@@ -4,7 +4,8 @@
 \name{density}
 \alias{density}
 \title{Ideal gas sample data frame}
-\format{A data frame with columns:
+\format{
+A data frame with columns:
 \describe{
  \item{date}{A date variable.}
  \item{trial}{A character variable.}
@@ -12,7 +13,8 @@
  \item{p_Pa}{Numeric air pressure in Pascals.}
  \item{R}{Numeric gas constant in J/(kg K)}
  \item{density}{Numeric air density in kg/m^3}
-}}
+}
+}
 \usage{
 density
 }

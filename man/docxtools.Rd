@@ -3,7 +3,6 @@
 \docType{package}
 \name{docxtools}
 \alias{docxtools}
-\alias{docxtools-package}
 \title{docxtools: R Markdown to docx helper functions.}
 \description{
 The docxtools package provides a set of helper functions for using R Markdown

@@ -1,4 +1,4 @@
-#' @importFrom dplyr n mutate filter select left_join if_else bind_cols %>%
+#' @importFrom dplyr row_number mutate filter select left_join if_else bind_cols %>%
 #' @importFrom tidyr gather separate spread
 #' @importFrom stringr  str_replace str_c str_detect str_trim
 #' @importFrom rlang syms is_double is_integer is_character
@@ -73,7 +73,6 @@ NULL
 #' x <- head(airquality, n = 6L)
 #' format_engr(x, sigdig = 3)
 #'
-#' @importFrom dplyr n
 #' @export
 format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 
@@ -156,6 +155,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
   obs_add <- function(x) {
     x <- dplyr::mutate(x, observ_index = dplyr::row_number())
   }
+
   numeric_as_is <- obs_add(numeric_as_is)
   numeric_engr <- obs_add(numeric_engr)
   all_other_col <- obs_add(all_other_col)

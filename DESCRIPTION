@@ -12,7 +12,7 @@ Depends: R (>= 3.1.2)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Imports:
     dplyr, 
     ggplot2, 
