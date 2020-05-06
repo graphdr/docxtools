@@ -5,9 +5,6 @@
 
 
 
-## docxtools 0.2.2.9001 (2020-05-06)
-
-- Ready for next development
 
 
 
