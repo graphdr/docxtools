@@ -6,22 +6,29 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tools for R Markdown to Docx Documents • docxtools</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Tools for R Markdown to Docx Documents">
 <meta property="og:description" content="A set of helper functions for using R Markdown to create documents
     in docx format, especially documents for use in a classroom or workshop
     setting.">
 <meta property="og:image" content="/logo.png">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
-    <div class="container template-article">
+<body data-spy="scroll" data-target="#toc">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -33,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">docxtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9002</span>
       </span>
     </div>
 
@@ -41,7 +48,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -69,8 +76,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/graphdr/docxtools">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/graphdr/docxtools/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -83,22 +90,18 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="docxtools" class="section level1">
+      </header><div class="row">
+  <div class="contents col-md-9">
+<div id="docxtools-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#docxtools" class="anchor"></a>docxtools <img src="reference/figures/logo.png" align="right">
+<a href="#docxtools-" class="anchor"></a>docxtools <img src="reference/figures/logo.png" align="right">
 </h1></div>
 
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to do one’s own work reproducibly but has collaborators who work with Office software exclusively.</p>
+<p>docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to do oneâs own work reproducibly but has collaborators who work with Office software exclusively.</p>
 <ul>
 <li>
 <code><a href="reference/format_engr.html">format_engr()</a></code> to apply engineering format to numbers <!-- - `align_pander()` to print a table of numbers using pander (deprecated) -->
@@ -113,148 +116,148 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>From CRAN,</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"docxtools"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"docxtools"</span>)</pre></div>
 <p>Or you can obtain the most recent development version from GitHub.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"graphdr/docxtools"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="r">install.packages("devtools")
+devtools::install_github("graphdr/docxtools")</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>The <code>density</code> data set is part of the package.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(docxtools)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"density"</span>)</a>
-<a class="sourceLine" id="cb3-3" title="3">density</a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="r">library(docxtools)
+data("density")
+density
+#&gt;         date trial    T_K   p_Pa   R  density
+#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976
+#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384
+#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536
+#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647
+#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</pre></div>
 <p><code><a href="reference/format_engr.html">format_engr()</a></code> applies engineering notation to numeric variables, assigns significant digits, and adjusts for ambiguous trailing zeros.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">y &lt;-<span class="st"> </span><span class="kw"><a href="reference/format_engr.html">format_engr</a></span>(density, <span class="dt">sigdig =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">4</span>), <span class="dt">ambig_0_adj =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p>For printing the table, I suggest using <code><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code>. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/">website</a>.) docxtools &lt; 0.1.4 used the <code><a href="reference/docxtools-deprecated.html">align_pander()</a></code> function that is now deprecated and soon to be defunct.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(y, <span class="dt">align =</span> <span class="st">"ccrrrr"</span>)</a></code></pre></div>
-<table class="table table">
+<div class="sourceCode" id="cb4"><pre class="r"><span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/format_engr.html">format_engr</a></span>(<span class="no">density</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>), <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
+<p>For printing the table, I suggest using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable()</a></code>. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/">website</a>.) docxtools &lt; 0.1.4 used the <code><a href="reference/docxtools-deprecated.html">align_pander()</a></code> function that is now deprecated and soon to be defunct.</p>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">y</span>, <span class="kw">align</span> <span class="kw">=</span> <span class="st">"ccrrrr"</span>)</pre></div>
+<table class="table">
 <thead><tr>
 <th style="text-align:center;">
-date
+<p>date</p>
 </th>
 <th style="text-align:center;">
-trial
+<p>trial</p>
 </th>
 <th style="text-align:right;">
-T_K
+<p>T_K</p>
 </th>
 <th style="text-align:right;">
-p_Pa
+<p>p_Pa</p>
 </th>
 <th style="text-align:right;">
-R
+<p>R</p>
 </th>
 <th style="text-align:right;">
-density
+<p>density</p>
 </th>
 </tr></thead>
 <tbody>
 <tr>
 <td style="text-align:center;">
-2018-06-12
+<p>2018-06-12</p>
 </td>
 <td style="text-align:center;">
-a
+<p>a</p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(294.05\)</span>
+<p><span class="math inline">294.05</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\({101.1}\times 10^{3}\)</span>
+<p><span class="math inline">101.1âÃâ10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(287\)</span>
+<p><span class="math inline">287</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(1.198\)</span>
+<p><span class="math inline">1.198</span></p>
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
-2018-06-13
+<p>2018-06-13</p>
 </td>
 <td style="text-align:center;">
-b
+<p>b</p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(294.15\)</span>
+<p><span class="math inline">294.15</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\({101.0}\times 10^{3}\)</span>
+<p><span class="math inline">101.0âÃâ10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(287\)</span>
+<p><span class="math inline">287</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(1.196\)</span>
+<p><span class="math inline">1.196</span></p>
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
-2018-06-14
+<p>2018-06-14</p>
 </td>
 <td style="text-align:center;">
-c
+<p>c</p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(294.65\)</span>
+<p><span class="math inline">294.65</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\({101.1}\times 10^{3}\)</span>
+<p><span class="math inline">101.1âÃâ10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(287\)</span>
+<p><span class="math inline">287</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(1.196\)</span>
+<p><span class="math inline">1.196</span></p>
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
-2018-06-15
+<p>2018-06-15</p>
 </td>
 <td style="text-align:center;">
-d
+<p>d</p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(293.35\)</span>
+<p><span class="math inline">293.35</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\({101.0}\times 10^{3}\)</span>
+<p><span class="math inline">101.0âÃâ10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(287\)</span>
+<p><span class="math inline">287</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(1.200\)</span>
+<p><span class="math inline">1.200</span></p>
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
-2018-06-16
+<p>2018-06-16</p>
 </td>
 <td style="text-align:center;">
-e
+<p>e</p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(293.85\)</span>
+<p><span class="math inline">293.85</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\({101.1}\times 10^{3}\)</span>
+<p><span class="math inline">101.1âÃâ10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(287\)</span>
+<p><span class="math inline">287</span></p>
 </td>
 <td style="text-align:right;">
-<span class="math inline">\(1.199\)</span>
+<p><span class="math inline">1.199</span></p>
 </td>
 </tr>
 </tbody>
@@ -275,13 +278,13 @@ put_axes(1, col = "blue", size = 0.5)
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=docxtools">https://​cloud.r-project.org/​package=docxtools</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/graphdr/docxtools">https://​github.com/​graphdr/​docxtools</a>
+<li>Browse source code at <br><a href="https://github.com/graphdr/docxtools/">https://​github.com/​graphdr/​docxtools/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/graphdr/docxtools/issues">https://​github.com/​graphdr/​docxtools/​issues</a>
 </li>
@@ -302,7 +305,7 @@ put_axes(1, col = "blue", size = 0.5)
 </ul>
 </div>
 
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="http://cran.r-project.org/package=docxtools"><img src="http://www.r-pkg.org/badges/version/docxtools" alt="CRAN_Status_Badge"></a></li>
@@ -315,7 +318,6 @@ put_axes(1, col = "blue", size = 0.5)
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -324,12 +326,14 @@ put_axes(1, col = "blue", size = 0.5)
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

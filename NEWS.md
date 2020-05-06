@@ -4,6 +4,12 @@
 <!-- PATCH version backwards-compatible bug fixes -->
 
 
+
+## docxtools 0.2.1.9002 (2020-05-06)
+
+- Minor change for compatibility with dplyr 1.0.0
+
+
 ## docxtools 0.2.1.9001 (2019-06-11)
 
 - Add CRAN check badge 

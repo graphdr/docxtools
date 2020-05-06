@@ -1,7 +1,8 @@
 pandoc: 2.7.2
-pkgdown: 1.3.0
+pkgdown: 1.5.0
 pkgdown_sha: ~
 articles:
   numbers-in-engineering-format: numbers-in-engineering-format.html
   put-workspace-in-docx: put-workspace-in-docx.html
+last_built: 2020-05-06T16:44Z
 
