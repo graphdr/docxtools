@@ -1,4 +1,5 @@
-#' @importFrom dplyr row_number mutate filter select left_join if_else bind_cols %>%
+#' @importFrom dplyr row_number mutate filter select left_join if_else
+#' @importFrom dplyr bind_cols %>%
 #' @importFrom tidyr gather separate spread
 #' @importFrom stringr  str_replace str_c str_detect str_trim
 #' @importFrom rlang syms is_double is_integer is_character
@@ -148,7 +149,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 
   # join as-is double (0 sig dig) with integers
   numeric_as_is <- double_col[, sigdig == 0, drop = FALSE]
-  numeric_as_is <- bind_cols(numeric_as_is, integer_col)
+  numeric_as_is <- dplyr::bind_cols(numeric_as_is, integer_col)
   m_numeric_as_is <- ncol(numeric_as_is)
 
   # for rejoining later, add observation numbers to each df

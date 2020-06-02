@@ -106,9 +106,9 @@
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>Packages used in this vignette.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r">library("dplyr")
-library("knitr")
-library("docxtools")</pre></body></html></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"dplyr"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"knitr"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"docxtools"</span>)</pre></body></html></div>
 <p>This vignette demonstrates the use of two functions from the <em>docxtools</em> package:</p>
 <ul>
 <li>
@@ -143,30 +143,32 @@ library("docxtools")</pre></body></html></div>
 <h2 class="hasAnchor">
 <a href="#format_engr" class="anchor"></a>format_engr()</h2>
 <p>This example uses a small data set, <code>density</code>, included with docxtools, with temperature in K, pressure in Pa, the gas constant in J kg<sup>-1</sup>K<sup>-1</sup>, and density in kg m<sup>-3</sup>.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">density
-#&gt;         date trial    T_K   p_Pa   R  density
-#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976
-#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384
-#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536
-#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647
-#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</pre></body></html></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">density</span>
+<span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span>
+<span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span>
+<span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span>
+<span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span>
+<span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span>
+<span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></pre></body></html></div>
 <p>Four of the variables are numeric. The <code>date</code> variable is of type “double” but class “Date”, so it is not reformatted.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r">map_chr(density, class)
-#&gt; Error in map_chr(density, class): could not find function "map_chr"
-map_chr(density, typeof)
-#&gt; Error in map_chr(density, typeof): could not find function "map_chr"</pre></body></html></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu">map_chr</span>(<span class="no">density</span>, <span class="no">class</span>)
+<span class="co">#&gt; Error in map_chr(density, class): could not find function "map_chr"</span>
+<span class="fu">map_chr</span>(<span class="no">density</span>, <span class="no">typeof</span>)
+<span class="co">#&gt; Error in map_chr(density, typeof): could not find function "map_chr"</span></pre></body></html></div>
 <p>Usage is <code><a href="../reference/format_engr.html">format_engr(x, sigdig = NULL, ambig_0_adj = FALSE)</a></code>. The function returns a data frame with all numeric values reformatted as character strings in engineering format with math delimiters <code>$...$</code>.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">density_engr          date trial     T_K                    p_Pa       R density
-#&gt; 1 2018-06-12     a $294.0$ ${101.1}\\times 10^{3}$ $287.0$ $1.198$
-#&gt; 2 2018-06-13     b $294.2$ ${101.0}\\times 10^{3}$ $287.0$ $1.196$
-#&gt; 3 2018-06-14     c $294.6$ ${101.1}\\times 10^{3}$ $287.0$ $1.196$
-#&gt; 4 2018-06-15     d $293.4$ ${101.0}\\times 10^{3}$ $287.0$ $1.200$
-#&gt; 5 2018-06-16     e $293.8$ ${101.1}\\times 10^{3}$ $287.0$ $1.199$</pre></body></html></div>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">density_engr</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">density</span>)
+<span class="no">density_engr</span>
+<span class="co">#&gt;         date trial     T_K                    p_Pa       R density</span>
+<span class="co">#&gt; 1 2018-06-12     a $294.0$ ${101.1}\\times 10^{3}$ $287.0$ $1.198$</span>
+<span class="co">#&gt; 2 2018-06-13     b $294.2$ ${101.0}\\times 10^{3}$ $287.0$ $1.196$</span>
+<span class="co">#&gt; 3 2018-06-14     c $294.6$ ${101.1}\\times 10^{3}$ $287.0$ $1.196$</span>
+<span class="co">#&gt; 4 2018-06-15     d $293.4$ ${101.0}\\times 10^{3}$ $287.0$ $1.200$</span>
+<span class="co">#&gt; 5 2018-06-16     e $293.8$ ${101.1}\\times 10^{3}$ $287.0$ $1.199$</span></pre></body></html></div>
 <p>The formerly numeric variables are now characters. Non-numeric variables are returned unaltered.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r">map_chr(density_engr, class)
-#&gt; Error in map_chr(density_engr, class): could not find function "map_chr"</pre></body></html></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu">map_chr</span>(<span class="no">density_engr</span>, <span class="no">class</span>)
+<span class="co">#&gt; Error in map_chr(density_engr, class): could not find function "map_chr"</span></pre></body></html></div>
 <p>The math formatting is applied when the data frame is printed in the output document. For example, we can use <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable()</a></code> to print the formatted data.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu">kable</span>(<span class="no">density_engr</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">density_engr</span>)</pre></body></html></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -220,9 +222,9 @@ map_chr(density, typeof)
 </tbody>
 </table>
 <p>The function is compatible with the pipe operator.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">density_engr %
-  format_engr()
-kable(density_engr)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">density_engr</span> <span class="kw">&lt;-</span> <span class="no">density</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>()
+<span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">density_engr</span>)</pre></body></html></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -294,7 +296,8 @@ kable(density_engr)</pre></body></html></div>
 <code>ambig_0_adj</code>, an optional logical to adjust the notation in the event of ambiguous trailing zeros. Default is FALSE.</li>
 </ul>
 <p>The <code>sigdig</code> argument can be a single value, applied to all numeric columns.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r">density_engr </pre></body></html></div>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">density_engr</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">density</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">3</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">density_engr</span>)</pre></body></html></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -348,7 +351,8 @@ kable(density_engr)</pre></body></html></div>
 </tbody>
 </table>
 <p>Alternatively, significant digits can be assigned to every numeric column. A zero returns the variable in its original form.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r">density_engr </pre></body></html></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">density_engr</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">density</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">5</span>))
+<span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="no">density_engr</span>)</pre></body></html></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">date</th>
@@ -406,10 +410,10 @@ kable(density_engr)</pre></body></html></div>
 <h2 class="hasAnchor">
 <a href="#ambiguous-trailing-zeros" class="anchor"></a>Ambiguous trailing zeros</h2>
 <p>Subset the data to look at just the numerical variables.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">x %
-  select(T_K, p_Pa, R, density)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="no">density</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">T_K</span>, <span class="no">p_Pa</span>, <span class="no">R</span>, <span class="no">density</span>)</pre></body></html></div>
 <p>Print the data with incrementally decreasing significant digits.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu">kable</span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">4</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"4 digits"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">4</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"4 digits"</span>)</pre></body></html></div>
 <table class="table">
 <caption>4 digits</caption>
 <thead><tr class="header">
@@ -452,7 +456,7 @@ kable(density_engr)</pre></body></html></div>
 </tbody>
 </table>
 <p>Three digits creates no ambiguity.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu">kable</span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">3</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"3 digits"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">3</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"3 digits"</span>)</pre></body></html></div>
 <table class="table">
 <caption>3 digits</caption>
 <thead><tr class="header">
@@ -495,7 +499,7 @@ kable(density_engr)</pre></body></html></div>
 </tbody>
 </table>
 <p>With 2 digits, we have three columns with ambiguous trailing zeros.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu">kable</span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">2</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"2 digits"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">2</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"2 digits"</span>)</pre></body></html></div>
 <table class="table">
 <caption>2 digits</caption>
 <thead><tr class="header">
@@ -538,7 +542,7 @@ kable(density_engr)</pre></body></html></div>
 </tbody>
 </table>
 <p>By setting the <code>ambig_0_adj</code> argument to TRUE, scientific notation is used to remove the ambiguity.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu">kable</span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">TRUE</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"Removing ambiguity"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">TRUE</span>), <span class="kw">caption</span> <span class="kw">=</span> <span class="st">"Removing ambiguity"</span>)</pre></body></html></div>
 <table class="table">
 <caption>Removing ambiguity</caption>
 <thead><tr class="header">
@@ -581,7 +585,7 @@ kable(density_engr)</pre></body></html></div>
 </tbody>
 </table>
 <p>The ambiguous trailing zero adjustment is applied only to those variables for which the condition exists. For example, consider these data without the adjustment,</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu">kable</span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span>), <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">FALSE</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span>), <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">FALSE</span>))</pre></body></html></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">T_K</th>
@@ -623,7 +627,7 @@ kable(density_engr)</pre></body></html></div>
 </tbody>
 </table>
 <p>The same numbers with <code>ambig_0_adj = TRUE</code>,</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu">kable</span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span>), <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="fu"><a href="../reference/format_engr.html">format_engr</a></span>(<span class="no">x</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span>), <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></body></html></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">T_K</th>
@@ -683,7 +687,7 @@ kable(density_engr)</pre></body></html></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

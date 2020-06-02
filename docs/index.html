@@ -101,7 +101,7 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to do oneâs own work reproducibly but has collaborators who work with Office software exclusively.</p>
+<p>docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to do one’s own work reproducibly but has collaborators who work with Office software exclusively.</p>
 <ul>
 <li>
 <code><a href="reference/format_engr.html">format_engr()</a></code> to apply engineering format to numbers <!-- - `align_pander()` to print a table of numbers using pander (deprecated) -->
@@ -118,22 +118,22 @@
 <p>From CRAN,</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"docxtools"</span>)</pre></div>
 <p>Or you can obtain the most recent development version from GitHub.</p>
-<div class="sourceCode" id="cb2"><pre class="r">install.packages("devtools")
-devtools::install_github("graphdr/docxtools")</pre></div>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"graphdr/docxtools"</span>)</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>The <code>density</code> data set is part of the package.</p>
-<div class="sourceCode" id="cb3"><pre class="r">library(docxtools)
-data("density")
-density
-#&gt;         date trial    T_K   p_Pa   R  density
-#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976
-#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384
-#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536
-#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647
-#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</pre></div>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">docxtools</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"density"</span>)
+<span class="no">density</span>
+<span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span>
+<span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span>
+<span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span>
+<span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span>
+<span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span>
+<span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></pre></div>
 <p><code><a href="reference/format_engr.html">format_engr()</a></code> applies engineering notation to numeric variables, assigns significant digits, and adjusts for ambiguous trailing zeros.</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/format_engr.html">format_engr</a></span>(<span class="no">density</span>, <span class="kw">sigdig</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>), <span class="kw">ambig_0_adj</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
 <p>For printing the table, I suggest using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable()</a></code>. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/">website</a>.) docxtools &lt; 0.1.4 used the <code><a href="reference/docxtools-deprecated.html">align_pander()</a></code> function that is now deprecated and soon to be defunct.</p>
@@ -171,7 +171,7 @@ density
 <p><span class="math inline">294.05</span></p>
 </td>
 <td style="text-align:right;">
-<p><span class="math inline">101.1âÃâ10<sup>3</sup></span></p>
+<p><span class="math inline">101.1 × 10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
 <p><span class="math inline">287</span></p>
@@ -191,7 +191,7 @@ density
 <p><span class="math inline">294.15</span></p>
 </td>
 <td style="text-align:right;">
-<p><span class="math inline">101.0âÃâ10<sup>3</sup></span></p>
+<p><span class="math inline">101.0 × 10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
 <p><span class="math inline">287</span></p>
@@ -211,7 +211,7 @@ density
 <p><span class="math inline">294.65</span></p>
 </td>
 <td style="text-align:right;">
-<p><span class="math inline">101.1âÃâ10<sup>3</sup></span></p>
+<p><span class="math inline">101.1 × 10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
 <p><span class="math inline">287</span></p>
@@ -231,7 +231,7 @@ density
 <p><span class="math inline">293.35</span></p>
 </td>
 <td style="text-align:right;">
-<p><span class="math inline">101.0âÃâ10<sup>3</sup></span></p>
+<p><span class="math inline">101.0 × 10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
 <p><span class="math inline">287</span></p>
@@ -251,7 +251,7 @@ density
 <p><span class="math inline">293.85</span></p>
 </td>
 <td style="text-align:right;">
-<p><span class="math inline">101.1âÃâ10<sup>3</sup></span></p>
+<p><span class="math inline">101.1 × 10<sup>3</sup></span></p>
 </td>
 <td style="text-align:right;">
 <p><span class="math inline">287</span></p>
@@ -308,13 +308,13 @@ put_axes(1, col = "blue", size = 0.5)
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="http://cran.r-project.org/package=docxtools"><img src="http://www.r-pkg.org/badges/version/docxtools" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://CRAN.R-project.org/package=docxtools"><img src="http://www.r-pkg.org/badges/version/docxtools" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_rhub.html"><img src="https://cranchecks.info/badges/summary/rhub" alt="cran checks"></a></li>
 <li><a href="https://travis-ci.org/graphdr/docxtools"><img src="https://travis-ci.org/graphdr/docxtools.svg?branch=master" alt="Build Status"></a></li>
 <li><a href="https://CRAN.R-project.org/package=docxtools"><img src="https://tinyverse.netlify.com/badge/docxtools" alt="status"></a></li>
 <li><a href="https://codecov.io/github/graphdr/docxtools?branch=master"><img src="https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a></li>
-<li><a href="https://cran.r-project.org/package=docxtools"><img src="https://cranlogs.r-pkg.org/badges/grand-total/docxtools"></a></li>
+<li><a href="https://CRAN.R-project.org/package=docxtools"><img src="https://cranlogs.r-pkg.org/badges/grand-total/docxtools"></a></li>
 </ul>
 </div>
 </div>
@@ -326,7 +326,7 @@ put_axes(1, col = "blue", size = 0.5)
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -117,7 +117,7 @@
 <h2 class="hasAnchor">
 <a href="#put_gap" class="anchor"></a>put_gap()</h2>
 <p>This function allows the author of Rmd to docx documents to insert a vertical white space of specified height.</p>
-<p>The white space is an empty <code>ggplot2</code> object. The only assignment is the panel background, made with <code>theme(panel.background = element_rect())</code>.</p>
+<p>The white space is an empty <code>ggplot2</code> object. The only assignment is the panel background, made with <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(panel.background = element_rect())</a></code>.</p>
 <p>The usage is <code><a href="../reference/put_gap.html">put_gap(col = NULL, fill = NULL)</a></code> to specify the color of the rectangle border and its fill. Defaults are “transparent”.</p>
 <p>The dimensions of the gap are determined when it is printed. For example, to create a 0.75 inch gap in an R Markdown output document, we set the dimension in the <code>knitr</code> code chunk header,</p>
 <pre class="r"><code>```{r fig.height = 0.75}
@@ -131,8 +131,8 @@ put_gap(col = "black", fill = "gray")
 <code>```</code></code></pre>
 <p><img src="../man/figures/put-workspace-gap2-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>Here’s an image from a Word document where space for written responses was created using <code><a href="../reference/put_gap.html">put_gap()</a></code>.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">knitr::include_graphics("../man/figures/example-docx.png")
-#&gt; Error in knitr::include_graphics("../man/figures/example-docx.png"): Cannot find the file(s): "../man/figures/example-docx.png"</pre></body></html></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span>(<span class="st">"../man/figures/example-docx.png"</span>)
+<span class="co">#&gt; Error in knitr::include_graphics("../man/figures/example-docx.png"): Cannot find the file(s): "../man/figures/example-docx.png"</span></pre></body></html></div>
 <p>A gap can also be used to force a page break. Alternatively, Norbert Köhler shows how to insert page breaks using Word Styles, see <a href="http://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document">R Markdown: How to insert page breaks in a MS Word document</a>.</p>
 </div>
 <div id="put_axes" class="section level2">
@@ -152,25 +152,25 @@ put_gap(col = "black", fill = "gray")
 <div id="quadrants" class="section level3">
 <h3 class="hasAnchor">
 <a href="#quadrants" class="anchor"></a>Quadrants</h3>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># all 4 quadrants</span>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># all 4 quadrants</span>
 <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">0</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes01-1.png" width="50%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co"># quadrant 2</span>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co"># quadrant 2</span>
 <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">2</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes02-1.png" width="50%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># quadrant 1</span>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># quadrant 1</span>
 <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">1</span>, <span class="kw">col</span> <span class="kw">=</span> <span class="st">"blue"</span>, <span class="kw">size</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes03-1.png" width="50%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="co"># quadrant 3</span>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="co"># quadrant 3</span>
 <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">3</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes04-1.png" width="50%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="co"># quadrant 4</span>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="co"># quadrant 4</span>
 <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">4</span>, <span class="kw">col</span> <span class="kw">=</span> <span class="st">"red"</span>, <span class="kw">size</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes05-1.png" width="50%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="co"># two adjacent quadrants</span>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="co"># two adjacent quadrants</span>
 <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">12</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes06-1.png" width="50%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="co"># two adjacent quadrants</span>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="co"># two adjacent quadrants</span>
 <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">41</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes07-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
@@ -182,26 +182,53 @@ put_gap(col = "black", fill = "gray")
 put_axes()
 <code>```</code></code></pre>
 <p><img src="../man/figures/put-workspace-axes08-1.png" width="50%" style="display: block; margin: auto;"></p>
-<p>The default aspect ratio is 1, though it can be edited using <code>coord_fixed()</code> from <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">library(ggplot2)
-put_axes() +
-  coord_fixed(1 / 2) # ratio of y/x</pre></body></html></div>
+<p>The default aspect ratio is 1, though it can be edited using <code><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed()</a></code> from <code>ggplot2</code>.</p>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span>(<span class="fl">1</span> / <span class="fl">2</span>) <span class="co"># ratio of y/x</span></pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes09-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div id="annotations" class="section level3">
 <h3 class="hasAnchor">
 <a href="#annotations" class="anchor"></a>Annotations</h3>
 <p>The graph object can be edited using the usual <code>ggplot2</code> annotations. For example, to place some text in the middle of the graph,</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r">p </pre></body></html></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(<span class="st">"text"</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="fl">0.5</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="fl">0.5</span>, <span class="kw">label</span> <span class="kw">=</span> <span class="st">"quadrant I"</span>)
+<span class="no">p</span></pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes10-1.png" width="50%" style="display: block; margin: auto;"></p>
-<p>We can add text labels to label the axes using <code>annotate()</code></p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">p </pre></body></html></div>
+<p>We can add text labels to label the axes using <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate()</a></code></p>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(<span class="st">"text"</span>,
+    <span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">0</span>), <span class="kw">y</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">1</span>), <span class="kw">label</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="kw">vjust</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">0.5</span>), <span class="kw">hjust</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1.5</span>), <span class="kw">fontface</span> <span class="kw">=</span> <span class="st">"italic"</span>
+  )
+<span class="no">p</span></pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes11-1.png" width="50%" style="display: block; margin: auto;"></p>
-<p>Or we can use the usual <code>labs()</code> after resetting the theme <code>axis.title</code>,</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r">p </pre></body></html></div>
+<p>Or we can use the usual <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> after resetting the theme <code>axis.title</code>,</p>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.title</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span>()) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"new x"</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="st">"new y"</span>)
+<span class="no">p</span></pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes12-1.png" width="50%" style="display: block; margin: auto;"></p>
-<p>If we use <code>annotate()</code> and the label exceeds the data rectangle, we can make the plot margin larger and override the plot clipping.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r">p </pre></body></html></div>
+<p>If we use <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate()</a></code> and the label exceeds the data rectangle, we can make the plot margin larger and override the plot clipping.</p>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/put_axes.html">put_axes</a></span>(<span class="fl">2</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(<span class="st">"text"</span>,
+    <span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(-<span class="fl">1</span>, <span class="fl">0</span>), <span class="kw">y</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">1</span>), <span class="kw">label</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Re"</span>, <span class="st">"Im"</span>), <span class="kw">vjust</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>), <span class="kw">hjust</span> <span class="kw">=</span>
+      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, -<span class="fl">0.5</span>), <span class="kw">fontface</span> <span class="kw">=</span> <span class="st">"italic"</span>
+  ) + <span class="co"># top, right, bottom, left</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">plot.margin</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">0</span>), <span class="st">"mm"</span>))
+
+<span class="co"># override clipping</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">grid</span>)
+<span class="no">pp</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot_gtable.html">ggplot_gtable</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot_build.html">ggplot_build</a></span>(<span class="no">p</span>))
+<span class="no">pp</span>$<span class="no">layout</span>$<span class="no">clip</span>[<span class="no">pp</span>$<span class="no">layout</span>$<span class="no">name</span> <span class="kw">==</span> <span class="st">"panel"</span>] <span class="kw">&lt;-</span> <span class="st">"off"</span>
+<span class="fu"><a href="https://rdrr.io/r/grid/grid.draw.html">grid.draw</a></span>(<span class="no">pp</span>)</pre></body></html></div>
 <p><img src="../man/figures/put-workspace-axes13-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -227,7 +254,7 @@ put_axes() +
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

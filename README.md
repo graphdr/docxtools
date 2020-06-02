@@ -3,7 +3,7 @@
 
 # docxtools <img src="man/figures/logo.png" align="right" />
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/docxtools)](http://cran.r-project.org/package=docxtools)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/docxtools)](https://CRAN.R-project.org/package=docxtools)
 [![cran
 checks](https://cranchecks.info/badges/summary/rhub)](https://cran.r-project.org/web/checks/check_results_rhub.html)
 [![Build
@@ -13,7 +13,7 @@ Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://trav
 Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/docxtools)](https://cran.r-project.org/package=docxtools)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/docxtools)](https://CRAN.R-project.org/package=docxtools)
 
 ## Overview
 
