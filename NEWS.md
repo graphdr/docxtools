@@ -9,11 +9,11 @@
 
 
 
-## docxtools 0.2.2 (2020-06-02)
+## docxtools 0.2.2 (2020-06-03)
 
-- Change dplyr::n() to dplyr::row_number() for compatibility with dplyr 1.0.0
+- Change dplyr::n() to dplyr::row_number() for compatibility with dplyr 1.0.0 to correct errors identified in the CRAN package check results
 - Checked package is compatible with R 4.0.0 
-- Update canonical CRAN URL
+- Update canonical CRAN URLs
 - Submitted to CRAN
 
 

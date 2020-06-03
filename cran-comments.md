@@ -1,3 +1,7 @@
+## Purpose
+
+Correcting the errors identified in the CRAN package check results
+
 ## Test environments
 
 * R version 4.0.0
