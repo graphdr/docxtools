@@ -35,6 +35,7 @@ Packages used in this vignette.
 
 ```{r}
 library("dplyr")
+library("purrr")
 library("knitr")
 library("docxtools")
 ```
@@ -61,7 +62,7 @@ This example uses a small data set, `density`, included with docxtools, with tem
 density
 ```
 
-Four of the variables are numeric. The `date` variable is of type "double" but class "Date", so it is not reformatted. 
+Four of the variables are numeric. The `date` variable is of type "double" but class "Date", so it is not reformatted. Class and type are found using `purrr::map_chr()`. 
 
 ```{r}
 map_chr(density, class)
@@ -78,7 +79,7 @@ density_engr
 The formerly numeric variables are now characters.  Non-numeric variables are returned unaltered.
 
 ```{r}
-map_chr(density_engr, class)
+purrr::map_chr(density_engr, class)
 ```
 
 The math formatting is applied when the data frame is printed in the output document.  For example, we can use `knitr::kable()` to print the formatted data.  

@@ -5,7 +5,9 @@
 
 
 
+## docxtools 0.2.2.9000 (2020-06-03)
 
+- Added missing purrr package to vignette
 
 
 
