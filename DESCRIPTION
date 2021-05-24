@@ -1,6 +1,6 @@
 Package: docxtools
 Title: Tools for R Markdown to Docx Documents
-Version: 0.2.2.9000
+Version: 0.2.2.9001
 Language: en-US
 Authors@R: c(
     person("Richard", "Layton", email = "graphdoctor@gmail.com", role = c("aut", "cre"))
@@ -11,8 +11,7 @@ Description: A set of helper functions for using R Markdown to create documents
 Depends: R (>= 3.1.2)
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: TRUE
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Imports:
     dplyr, 
     ggplot2, 

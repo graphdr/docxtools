@@ -5,11 +5,17 @@
 
 
 
+## docxtools 0.2.2.9001 (2020-06-03)
+
+- Remove LazyData from Description file per R-devel utilities changes  2021-03-08
+
+
+
+
+
 ## docxtools 0.2.2.9000 (2020-06-03)
 
 - Added missing purrr package to vignette
-
-
 
 ## docxtools 0.2.2 (2020-06-03)
 

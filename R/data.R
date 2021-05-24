@@ -3,6 +3,8 @@
 #' Air density at room temperature. A data frame to illustrate features of
 #' the \code{format_engr()} and \code{align_pander()} functions.
 #'
+#' @usage data(density)
+#'
 #' @format A data frame with columns:
 #' \describe{
 #'  \item{date}{A date variable.}

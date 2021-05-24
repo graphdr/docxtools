@@ -23,10 +23,10 @@ classroom or workshop setting. These are particularly useful when one
 tries to do one’s own work reproducibly but has collaborators who work
 with Office software exclusively.
 
-  - `format_engr()` to apply engineering format to numbers
+-   `format_engr()` to apply engineering format to numbers
     <!-- - `align_pander()` to print a table of numbers using pander (deprecated) -->
-  - `put_gap()` to create white space in a document
-  - `put_axes()` to place unlabeled axes in a document
+-   `put_gap()` to create white space in a document
+-   `put_axes()` to place unlabeled axes in a document
 
 ## Installation
 
@@ -39,8 +39,8 @@ install.packages("docxtools")
 Or you can obtain the most recent development version from GitHub.
 
 ``` r
-install.packages("devtools")
-devtools::install_github("graphdr/docxtools")
+install.packages("remotes")
+remotes::install_github("graphdr/docxtools")
 ```
 
 ## Usage
@@ -68,7 +68,7 @@ y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
 
 For printing the table, I suggest using `knitr::kable()`. (Note: The
 table can be seen correctly rendered at the package
-[website](https://graphdr.github.io/docxtools/).) docxtools \< 0.1.4
+[website](https://graphdr.github.io/docxtools/).) docxtools &lt; 0.1.4
 used the `align_pander()` function that is now deprecated and soon to be
 defunct.
 
@@ -77,255 +77,130 @@ knitr::kable(y, align = "ccrrrr")
 ```
 
 <table>
-
 <thead>
-
 <tr>
-
 <th style="text-align:center;">
-
 date
-
 </th>
-
 <th style="text-align:center;">
-
 trial
-
 </th>
-
 <th style="text-align:right;">
-
 T\_K
-
 </th>
-
 <th style="text-align:right;">
-
 p\_Pa
-
 </th>
-
 <th style="text-align:right;">
-
 R
-
 </th>
-
 <th style="text-align:right;">
-
 density
-
 </th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
 <tr>
-
 <td style="text-align:center;">
-
 2018-06-12
-
 </td>
-
 <td style="text-align:center;">
-
 a
-
 </td>
-
 <td style="text-align:right;">
-
-\(294.05\)
-
+294.05
 </td>
-
 <td style="text-align:right;">
-
-\({101.1}\times 10^{3}\)
-
+101.1 × 10<sup>3</sup>
 </td>
-
 <td style="text-align:right;">
-
-\(287\)
-
+287
 </td>
-
 <td style="text-align:right;">
-
-\(1.198\)
-
+1.198
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 2018-06-13
-
 </td>
-
 <td style="text-align:center;">
-
 b
-
 </td>
-
 <td style="text-align:right;">
-
-\(294.15\)
-
+294.15
 </td>
-
 <td style="text-align:right;">
-
-\({101.0}\times 10^{3}\)
-
+101.0 × 10<sup>3</sup>
 </td>
-
 <td style="text-align:right;">
-
-\(287\)
-
+287
 </td>
-
 <td style="text-align:right;">
-
-\(1.196\)
-
+1.196
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 2018-06-14
-
 </td>
-
 <td style="text-align:center;">
-
 c
-
 </td>
-
 <td style="text-align:right;">
-
-\(294.65\)
-
+294.65
 </td>
-
 <td style="text-align:right;">
-
-\({101.1}\times 10^{3}\)
-
+101.1 × 10<sup>3</sup>
 </td>
-
 <td style="text-align:right;">
-
-\(287\)
-
+287
 </td>
-
 <td style="text-align:right;">
-
-\(1.196\)
-
+1.196
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 2018-06-15
-
 </td>
-
 <td style="text-align:center;">
-
 d
-
 </td>
-
 <td style="text-align:right;">
-
-\(293.35\)
-
+293.35
 </td>
-
 <td style="text-align:right;">
-
-\({101.0}\times 10^{3}\)
-
+101.0 × 10<sup>3</sup>
 </td>
-
 <td style="text-align:right;">
-
-\(287\)
-
+287
 </td>
-
 <td style="text-align:right;">
-
-\(1.200\)
-
+1.200
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:center;">
-
 2018-06-16
-
 </td>
-
 <td style="text-align:center;">
-
 e
-
 </td>
-
 <td style="text-align:right;">
-
-\(293.85\)
-
+293.85
 </td>
-
 <td style="text-align:right;">
-
-\({101.1}\times 10^{3}\)
-
+101.1 × 10<sup>3</sup>
 </td>
-
 <td style="text-align:right;">
-
-\(287\)
-
+287
 </td>
-
 <td style="text-align:right;">
-
-\(1.199\)
-
+1.199
 </td>
-
 </tr>
-
 </tbody>
-
 </table>
 
 Using `put_gap()` with knitr and R markdown, the gap height is specified

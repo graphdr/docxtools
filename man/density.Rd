@@ -16,7 +16,7 @@ A data frame with columns:
 }
 }
 \usage{
-density
+data(density)
 }
 \description{
 Air density at room temperature. A data frame to illustrate features of
