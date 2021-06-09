@@ -3,11 +3,9 @@
 
 # docxtools <img src="man/figures/logo.png" align="right" />
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/docxtools)](https://CRAN.R-project.org/package=docxtools)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](https://CRAN.R-project.org/package=docxtools)
 [![cran
 checks](https://cranchecks.info/badges/summary/rhub)](https://cran.r-project.org/web/checks/check_results_rhub.html)
-[![Build
-Status](https://travis-ci.org/graphdr/docxtools.svg?branch=master)](https://travis-ci.org/graphdr/docxtools)
 [![status](https://tinyverse.netlify.com/badge/docxtools)](https://CRAN.R-project.org/package=docxtools)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
@@ -68,7 +66,7 @@ y <- format_engr(density, sigdig = c(5, 4, 0, 4), ambig_0_adj = TRUE)
 
 For printing the table, I suggest using `knitr::kable()`. (Note: The
 table can be seen correctly rendered at the package
-[website](https://graphdr.github.io/docxtools/).) docxtools &lt; 0.1.4
+[website](https://graphdr.github.io/docxtools/).) docxtools \< 0.1.4
 used the `align_pander()` function that is now deprecated and soon to be
 defunct.
 
@@ -86,10 +84,10 @@ date
 trial
 </th>
 <th style="text-align:right;">
-T\_K
+T_K
 </th>
 <th style="text-align:right;">
-p\_Pa
+p_Pa
 </th>
 <th style="text-align:right;">
 R
