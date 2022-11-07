@@ -106,16 +106,16 @@ density
 a
 </td>
 <td style="text-align:right;">
-294.05
+$294.05$
 </td>
 <td style="text-align:right;">
-101.1 × 10<sup>3</sup>
+${101.1}\times 10^{3}$
 </td>
 <td style="text-align:right;">
-287
+$287$
 </td>
 <td style="text-align:right;">
-1.198
+$1.198$
 </td>
 </tr>
 <tr>
@@ -126,16 +126,16 @@ a
 b
 </td>
 <td style="text-align:right;">
-294.15
+$294.15$
 </td>
 <td style="text-align:right;">
-101.0 × 10<sup>3</sup>
+${101.0}\times 10^{3}$
 </td>
 <td style="text-align:right;">
-287
+$287$
 </td>
 <td style="text-align:right;">
-1.196
+$1.196$
 </td>
 </tr>
 <tr>
@@ -146,16 +146,16 @@ b
 c
 </td>
 <td style="text-align:right;">
-294.65
+$294.65$
 </td>
 <td style="text-align:right;">
-101.1 × 10<sup>3</sup>
+${101.1}\times 10^{3}$
 </td>
 <td style="text-align:right;">
-287
+$287$
 </td>
 <td style="text-align:right;">
-1.196
+$1.196$
 </td>
 </tr>
 <tr>
@@ -166,16 +166,16 @@ c
 d
 </td>
 <td style="text-align:right;">
-293.35
+$293.35$
 </td>
 <td style="text-align:right;">
-101.0 × 10<sup>3</sup>
+${101.0}\times 10^{3}$
 </td>
 <td style="text-align:right;">
-287
+$287$
 </td>
 <td style="text-align:right;">
-1.200
+$1.200$
 </td>
 </tr>
 <tr>
@@ -186,16 +186,16 @@ d
 e
 </td>
 <td style="text-align:right;">
-293.85
+$293.85$
 </td>
 <td style="text-align:right;">
-101.1 × 10<sup>3</sup>
+${101.1}\times 10^{3}$
 </td>
 <td style="text-align:right;">
-287
+$287$
 </td>
 <td style="text-align:right;">
-1.199
+$1.199$
 </td>
 </tr>
 </tbody>
@@ -216,7 +216,7 @@ in the R code-chunk header.
 
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
-put_axes(1, col = "blue", size = 0.5)
+put_axes(1, col = "blue", linewidth = 0.5)
 <code>```</code></code></pre>
 
 <img src="man/figures/README-005-1.png" width="33%" style="display: block; margin: auto;" />

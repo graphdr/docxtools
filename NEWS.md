@@ -5,6 +5,12 @@
 
 
 
+## docxtools 0.3.0 (2022-1-11)
+
+- Change line width argument from `size` to `linewidth` for compatibility with 2022 late October release of ggplot2. 
+
+
+
 ## docxtools 0.2.3 (2020-07-03)
 
 - Remove LazyData from Description file per R-devel utilities changes  2021-03-08

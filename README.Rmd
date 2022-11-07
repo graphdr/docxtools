@@ -48,7 +48,6 @@ options(tibble.print_min = 8L, tibble.print_max = 8L)
 docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to do one's own work reproducibly but has collaborators who work with Office software exclusively.  
 
 - `format_engr()` to apply engineering format to numbers 
-<!-- - `align_pander()` to print a table of numbers using pander (deprecated) -->
 - `put_gap()`  to create white space in a document 
 - `put_axes()` to place unlabeled axes in a document 
 
@@ -110,12 +109,12 @@ For `put_axes()` with knitr and R markdown, the axis height is specified in the 
 
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
-put_axes(1, col = "blue", size = 0.5)
+put_axes(1, col = "blue", linewidth = 0.5)
 <code>```</code></code></pre>
 
 ```{r 005, fig.width = 2, fig.asp = 1, out.width = "33%", echo = FALSE}
 # first quadrant axes
-put_axes(1, col = "blue", size = 0.5)
+put_axes(1, col = "blue", linewidth = 0.5)
 ```
 
 

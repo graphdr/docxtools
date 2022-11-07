@@ -52,6 +52,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -63,9 +65,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -79,19 +87,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">docxtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -116,7 +118,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/graphdr/docxtools/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,98 +139,90 @@
       <small>Source: <a href='https://github.com/graphdr/docxtools/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="docxtools-023-2020-07-03" class="section level2">
+<h2 class="hasAnchor">
+<a href="#docxtools-023-2020-07-03" class="anchor" aria-hidden="true"></a>docxtools 0.2.3 (2020-07-03)</h2>
+<ul><li>Remove LazyData from Description file per R-devel utilities changes 2021-03-08</li>
+<li>Remove Travis CI</li>
+</ul></div>
+    <div id="docxtools-0229000-2020-06-03" class="section level2">
+<h2 class="hasAnchor">
+<a href="#docxtools-0229000-2020-06-03" class="anchor" aria-hidden="true"></a>docxtools 0.2.2.9000 (2020-06-03)</h2>
+<ul><li>Added missing purrr package to vignette</li>
+</ul></div>
     <div id="docxtools-022-2020-06-03" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-022-2020-06-03" class="anchor"></a>docxtools 0.2.2 (2020-06-03)</h2>
-<ul>
-<li>Change dplyr::n() to dplyr::row_number() for compatibility with dplyr 1.0.0 to correct errors identified in the CRAN package check results</li>
+<a href="#docxtools-022-2020-06-03" class="anchor" aria-hidden="true"></a>docxtools 0.2.2 (2020-06-03)</h2>
+<ul><li>Change dplyr::n() to dplyr::row_number() for compatibility with dplyr 1.0.0 to correct errors identified in the CRAN package check results</li>
 <li>Checked package is compatible with R 4.0.0</li>
 <li>Update canonical CRAN URLs</li>
 <li>Submitted to CRAN</li>
-</ul>
-</div>
+</ul></div>
     <div id="docxtools-0219001-2019-06-11" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-0219001-2019-06-11" class="anchor"></a>docxtools 0.2.1.9001 (2019-06-11)</h2>
-<ul>
-<li>Add CRAN check badge</li>
+<a href="#docxtools-0219001-2019-06-11" class="anchor" aria-hidden="true"></a>docxtools 0.2.1.9001 (2019-06-11)</h2>
+<ul><li>Add CRAN check badge</li>
 <li>Add dependency badge</li>
-</ul>
-</div>
+</ul></div>
     <div id="docxtools-021-2019-02-09" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-021-2019-02-09" class="anchor"></a>docxtools 0.2.1 (2019-02-09)</h2>
-<ul>
-<li><p>Edited vignette to accommodate deprecated function <code><a href="../reference/docxtools-deprecated.html">align_pander()</a></code>. Help pages for deprecated functions are available by running <code><a href="../reference/docxtools-deprecated.html">help("docxtools-deprecated")</a></code>.</p></li>
-<li><p>Edited function <code>n()</code> as <code><a href="https://dplyr.tidyverse.org/reference/context.html">dplyr::n()</a></code> for compatibility with dplyr release 0.8.0</p></li>
-</ul>
-</div>
+<a href="#docxtools-021-2019-02-09" class="anchor" aria-hidden="true"></a>docxtools 0.2.1 (2019-02-09)</h2>
+<ul><li><p>Edited vignette to accommodate deprecated function <code>align_pander()</code>. Help pages for deprecated functions are available by running <code>help("docxtools-deprecated")</code>.</p></li>
+<li><p>Edited function <code><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n()</a></code> as <code><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">dplyr::n()</a></code> for compatibility with dplyr release 0.8.0</p></li>
+</ul></div>
     <div id="docxtools-020-2018-07-05" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-020-2018-07-05" class="anchor"></a>docxtools 0.2.0 (2018-07-05)</h2>
+<a href="#docxtools-020-2018-07-05" class="anchor" aria-hidden="true"></a>docxtools 0.2.0 (2018-07-05)</h2>
 <p>This update removes the dependency on CRAN package pander, now scheduled for archival on 2018–07–19.</p>
 <div id="deprecated" class="section level3">
 <h3 class="hasAnchor">
-<a href="#deprecated" class="anchor"></a>Deprecated</h3>
-<ul>
-<li>
-<code><a href="../reference/docxtools-deprecated.html">align_pander()</a></code> deprecated, suggest using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable()</a></code> instead</li>
-</ul>
-</div>
+<a href="#deprecated" class="anchor" aria-hidden="true"></a>Deprecated</h3>
+<ul><li>
+<code>align_pander()</code> deprecated, suggest using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">knitr::kable()</a></code> instead</li>
+</ul></div>
 <div id="minor-improvements" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"></a>Minor improvements</h3>
-<ul>
-<li>Switched pipe dependency from magrittr to dplyr</li>
-</ul>
-</div>
+<a href="#minor-improvements" class="anchor" aria-hidden="true"></a>Minor improvements</h3>
+<ul><li>Switched pipe dependency from magrittr to dplyr</li>
+</ul></div>
 </div>
     <div id="docxtools-013-2018-06-19" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-013-2018-06-19" class="anchor"></a>docxtools 0.1.3 (2018-06-19)</h2>
-<ul>
-<li>Updated unit testing for compatibility with latest version of ggplot2</li>
-</ul>
-</div>
+<a href="#docxtools-013-2018-06-19" class="anchor" aria-hidden="true"></a>docxtools 0.1.3 (2018-06-19)</h2>
+<ul><li>Updated unit testing for compatibility with latest version of ggplot2</li>
+</ul></div>
     <div id="docxtools-012-2018-06-14" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-012-2018-06-14" class="anchor"></a>docxtools 0.1.2 (2018-06-14)</h2>
+<a href="#docxtools-012-2018-06-14" class="anchor" aria-hidden="true"></a>docxtools 0.1.2 (2018-06-14)</h2>
 <div id="bug-fixes" class="section level3">
 <h3 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h3>
+<a href="#bug-fixes" class="anchor" aria-hidden="true"></a>Bug fixes</h3>
 <p>In <code><a href="../reference/format_engr.html">format_engr()</a></code></p>
-<ul>
-<li>Corrected an error caused by an incorrect use of <code>str_trunc()</code>.</li>
+<ul><li>Corrected an error caused by an incorrect use of <code>str_trunc()</code>.</li>
 <li>Variable types date, factor, ordered factor, and character are now correctly ignored by the formatting routine.</li>
-</ul>
-</div>
+</ul></div>
 <div id="new-features" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h3>
+<a href="#new-features" class="anchor" aria-hidden="true"></a>New features</h3>
 <p>In <code><a href="../reference/format_engr.html">format_engr()</a></code>, added the <code>ambig_0_adj</code> argument. An optional argument to reformat (or not) to address ambiguous trailing zeros.</p>
 </div>
 <div id="minor-improvements-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"></a>Minor improvements</h3>
+<a href="#minor-improvements-1" class="anchor" aria-hidden="true"></a>Minor improvements</h3>
 <p>For <code><a href="../reference/format_engr.html">format_engr()</a></code></p>
-<ul>
-<li>Replaced the formatting using <code><a href="https://rdrr.io/r/base/sprintf.html">sprintf()</a></code> with <code><a href="https://rdrr.io/r/base/formatc.html">formatC()</a></code> for better control of significant trailing zeros.</li>
+<ul><li>Replaced the formatting using <code><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf()</a></code> with <code><a href="https://rdrr.io/r/base/formatc.html" class="external-link">formatC()</a></code> for better control of significant trailing zeros.</li>
 <li>Require the input to be a data frame.</li>
 <li>Require the significant digits vector to have length 1 or match the number of numeric variables.</li>
 <li>Replaced some code with tidy evaluation.</li>
 <li>Revised the vignettes and examples.</li>
 <li>Unit testing to provide 100% coverage.</li>
-</ul>
-<!-- ### New features --><!-- ### Minor improvements --><!-- ### Bug fixes --><!-- ### Deprecated --><!-- ### Defunct -->
-</div>
+</ul><!-- ### New features --><!-- ### Minor improvements --><!-- ### Bug fixes --><!-- ### Deprecated --><!-- ### Defunct --></div>
 </div>
     <div id="docxtools-011-2017-03-10" class="section level2">
 <h2 class="hasAnchor">
-<a href="#docxtools-011-2017-03-10" class="anchor"></a>docxtools 0.1.1 (2017-03-10)</h2>
-<ul>
-<li>released to CRAN</li>
-</ul>
-</div>
+<a href="#docxtools-011-2017-03-10" class="anchor" aria-hidden="true"></a>docxtools 0.1.1 (2017-03-10)</h2>
+<ul><li>released to CRAN</li>
+</ul></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -242,11 +236,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Richard Layton.</p>
+  <p><p>Developed by Richard Layton.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -254,6 +248,8 @@
 
   
 
+
+  
 
   </body>
 </html>

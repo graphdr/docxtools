@@ -14,7 +14,7 @@ NULL
 #' @param quadrant : The quadrant to plot, 1, 2, 3, 4, or 0 for all four.
 #'   Default is the first quadrant.
 #' @param col : Line color, default is \code{"gray60"}.
-#' @param size : Line width, default is \code{0.5}.
+#' @param linewidth : Line width, default is \code{0.5}.
 #'
 #' @return The empty axes.
 #'
@@ -22,7 +22,7 @@ NULL
 #' put_axes()
 #' put_axes(quadrant = 0)
 #' put_axes(col = "red")
-#' put_axes(size = 1)
+#' put_axes(linewidth = 1)
 #'
 #' \dontrun{
 #' # In an R Markdown script
@@ -31,10 +31,10 @@ NULL
 #' ```}
 #'
 #' @export
-put_axes <- function(quadrant = NULL, col = NULL, size = NULL) {
+put_axes <- function(quadrant = NULL, col = NULL, linewidth = NULL) {
   if (is.null(quadrant)) quadrant <- 1
   if (is.null(col)) col <- "gray60"
-  if (is.null(size)) size <- 0.5
+  if (is.null(linewidth)) linewidth <- 0.5
   if (quadrant == 0) {
     x_lim <- c(-1, 1)
     y_lim <- c(-1, 1)
@@ -67,10 +67,10 @@ put_axes <- function(quadrant = NULL, col = NULL, size = NULL) {
   }
   p <- ggplot() +
     geom_segment(aes(x = x_lim[1], y = 0, xend = x_lim[2], yend = 0),
-      col = col, size = size, lineend = "square"
+      col = col, linewidth = linewidth, lineend = "square"
     ) +
     geom_segment(aes(x = 0, y = y_lim[1], xend = 0, yend = y_lim[2]),
-      col = col, size = size, lineend = "square"
+      col = col, linewidth = linewidth, lineend = "square"
     ) +
     theme(
       axis.ticks = element_blank(),

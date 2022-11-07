@@ -55,6 +55,8 @@ options(tibble.print_min = 8L, tibble.print_max = 8L)
 ```
 
 
+
+
 ## Workshop documents 
 
 Documents designed for workshop or classroom participation typically provide information, examples, and prompts with room for participants to respond. The functions described here provide space in a document for written responses.    
@@ -67,6 +69,10 @@ Both functions work by creating and returning a `ggplot2` object.
 ```{r packages}
 library("docxtools")
 ```
+
+
+
+
 
 ## put_gap()
 
@@ -106,6 +112,10 @@ knitr::include_graphics("../man/figures/example-docx.png")
 
 A gap can also be used to force a page break. Alternatively, Norbert K&ouml;hler shows how to insert page breaks using Word Styles, see [R Markdown: How to insert page breaks in a MS Word document](https://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document)
 
+
+
+
+
 ## put_axes()
 
 `put_axes()` creates and prints an empty, 2-dimensional coordinate axes using `ggplot2` with no scales, no tick marks, and no axis labels. 
@@ -114,7 +124,7 @@ Usage is `put_axes(quadrant = NULL, col = NULL, size = NULL)`.
 
 - `quadrant` 0 for all quadrants; 1, 2, 3, 4 for a single quadrant; or any combination of adjacent quadrants, e.g., 12, 21, 23, 34, etc. The default is 1. 
 - `col` is line color. Default is gray60. 
-- `size` is line size. Default is 0.5. 
+- `linewidth` is line size. Default is 0.5. 
 - the hidden scales have magnitude 1. 
 
 ### Quadrants 
@@ -131,7 +141,7 @@ put_axes(2)
 
 ```{r axes03, out.width = "50%"}
 # quadrant 1
-put_axes(1, col = "blue", size = 2)
+put_axes(1, col = "blue", linewidth = 2)
 ```
 
 ```{r axes04, out.width = "50%"}
@@ -141,7 +151,7 @@ put_axes(3)
 
 ```{r axes05, out.width = "50%"}
 # quadrant 4
-put_axes(4, col = "red", size = 2)
+put_axes(4, col = "red", linewidth = 2)
 ```
 
 ```{r axes06, out.width = "50%"}
@@ -153,6 +163,11 @@ put_axes(12)
 # two adjacent quadrants
 put_axes(41)
 ```
+
+
+
+
+
 
 ### Dimensions
 
@@ -191,11 +206,12 @@ We can add text labels to label the axes using `annotate()`
 ```{r axes11, out.width = "50%"}
 p <- put_axes() +
   annotate("text",
-    x = c(1, 0), y =
-      c(0, 1), label =
-      c("x", "y"), vjust =
-      c(1, 0.5), hjust =
-      c(1, 1.5), fontface = "italic"
+    x = c(1, 0), 
+    y = c(0, 1), 
+    label = c("x", "y"), 
+    vjust = c(1, 0.5), 
+    hjust = c(1, 1.5), 
+    fontface = "italic"
   )
 p
 ```
@@ -214,11 +230,12 @@ If we use `annotate()` and the label exceeds the data rectangle, we can make the
 ```{r axes13, out.width = "50%"}
 p <- put_axes(2) +
   annotate("text",
-    x = c(-1, 0), y =
-      c(0, 1), label =
-      c("Re", "Im"), vjust =
-      c(1.5, 0.5), hjust =
-      c(0, -0.5), fontface = "italic"
+    x = c(-1, 0),
+    y = c(0, 1), 
+    label = c("Re", "Im"), 
+    vjust = c(1.5, 0.5), 
+    hjust = c(0, -0.5), 
+    fontface = "italic"
   ) + # top, right, bottom, left
   theme(plot.margin = unit(c(0, 5, 2, 0), "mm"))
 
@@ -228,6 +245,11 @@ pp <- ggplot_gtable(ggplot_build(p))
 pp$layout$clip[pp$layout$name == "panel"] <- "off"
 grid.draw(pp)
 ```
+
+
+
+
+
 
 ## Conclusion 
 
