@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">docxtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -52,7 +52,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -72,7 +72,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/graphdr/docxtools/">
+  <a href="https://github.com/graphdr/docxtools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -89,14 +89,13 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="docxtools-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#docxtools-" class="anchor" aria-hidden="true"></a>docxtools <img src="reference/figures/logo.png" align="right">
+<div class="section level1">
+<div class="page-header"><h1 id="docxtools-">docxtools <img src="reference/figures/logo.png" align="right"><a class="anchor" aria-label="anchor" href="#docxtools-"></a>
 </h1></div>
 
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor" aria-hidden="true"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>docxtools is a small set of helper functions for using R Markdown to create documents in docx format, especially documents for use in a classroom or workshop setting. These are particularly useful when one tries to do one’s own work reproducibly but has collaborators who work with Office software exclusively.</p>
 <ul>
 <li>
@@ -108,37 +107,37 @@
 <code><a href="reference/put_axes.html">put_axes()</a></code> to place unlabeled axes in a document</li>
 </ul>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>From CRAN,</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"docxtools"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"docxtools"</span><span class="op">)</span></span></code></pre></div>
 <p>Or you can obtain the most recent development version from GitHub.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"graphdr/docxtools"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"graphdr/docxtools"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor" aria-hidden="true"></a>Usage</h2>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p>The <code>density</code> data set is part of the package.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/graphdr/docxtools" class="external-link">docxtools</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"density"</span><span class="op">)</span>
-<span class="va">density</span>
-<span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span>
-<span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span>
-<span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span>
-<span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span>
-<span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span>
-<span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/graphdr/docxtools" class="external-link">docxtools</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"density"</span><span class="op">)</span></span>
+<span><span class="va">density</span></span>
+<span><span class="co">#&gt;         date trial    T_K   p_Pa   R  density</span></span>
+<span><span class="co">#&gt; 1 2018-06-12     a 294.05 101100 287 1.197976</span></span>
+<span><span class="co">#&gt; 2 2018-06-13     b 294.15 101000 287 1.196384</span></span>
+<span><span class="co">#&gt; 3 2018-06-14     c 294.65 101100 287 1.195536</span></span>
+<span><span class="co">#&gt; 4 2018-06-15     d 293.35 101000 287 1.199647</span></span>
+<span><span class="co">#&gt; 5 2018-06-16     e 293.85 101100 287 1.198791</span></span></code></pre></div>
 <p><code><a href="reference/format_engr.html">format_engr()</a></code> applies engineering notation to numeric variables, assigns significant digits, and adjusts for ambiguous trailing zeros.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">density</span>, sigdig <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span><span class="op">)</span>, ambig_0_adj <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">density</span>, sigdig <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span><span class="op">)</span>, ambig_0_adj <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>For printing the table, I suggest using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">knitr::kable()</a></code>. (Note: The table can be seen correctly rendered at the package <a href="https://graphdr.github.io/docxtools/" class="external-link">website</a>.) docxtools &lt; 0.1.4 used the <code>align_pander()</code> function that is now deprecated and soon to be defunct.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">y</span>, align <span class="op">=</span> <span class="st">"ccrrrr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">y</span>, align <span class="op">=</span> <span class="st">"ccrrrr"</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr>
 <th style="text-align:center;">
@@ -169,16 +168,16 @@ density
 a
 </td>
 <td style="text-align:right;">
-294.05
+<span class="math inline">294.05</span>
 </td>
 <td style="text-align:right;">
-101.1 × 10<sup>3</sup>
+<span class="math inline">101.1 × 10<sup>3</sup></span>
 </td>
 <td style="text-align:right;">
-287
+<span class="math inline">287</span>
 </td>
 <td style="text-align:right;">
-1.198
+<span class="math inline">1.198</span>
 </td>
 </tr>
 <tr>
@@ -189,16 +188,16 @@ a
 b
 </td>
 <td style="text-align:right;">
-294.15
+<span class="math inline">294.15</span>
 </td>
 <td style="text-align:right;">
-101.0 × 10<sup>3</sup>
+<span class="math inline">101.0 × 10<sup>3</sup></span>
 </td>
 <td style="text-align:right;">
-287
+<span class="math inline">287</span>
 </td>
 <td style="text-align:right;">
-1.196
+<span class="math inline">1.196</span>
 </td>
 </tr>
 <tr>
@@ -209,16 +208,16 @@ b
 c
 </td>
 <td style="text-align:right;">
-294.65
+<span class="math inline">294.65</span>
 </td>
 <td style="text-align:right;">
-101.1 × 10<sup>3</sup>
+<span class="math inline">101.1 × 10<sup>3</sup></span>
 </td>
 <td style="text-align:right;">
-287
+<span class="math inline">287</span>
 </td>
 <td style="text-align:right;">
-1.196
+<span class="math inline">1.196</span>
 </td>
 </tr>
 <tr>
@@ -229,16 +228,16 @@ c
 d
 </td>
 <td style="text-align:right;">
-293.35
+<span class="math inline">293.35</span>
 </td>
 <td style="text-align:right;">
-101.0 × 10<sup>3</sup>
+<span class="math inline">101.0 × 10<sup>3</sup></span>
 </td>
 <td style="text-align:right;">
-287
+<span class="math inline">287</span>
 </td>
 <td style="text-align:right;">
-1.200
+<span class="math inline">1.200</span>
 </td>
 </tr>
 <tr>
@@ -249,16 +248,16 @@ d
 e
 </td>
 <td style="text-align:right;">
-293.85
+<span class="math inline">293.85</span>
 </td>
 <td style="text-align:right;">
-101.1 × 10<sup>3</sup>
+<span class="math inline">101.1 × 10<sup>3</sup></span>
 </td>
 <td style="text-align:right;">
-287
+<span class="math inline">287</span>
 </td>
 <td style="text-align:right;">
-1.199
+<span class="math inline">1.199</span>
 </td>
 </tr>
 </tbody>
@@ -272,7 +271,7 @@ put_gap(col = "gray", fill = NULL)
 <p>For <code><a href="reference/put_axes.html">put_axes()</a></code> with knitr and R markdown, the axis height is specified in the R code-chunk header.</p>
 <pre class="r"><code>```{r fig.height = 2}
 # first quadrant axes
-put_axes(1, col = "blue", size = 0.5)
+put_axes(1, col = "blue", linewidth = 0.5)
 <code>```</code></code></pre>
 <p><img src="reference/figures/README-005-1.png" width="33%" style="display: block; margin: auto;"></p>
 </div>
@@ -283,12 +282,9 @@ put_axes(1, col = "blue", size = 0.5)
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=docxtools">https://​cloud.r-project.org/​package=docxtools</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/graphdr/docxtools/">https://​github.com/​graphdr/​docxtools/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/graphdr/docxtools/issues">https://​github.com/​graphdr/​docxtools/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=docxtools" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/graphdr/docxtools/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/graphdr/docxtools/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -296,11 +292,18 @@ put_axes(1, col = "blue", size = 0.5)
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
 
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing docxtools</a></li>
+</ul>
+</div>
 
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
@@ -332,7 +335,7 @@ put_axes(1, col = "blue", size = 0.5)
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
