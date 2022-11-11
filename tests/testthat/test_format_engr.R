@@ -30,8 +30,9 @@ test_that("Integers are returned as characters but unformatted", {
 })
 
 test_that("sigdig vector is correct", {
-  data("airquality")
-  x <- head(airquality, n = 1L)
+  # data("airquality")
+  # x <- head(airquality, n = 1L)
+  x <- data.frame(Ozone = 41, Solar.R = 190, Wind = 7.4, Temp = 67, Month = 5, Day = 1)
   y <- format_engr(x, sigdig = 6)
   expect_equal(y$Wind, "$7.40000$")
   expect_warning(

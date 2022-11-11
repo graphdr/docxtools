@@ -1,6 +1,6 @@
 #' @importFrom dplyr row_number mutate filter select left_join if_else
 #' @importFrom dplyr bind_cols %>%
-#' @importFrom tidyr gather separate spread
+#' @importFrom tidyr gather separate spread all_of
 #' @importFrom stringr  str_replace str_c str_detect str_trim
 #' @importFrom rlang syms is_double is_integer is_character
 #' @importFrom purrr map
@@ -125,9 +125,9 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
   }
 
   # sort columns of input into three mutually exclusive data frames
-  double_col <- x[, yes_double, drop = FALSE]
-  integer_col <- x[, yes_integer, drop = FALSE]
-  all_other_col <- x[, yes_others, drop = FALSE]
+  double_col    <- x[, yes_double,  drop = FALSE]
+  integer_col   <- x[, yes_integer, drop = FALSE]
+  all_other_col <- x[, yes_others,  drop = FALSE]
 
   # sigdig vector length = 1
   m_double_col <- ncol(double_col)
@@ -143,8 +143,8 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
   }
 
   # separate cols to be engr formatted
-  numeric_engr <- double_col[, sigdig != 0, drop = FALSE]
-  sigdig_engr <- sigdig[sigdig > 0]
+  numeric_engr   <- double_col[, sigdig != 0, drop = FALSE]
+  sigdig_engr    <- sigdig[sigdig > 0]
   m_numeric_engr <- ncol(numeric_engr)
 
   # join as-is double (0 sig dig) with integers
@@ -166,7 +166,7 @@ format_engr <- function(x, sigdig = NULL, ambig_0_adj = FALSE) {
 
     # separate significand from the power of ten
     numeric_engr <- format(numeric_engr, scientific = TRUE) %>%
-      tidyr::gather(var, value, 1:m_numeric_engr) %>%
+      tidyr::gather(var, value, all_of(1:m_numeric_engr)) %>%
       dplyr::mutate(observ_index = as.double(observ_index)) %>%
       mutate(value = ifelse(
         is.na(value),

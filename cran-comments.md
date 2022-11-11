@@ -13,9 +13,7 @@ R version 4.2.1
 
 * Debian Linux, R-release, GCC
 * Ubuntu Linux 20.04.1 LTS, R-release, GCC
-* Windows Server 2022, R-release, 32/64 bit
-
-
+* Windows x86_64-w64-mingw32 (64-bit)
 
 ## R CMD check results
 

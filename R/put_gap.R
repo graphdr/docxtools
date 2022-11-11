@@ -36,7 +36,7 @@ put_gap <- function(col = NULL, fill = NULL) {
   if (is.null(col)) col <- "transparent"
   if (is.null(fill)) fill <- "transparent"
   p <- ggplot() +
-    theme(panel.background = element_rect(color = col, fill = fill, size = 0.5))
+    theme(panel.background = element_rect(color = col, fill = fill, linewidth = 0.5))
   print(p)
 }
 "put_gap"

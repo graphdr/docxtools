@@ -5,9 +5,10 @@
 
 
 
-## docxtools 0.3.0 (2022-1-11)
+## docxtools 0.3.0 (2022-11-11)
 
 - Change line width argument from `size` to `linewidth` for compatibility with 2022 late October release of ggplot2. 
+- Add `all_of` to account for change to `tidyr::gather()`    
 
 
 

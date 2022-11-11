@@ -110,7 +110,7 @@ Here's an image from a Word document where space for written responses was creat
 knitr::include_graphics("../man/figures/example-docx.png")
 ```
 
-A gap can also be used to force a page break. Alternatively, Norbert K&ouml;hler shows how to insert page breaks using Word Styles, see [R Markdown: How to insert page breaks in a MS Word document](https://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document)
+A gap can also be used to force a page break. Alternatively, Norbert K&ouml;hler shows how to insert page breaks using Word Styles, see [R Markdown: How to insert page breaks in a MS Word document](https://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document/)
 
 
 
