@@ -28,15 +28,3 @@ The dimensions of the gap are determined when it is printed, e.g., using
 \code{knitr} in an R Markdown script, the box height in inches is set with
 the \code{fig.height} code chunk option.
 }
-\examples{
-\dontrun{
-put_gap()
-put_gap(col = "gray")
-put_gap(col = "black", fill = "gray")
-
-# In an R Markdown script
-```{r fig.height = 0.75}
-put_gap()
-```}
-
-}

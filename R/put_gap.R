@@ -19,18 +19,6 @@ NULL
 #' @param fill Fill color, default is \code{"transparent"}
 #'
 #' @return Prints the box to the output document.
-#'
-#' @examples
-#' \dontrun{
-#' put_gap()
-#' put_gap(col = "gray")
-#' put_gap(col = "black", fill = "gray")
-#'
-#' # In an R Markdown script
-#' ```{r fig.height = 0.75}
-#' put_gap()
-#' ```}
-#'
 #' @export
 put_gap <- function(col = NULL, fill = NULL) {
   if (is.null(col)) col <- "transparent"
