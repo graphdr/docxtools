@@ -21,11 +21,11 @@ NULL
 #' @return Prints the box to the output document.
 #'
 #' @examples
+#' \dontrun{
 #' put_gap()
 #' put_gap(col = "gray")
 #' put_gap(col = "black", fill = "gray")
 #'
-#' \dontrun{
 #' # In an R Markdown script
 #' ```{r fig.height = 0.75}
 #' put_gap()

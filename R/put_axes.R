@@ -19,12 +19,13 @@ NULL
 #' @return The empty axes.
 #'
 #' @examples
+#'
+#' \dontrun{
 #' put_axes()
 #' put_axes(quadrant = 0)
 #' put_axes(col = "red")
 #' put_axes(linewidth = 1)
 #'
-#' \dontrun{
 #' # In an R Markdown script
 #' ```{r fig.height = 3.2}
 #' put_axes()
