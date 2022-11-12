@@ -1,0 +1,236 @@
+---
+title: "Put workspace in docx"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{Put workspace in docx}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+resource_files:
+  - ../man/figures/example-docx.png
+  - ../man/figures/put-workspace-axes01-1.png
+  - ../man/figures/put-workspace-axes02-1.png
+  - ../man/figures/put-workspace-axes03-1.png
+  - ../man/figures/put-workspace-axes04-1.png
+  - ../man/figures/put-workspace-axes05-1.png
+  - ../man/figures/put-workspace-axes06-1.png
+  - ../man/figures/put-workspace-axes07-1.png
+  - ../man/figures/put-workspace-axes08-1.png
+  - ../man/figures/put-workspace-axes09-1.png
+  - ../man/figures/put-workspace-axes10-1.png
+  - ../man/figures/put-workspace-axes11-1.png
+  - ../man/figures/put-workspace-axes12-1.png
+  - ../man/figures/put-workspace-axes13-1.png
+  - ../man/figures/put-workspace-gap1-1.png
+  - ../man/figures/put-workspace-gap2-1.png
+---
+
+```{r setup, echo = FALSE, message = FALSE}
+# knitr::opts_knit$set(root.dir = "../")
+knitr::opts_chunk$set(
+  echo = TRUE, # varies from one Rmd to another
+  message = FALSE,
+  warning = FALSE,
+  collapse = TRUE,
+  comment = "#>",
+  error = TRUE,
+  purl = FALSE,
+  fig.width = 6,
+  fig.asp = 1 / 1.6,
+  out.width = "70%",
+  fig.align = "center",
+  fig.path = "../man/figures/put-workspace-"
+)
+knitr::knit_hooks$set(inline = function(x) {
+  if (!is.numeric(x)) {
+    x
+  } else if (x >= 10000) {
+    prettyNum(round(x, 2), big.mark = ",")
+  } else {
+    prettyNum(round(x, 2))
+  }
+})
+options(tibble.print_min = 8L, tibble.print_max = 8L)
+```
+
+
+## Workshop documents 
+
+Documents designed for workshop or classroom participation typically provide information, examples, and prompts with room for participants to respond. The functions described here provide space in a document for written responses.    
+
+- For a prompt that requires a written response,  the `put_gap()` function inserts a blank space in the document. 
+- For a prompt that requires a sketch in a coordinate frame, the `put_axes()` function inserts an empty coordinate frame in the output document. 
+
+Both functions work by creating and returning a `ggplot2` object. 
+
+```{r packages}
+library("docxtools")
+```
+
+## put_gap()
+
+This function allows the author of Rmd to docx documents to insert a vertical white space of specified height. 
+
+The white space is an empty `ggplot2` object. The only assignment is the panel background, made with `theme(panel.background = element_rect())`. 
+
+The usage is `put_gap(col = NULL, fill = NULL)` to specify the color of the rectangle border and its fill. Defaults are "transparent". 
+
+The dimensions of the gap are determined when it is printed. For example, to create a 0.75 inch gap in an R Markdown output document, we set the dimension in the `knitr` code chunk header,  
+
+<pre class="r"><code>```{r fig.height = 0.75}
+put_gap()
+<code>```</code></code></pre>
+
+produces this output: 
+
+```{r gap1, fig.asp = 0.75 / 6, echo = FALSE}
+put_gap()
+```
+ 
+With color and fill arguments and an optional width argument in the code chunk header,  
+
+<pre class="r"><code>```{r fig.height = 0.75, fig.width = 6}
+put_gap(col = "black", fill = "gray")
+<code>```</code></code></pre>
+
+```{r gap2, fig.asp = 0.75 / 6, echo = FALSE}
+put_gap(col = "black", fill = "gray")
+```
+ 
+Here's an image from a Word document where space for written responses was created using `put_gap()`.
+
+```{r}
+knitr::include_graphics("../man/figures/example-docx.png")
+```
+
+A gap can also be used to force a page break. Alternatively, Norbert K&ouml;hler shows how to insert page breaks using Word Styles, see [R Markdown: How to insert page breaks in a MS Word document](http://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document).
+
+## put_axes()
+
+`put_axes()` creates and prints an empty, 2-dimensional coordinate axes using `ggplot2` with no scales, no tick marks, and no axis labels. 
+
+Usage is `put_axes(quadrant = NULL, col = NULL, size = NULL)`. 
+
+- `quadrant` 0 for all quadrants; 1, 2, 3, 4 for a single quadrant; or any combination of adjacent quadrants, e.g., 12, 21, 23, 34, etc. The default is 1. 
+- `col` is line color. Default is gray60. 
+- `size` is line size. Default is 0.5. 
+- the hidden scales have magnitude 1. 
+
+### Quadrants 
+
+```{r axes01, out.width = "50%"}
+# all 4 quadrants
+put_axes(0)
+```
+
+```{r axes02, out.width = "50%"}
+# quadrant 2
+put_axes(2)
+```
+
+```{r axes03, out.width = "50%"}
+# quadrant 1
+put_axes(1, col = "blue", size = 2)
+```
+
+```{r axes04, out.width = "50%"}
+# quadrant 3
+put_axes(3)
+```
+
+```{r axes05, out.width = "50%"}
+# quadrant 4
+put_axes(4, col = "red", size = 2)
+```
+
+```{r axes06, out.width = "50%"}
+# two adjacent quadrants
+put_axes(12)
+```
+
+```{r axes07, out.width = "50%"}
+# two adjacent quadrants
+put_axes(41)
+```
+
+### Dimensions
+
+The size of the figure is determined when printed, e.g., using `knitr`
+in an R Markdown script, the figure height in inches is set with the
+`fig.height` code chunk option. 
+
+<pre class="r"><code>```{r fig.height = 2}
+put_axes()
+<code>```</code></code></pre>
+
+```{r axes08, fig.height = 2, echo = FALSE, out.width = "50%"}
+put_axes()
+```
+
+The default aspect ratio is 1, though it can be edited using `coord_fixed()` from `ggplot2`. 
+
+```{r axes09, fig.height = 2, out.width = "50%"}
+library(ggplot2)
+put_axes() +
+  coord_fixed(1 / 2) # ratio of y/x
+```
+
+### Annotations 
+
+The graph object can be edited using the usual `ggplot2` annotations. For example, to place some text in the middle of the graph, 
+
+```{r axes10, fig.show = 'hold', out.width = "50%"}
+p <- put_axes() +
+  annotate("text", x = 0.5, y = 0.5, label = "quadrant I")
+p
+```
+
+We can add text labels to label the axes using `annotate()` 
+
+```{r axes11, out.width = "50%"}
+p <- put_axes() +
+  annotate("text",
+    x = c(1, 0), y =
+      c(0, 1), label =
+      c("x", "y"), vjust =
+      c(1, 0.5), hjust =
+      c(1, 1.5), fontface = "italic"
+  )
+p
+```
+
+Or we can use the usual `labs()` after resetting the theme `axis.title`, 
+
+```{r axes12, out.width = "50%"}
+p <- put_axes() +
+  theme(axis.title = element_text()) +
+  labs(x = "new x", y = "new y")
+p
+```
+
+If we use `annotate()` and the label exceeds the data rectangle, we can make the plot margin larger and override the plot clipping. 
+
+```{r axes13, out.width = "50%"}
+p <- put_axes(2) +
+  annotate("text",
+    x = c(-1, 0), y =
+      c(0, 1), label =
+      c("Re", "Im"), vjust =
+      c(1.5, 0.5), hjust =
+      c(0, -0.5), fontface = "italic"
+  ) + # top, right, bottom, left
+  theme(plot.margin = unit(c(0, 5, 2, 0), "mm"))
+
+# override clipping
+library(grid)
+pp <- ggplot_gtable(ggplot_build(p))
+pp$layout$clip[pp$layout$name == "panel"] <- "off"
+grid.draw(pp)
+```
+
+## Conclusion 
+
+These functions help create printed documents with space for written responses. Options are limited;  authors needing more control can create their own inserts using `ggplot2` or other graphics engine. 
+
+

@@ -1,0 +1,7 @@
+density                 Ideal gas sample data frame
+docxtools               docxtools: R Markdown to docx helper functions.
+format_engr             Format numerical variables in engineering
+                        notation.
+put_axes                Insert a two-dimensional coordinate axes in a
+                        document.
+put_gap                 Insert a gap or whitespace in a document.

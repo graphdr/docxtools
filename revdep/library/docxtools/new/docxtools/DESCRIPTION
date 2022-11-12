@@ -1,0 +1,26 @@
+Package: docxtools
+Title: Tools for R Markdown to Docx Documents
+Version: 0.3.0
+Language: en-US
+Authors@R: c(
+    person("Richard", "Layton", email = "graphdoctor@gmail.com", role = c("aut", "cre"))
+    )
+Description: A set of helper functions for using R Markdown to create documents
+    in docx format, especially documents for use in a classroom or workshop
+    setting.
+Depends: R (>= 3.4)
+License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.2.1
+Imports: dplyr, ggplot2, lubridate, purrr, rlang, stringr, tidyr
+Suggests: knitr, rmarkdown, rprojroot, testthat
+VignetteBuilder: knitr
+URL: https://github.com/graphdr/docxtools
+BugReports: https://github.com/graphdr/docxtools/issues
+RemoteType: local
+RemoteUrl: C:\Users\layto\Documents\R projects\my packages\docxtools
+NeedsCompilation: no
+Packaged: 2022-11-12 00:15:14 UTC; layto
+Author: Richard Layton [aut, cre]
+Maintainer: Richard Layton <graphdoctor@gmail.com>
+Built: R 4.2.2; ; 2022-11-12 00:15:16 UTC; windows

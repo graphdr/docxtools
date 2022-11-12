@@ -1,0 +1,914 @@
+
+R version 4.2.2 (2022-10-31 ucrt) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "hydraulics"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> library('hydraulics')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("atmos_table")
+> ### * atmos_table
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: atmos_table
+> ### Title: Tabulates into a tibble some properties of the standard
+> ###   atmosphere: temperature, density, and pressure.
+> ### Aliases: atmos_table
+> 
+> ### ** Examples
+> 
+> 
+> atmos_table(units = 'SI')
+# A tibble: 16 × 4
+   Altitude   Temp Pressure  Density
+        [m]    [C]     [Pa] [kg/m^3]
+ 1        0  15     101325     1.23 
+ 2     1000   8.50   89876.    1.11 
+ 3     2000   2.00   79501.    1.01 
+ 4     3000  -4.49   70121.    0.909
+ 5     4000 -11.0    61660.    0.819
+ 6     5000 -17.5    54048.    0.736
+ 7     6000 -24.0    47218.    0.660
+ 8     7000 -30.5    41105.    0.590
+ 9     8000 -36.9    35652.    0.526
+10     9000 -43.4    30801.    0.467
+11    10000 -49.9    26500.    0.414
+12    11000 -56.4    22700.    0.365
+13    12000 -62.9    19355.    0.321
+14    13000 -69.3    16421.    0.281
+15    14000 -75.8    13859.    0.245
+16    15000 -82.3    11632.    0.212
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("atmosprops")
+> ### * atmosprops
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: atmosprops
+> ### Title: Functions to calculate ICAO standard atmospheric properties:
+> ###   temperature, density, and pressure.
+> ### Aliases: atmosprops atmtemp atmpres atmdens
+> 
+> ### ** Examples
+> 
+> 
+> #Find standard atmospheric temperature at altitude 8000 m
+> atmtemp(alt = 8000, units = 'SI')
+[1] -36.93477
+> 
+> #Find standard atmospheric pressure assuming default altitude of zero (sea-level)
+> atmpres(units = 'Eng', ret_units = TRUE)
+
+Altitude not given.
+Assuming alt = 0 ft
+
+2116.216 [lbf/ft^2]
+> 
+> #Find standard atmospheric density at altitude 15000 ft 
+> atmdens(alt = 15000, units = 'Eng')
+[1] 0.00149495
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("colebrook")
+> ### * colebrook
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: colebrook
+> ### Title: Calculates the Darcy-Weisbach Friction Factor f
+> ### Aliases: colebrook velocity reynolds_number
+> 
+> ### ** Examples
+> 
+> 
+> # A Type 1 problem (solve for hf): US units
+> D <- 20/12   #diameter of 20 inches
+> Q <- 4       #flow in ft^3/s
+> T <- 60      #water temperature in F
+> ks <- 0.0005 #pipe roughness in ft
+> 
+> f <- colebrook(ks=ks,V=velocity(D,Q), D=D, nu=kvisc(T=T, units="Eng"))
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("darcyweisbach")
+> ### * darcyweisbach
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: darcyweisbach
+> ### Title: Solves the Darcy-Weisbach Equation for the either head loss
+> ###   (hf), flow rate (Q), diameter (D), or roughness height (ks).
+> ### Aliases: darcyweisbach
+> 
+> ### ** Examples
+> 
+> 
+> #Type 2 (solving for flow rate, Q): SI Units
+> D <- .5
+> L <- 10
+> hf <- 0.006*L
+> T <- 20
+> ks <- 0.000046
+> darcyweisbach(D = D, hf = hf, L = L, ks = ks, nu = kvisc(T=T, units='SI'), units = c('SI'))
+Q missing: solving a Type 2 problem
+
+$Q
+[1] 0.4059048
+
+$V
+[1] 2.067256
+
+$L
+[1] 10
+
+$D
+[1] 0.5
+
+$hf
+[1] 0.06
+
+$f
+[1] 0.01330553
+
+$ks
+[1] 4.6e-05
+
+$Re
+[1] 1010337
+
+> 
+> #Type 3 (solving for diameter, D): Eng (US) units
+> Q <- 37.5     #flow in ft^3/s
+> L <- 8000     #pipe length in ft
+> hf <- 215     #head loss due to friction, in ft
+> T <- 68       #water temperature, F
+> ks <- 0.0008  #pipe roughness, ft
+> darcyweisbach(Q = Q, hf = hf, L = L, ks = ks, nu = kvisc(T=T, units='Eng'), units = c('Eng'))
+D missing: solving a Type 3 problem
+
+$Q
+[1] 37.5
+
+$V
+[1] 13.964
+
+$L
+[1] 8000
+
+$D
+[1] 1.849123
+
+$hf
+[1] 215
+
+$f
+[1] 0.01642589
+
+$ks
+[1] 8e-04
+
+$Re
+[1] 2336974
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("direct_step")
+> ### * direct_step
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: direct_step
+> ### Title: Uses the direct step method to find the distance between two
+> ###   known depths in a trapezoidal channel
+> ### Aliases: direct_step
+> 
+> ### ** Examples
+> 
+> 
+> #Solving for profile between depths 3.1 ft and 3.4 ft in a rectangular channel
+> #Flow of 140 ft^3/s, bottom width = 6 ft:
+> direct_step(So=0.0015, n=0.013, Q=140, y1=3.1, y2=3.4, b=6, m=0, nsteps=2, units="Eng")
+y1=3.100, y2=3.400, yn=3.750, yc=2.566646
+Profile type  = M2
+
+# A tibble: 3 × 7
+       x     z     y     A      Sf     E    Fr
+   <dbl> <dbl> <dbl> <dbl>   <dbl> <dbl> <dbl>
+1    0   0      3.1   18.6 0.00247  3.98 0.753
+2  -85.6 0.128  3.25  19.5 0.00218  4.05 0.702
+3 -230.  0.346  3.4   20.4 0.00194  4.13 0.656
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("hardycross")
+> ### * hardycross
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: hardycross
+> ### Title: Applies the Hardy-Cross method to solve for pipe flows in a
+> ###   network.
+> ### Aliases: hardycross
+> 
+> ### ** Examples
+> 
+> 
+> #              A----------B --> 0.5m^3/s
+> #              |\   (4)   |
+> #              | \        |
+> #              |  \       |
+> #              |   \(2)   |
+> #              |    \     |(5)
+> #              |(1)  \    |
+> #              |      \   |
+> #              |       \  |
+> #              |        \ |
+> #              |   (3)   \|
+> # 0.5m^3/s --> C----------D
+> 
+> #Input pipe characteristics data frame. With K given other columns not needed
+> dfpipes <- data.frame(
++ ID = c(1,2,3,4,5),                     #pipe ID
++ K = c(200,2500,500,800,300)            #resistance used in hf=KQ^2
++ )
+> loops <- list(c(1,2,3),c(2,4,5))
+> Qs <- list(c(0.3,0.1,-0.2),c(-0.1,0.2,-0.3))
+> hardycross(dfpipes = dfpipes, loops = loops, Qs = Qs, n_iter = 1, units = "SI")
+Using fixed K values
+
+Iteration: 1, Loop: 1, dQ: -0.02805
+Iteration: 1, Loop: 2, dQ: 0.02000
+$dfloops
+  loop pipe        flow
+1    1    1  0.27195122
+2    1    2  0.05195122
+3    1    3 -0.22804878
+4    2    2 -0.05195122
+5    2    4  0.22000000
+6    2    5 -0.28000000
+
+$dfpipes
+  ID    K           Q
+1  1  200  0.27195122
+2  2 2500  0.05195122
+3  3  500 -0.22804878
+4  4  800  0.22000000
+5  5  300 -0.28000000
+
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("manningc")
+> ### * manningc
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: manningc
+> ### Title: Solves the Manning Equation for gravity flow in a circular pipe
+> ### Aliases: manningc
+> 
+> ### ** Examples
+> 
+> 
+> #Solving for flow rate, Q: SI Units
+> manningc(d = 0.6, n = 0.013, Sf = 1./400., y = 0.24, units = "SI")
+$Q
+[1] 0.1034572
+
+$V
+[1] 0.9795864
+
+$A
+[1] 0.1056131
+
+$P
+[1] 0.821663
+
+$R
+[1] 0.1285358
+
+$y
+[1] 0.24
+
+$d
+[1] 0.6
+
+$Sf
+[1] 0.0025
+
+$n
+[1] 0.013
+
+$yc
+[1] 0.2049712
+
+$Fr
+[1] 0.7380179
+
+$Re
+[1] 123074.7
+
+$Qf
+[1] 0.3070058
+
+> #returns 0.1 m3/s
+> 
+> #Solving for Sf, if d=600 mm and pipe is to flow half full
+> manningc(d = 0.6, Q = 0.17, n = 0.013, y = 0.3, units = "SI")
+$Q
+[1] 0.17
+
+$V
+[1] 1.202504
+
+$A
+[1] 0.1413717
+
+$P
+[1] 0.9424778
+
+$R
+[1] 0.15
+
+$y
+[1] 0.3
+
+$d
+[1] 0.6
+
+$Sf
+[1] 0.00306623
+
+$n
+[1] 0.013
+
+$yc
+[1] 0.2653927
+
+$Fr
+[1] 0.7910804
+
+$Re
+[1] 176311.2
+
+$Qf
+[1] 0.34
+
+> #returns required slope of 0.003
+> 
+> #Solving for diameter, d when given y_d): Eng (US) units
+> manningc(Q = 83.5, n = 0.015, Sf = 0.0002, y_d = 0.9, units = "Eng")
+$Q
+[1] 83.5
+
+$V
+[1] 2.287699
+
+$A
+[1] 36.49955
+
+$P
+[1] 17.49094
+
+$R
+[1] 2.086769
+
+$y
+[1] 6.301548
+
+$d
+[1] 7.00172
+
+$Sf
+[1] 2e-04
+
+$n
+[1] 0.015
+
+$yc
+[1] 2.338705
+
+$Fr
+[1] 0.1367745
+
+$Re
+[1] 433166.9
+
+$Qf
+[1] 78.34463
+
+> #returns 7.0 ft required diameter
+> 
+> #Solving for depth, d when given Q: SI units
+> manningc(Q=0.01, n=0.0013, Sf=0.001, d = 0.2, units="SI")
+$Q
+[1] 0.01
+
+$V
+[1] 2.088668
+
+$A
+[1] 0.004787739
+
+$P
+[1] 0.1902905
+
+$R
+[1] 0.02516016
+
+$y
+[1] 0.04194989
+
+$d
+[1] 0.2
+
+$Sf
+[1] 0.001
+
+$n
+[1] 0.0013
+
+$yc
+[1] 0.08454977
+
+$Fr
+[1] 3.889917
+
+$Re
+[1] 51367.08
+
+$Qf
+[1] 0.1037178
+
+> #returns depth  y = 0.042 m, critical depth, yc = 0.085 m
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("manningt")
+> ### * manningt
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: manningt
+> ### Title: Solves the Manning Equation for water flow in an open channel
+> ### Aliases: manningt
+> 
+> ### ** Examples
+> 
+> 
+> #Solving for flow rate, Q, trapezoidal channel: SI Units
+> manningt(n = 0.013, m = 2, Sf = 0.0005, y = 1.83, b = 3, units = "SI")
+$Q
+[1] 22.19996
+
+$V
+[1] 1.82149
+
+$A
+[1] 12.1878
+
+$P
+[1] 11.18401
+
+$R
+[1] 1.089752
+
+$y
+[1] 1.83
+
+$b
+[1] 3
+
+$m
+[1] 2
+
+$Sf
+[1] 5e-04
+
+$B
+[1] 10.32
+
+$n
+[1] 0.013
+
+$yc
+[1] 1.322952
+
+$Fr
+[1] 0.535234
+
+$Re
+[1] 1940245
+
+> #returns Q=22.2 m3/s
+> 
+> #Solving for roughness, n, rectangular channel: Eng units
+> manningt(Q = 14.56, m = 0, Sf = 0.0004, y = 2.0, b = 4, units = "Eng")
+$Q
+[1] 14.56
+
+$V
+[1] 1.82
+
+$A
+[1] 8
+
+$P
+[1] 8
+
+$R
+[1] 1
+
+$y
+[1] 2
+
+$b
+[1] 4
+
+$m
+[1] 0
+
+$Sf
+[1] 4e-04
+
+$B
+[1] 4
+
+$n
+[1] 0.01629942
+
+$yc
+[1] 0.7437873
+
+$Fr
+[1] 0.2267924
+
+$Re
+[1] 165140.4
+
+> #returns Manning n of 0.016
+> 
+> #Solving for depth, y, triangular channel: SI units
+> manningt(Q = 1.0, n = 0.011, m = 1, Sf = 0.0065, b = 0, units = "SI")
+$Q
+[1] 1
+
+$V
+[1] 2.648641
+
+$A
+[1] 0.3775521
+
+$P
+[1] 1.737935
+
+$R
+[1] 0.2172418
+
+$y
+[1] 0.6144527
+
+$b
+[1] 0
+
+$m
+[1] 1
+
+$Sf
+[1] 0.0065
+
+$B
+[1] 1.228905
+
+$n
+[1] 0.011
+
+$yc
+[1] 0.7276052
+
+$Fr
+[1] 1.525926
+
+$Re
+[1] 562430.1
+
+$yopt
+[1] 0.4493444
+
+> #returns 0.6 m normal flow depth
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("moody")
+> ### * moody
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: moody
+> ### Title: Creates a Moody diagram with optional manually added points
+> ### Aliases: moody
+> 
+> ### ** Examples
+> 
+> 
+> # Draw canonical Moody diagram
+> moody()
+> 
+> # Draw Moody diagram plotting two additional points
+> Re = c(10000, 100000)
+> f = c(0.04, 0.03)
+> moody( Re = Re, f = f )
+> 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pumpcurve")
+> ### * pumpcurve
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pumpcurve
+> ### Title: Fits a polynomial curve to three or more points from a pump
+> ###   characteristic curve to be used in solving for an operating point of
+> ###   the pump in a piping system.
+> ### Aliases: pumpcurve
+> 
+> ### ** Examples
+> 
+> 
+> #Input in Eng units - use \code{units} package for easy unit conversion
+> qgpm <- units::set_units(c(0, 5000, 7850), gallons/minute)
+> qcfs <- units::set_units(qgpm, ft^3/s)
+> hft <- c(81, 60, 20) #units are already in ft so setting units is optional
+> pumpcurve(Q = qcfs, h = hft, eq = "poly2", units = "Eng")
+$curve
+function (x) 
+coef(hqfit)[1] + x^2 * coef(hqfit)[2]
+<bytecode: 0x000002380086d8a0>
+<environment: 0x0000023800875330>
+
+$eqn
+[1] "h == 82.5 - 0.201*Q^2"
+
+$r2
+[1] 0.995
+
+$p
+
+$units
+[1] "Eng"
+
+attr(,"class")
+[1] "pumpcurve"
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("sequent_depth")
+> ### * sequent_depth
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: sequent_depth
+> ### Title: Solves the Momentum Equation for sequent (or conjugate) depth in
+> ###   a trapezoidal channel
+> ### Aliases: sequent_depth
+> 
+> ### ** Examples
+> 
+> 
+> #Solving for sequent depth: SI Units
+> #Flow of 0.2 m^3/s, bottom width = 0.5 m, Depth = 0.1 m, side slope = 1:1
+> sequent_depth(Q=0.2,b=0.5,y=0.1,m=1,units = "SI", ret_units = TRUE)
+Mixed units: 1 (2), m (5) 
+0.1 [m], 0.3941009 [m], 0.217704 [m], 3.635731 [1], 0.3465538 [1], 0.666509 [m], 0.4105265 [m] 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("spec_energy_trap")
+> ### * spec_energy_trap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: spec_energy_trap
+> ### Title: Creates a specific energy diagram for a trapezoidal channel
+> ### Aliases: spec_energy_trap
+> 
+> ### ** Examples
+> 
+> 
+> # Draw a specific cross-section with flow 1, width 2, side slope 3:1 (H:V)
+> spec_energy_trap(Q = 1.0, b = 2.0, m = 3.0, scale = 4, units = "SI")
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("systemcurve")
+> ### * systemcurve
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: systemcurve
+> ### Title: Creates a system curve for a piping system using the static head
+> ###   and a coefficient.
+> ### Aliases: systemcurve
+> 
+> ### ** Examples
+> 
+> 
+> #Input in Eng units. Coefficient can be calculated manually or using 
+> #other package functions for friction loss in a pipe system using \eqn{Q=1}
+> ans <- darcyweisbach(Q = 1,D = 20/12, L = 3884, ks = 0.0005, nu = 1.23e-5, units = "Eng")
+hf missing: solving a Type 1 problem
+
+> systemcurve(hs = 30, K = ans$hf, units = "Eng")
+$curve
+function (x) 
+hs + x^2 * K
+<bytecode: 0x000002387faf2520>
+<environment: 0x000002387faf2a60>
+
+$eqn
+[1] "h == 30 + 0.16*Q^2"
+
+$units
+[1] "Eng"
+
+attr(,"class")
+[1] "systemcurve"
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("water_table")
+> ### * water_table
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: water_table
+> ### Title: Tabulates into a tibble the basic water properties: density,
+> ###   dynamic and kinematic viscosity, saturation vapor pressure, surface
+> ###   tension, and bulk modulus.
+> ### Aliases: water_table
+> 
+> ### ** Examples
+> 
+> 
+> water_table(units = 'SI')
+# A tibble: 21 × 8
+   Temp  Density Spec_Weight Viscosity  Kinem_Visc Sat_VP Surf_Tens   Bulk_Mod
+    [C] [kg/m^3]     [N/m^3] [N*s/m^2]     [m^2/s]   [Pa]     [N/m]       [Pa]
+ 1    0    1000.       9809.  0.00173  0.00000173    611.    0.0757 2020000000
+ 2    5    1000.       9810.  0.00150  0.00000150    873.    0.0749 2060000000
+ 3   10    1000.       9807.  0.00131  0.00000131   1228.    0.0742 2100000000
+ 4   15     999.       9801.  0.00115  0.00000115   1706.    0.0735 2140000000
+ 5   20     998.       9793.  0.00102  0.00000102   2339.    0.0727 2180000000
+ 6   25     997.       9781.  0.000911 0.000000913  3170.    0.0720 2220000000
+ 7   30     996.       9768.  0.000817 0.000000821  4247.    0.0712 2250000000
+ 8   35     994.       9752.  0.000738 0.000000742  5629.    0.0704 2265000000
+ 9   40     992.       9734.  0.000670 0.000000675  7385.    0.0696 2280000000
+10   45     990.       9714.  0.000611 0.000000617  9595.    0.0688 2285000000
+# … with 11 more rows
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("waterprops")
+> ### * waterprops
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: waterprops
+> ### Title: Functions to calculate water properties: density, specific
+> ###   weight, dynamic and kinematic viscosity, saturation vapor pressure,
+> ###   surface tension, and bulk modulus.
+> ### Aliases: waterprops dvisc dens specwt kvisc svp surf_tension Ev
+> 
+> ### ** Examples
+> 
+> 
+> #Find kinematic viscocity for water temperature of 55 F
+> nu = kvisc(T = 55, units = 'Eng')
+> 
+> #Find kinematic viscocity assuming default water temperature of 68 F
+> nu = kvisc(units = 'Eng')
+
+Temperature not given.
+Assuming T = 68 F
+
+> 
+> #Find water density for water temperature of 25 C
+> rho = dens(T = 25, units = 'SI')
+> 
+> #Find saturation vapor pressure for water temperature of 10 C
+> vps = svp(T = 10, units = 'SI')
+> 
+> #Find surface tension for water temperature of 10 C
+> s_tens = surf_tension(T = 10, units = 'SI')
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("xc_circle")
+> ### * xc_circle
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: xc_circle
+> ### Title: Creates a cross-section plot for a partially filled pipe
+> ### Aliases: xc_circle
+> 
+> ### ** Examples
+> 
+> 
+> # Draw a cross-section with diameter 1.0 and depth 0.7
+> xc_circle(y = 0.7, d = 1.0, units = "SI")
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("xc_trap")
+> ### * xc_trap
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: xc_trap
+> ### Title: Creates a cross-section plot for an open channel
+> ### Aliases: xc_trap
+> 
+> ### ** Examples
+> 
+> 
+> # Draw a cross-section with depth 1, width 2, side slope 3:1 (H:V)
+> xc_trap(y = 1.0, b = 2.0, m = 3.0, units = "SI")
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  1.44 0.12 1.56 NA NA 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
