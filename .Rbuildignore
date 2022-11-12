@@ -12,3 +12,4 @@
 ^_pkgdown\.yml$
 ^holding$
 ^pkgdown$
+^CRAN-SUBMISSION$
