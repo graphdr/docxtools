@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">docxtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0.9000</span>
       </span>
     </div>
 
@@ -153,18 +153,18 @@ m<sup>-3</sup>.</p>
 <code class="sourceCode R"><span><span class="va">density</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("density")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000024840ad0b08&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000112e1a23958&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:stats&gt;</span></span></code></pre></div>
 <p>Four of the variables are numeric. The <code>date</code> variable is
 of type “double” but class “Date”, so it is not reformatted. Class and
 type are found using <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map_chr()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">density</span>, <span class="va">class</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `purrr:::stop_bad_type()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `.x` must be a vector, not a function</span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `map_chr()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `.x` must be a vector, not a function.</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">density</span>, <span class="va">typeof</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `purrr:::stop_bad_type()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `.x` must be a vector, not a function</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `map_chr()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `.x` must be a vector, not a function.</span></span></code></pre></div>
 <p>Usage is
 <code>format_engr(x, sigdig = NULL, ambig_0_adj = FALSE)</code>. The
 function returns a data frame with all numeric values reformatted as
@@ -175,14 +175,14 @@ character strings in engineering format with math delimiters
 <span><span class="va">density_engr</span></span>
 <span><span class="co">#&gt; function (x, ...) </span></span>
 <span><span class="co">#&gt; UseMethod("density")</span></span>
-<span><span class="co">#&gt; &lt;bytecode: 0x0000024840ad0b08&gt;</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x00000112e1a23958&gt;</span></span>
 <span><span class="co">#&gt; &lt;environment: namespace:stats&gt;</span></span></code></pre></div>
 <p>The formerly numeric variables are now characters. Non-numeric
 variables are returned unaltered.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">density_engr</span>, <span class="va">class</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `purrr:::stop_bad_type()`:</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `.x` must be a vector, not a function</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> in `purrr::map_chr()`:</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BBBB00;">!</span> `.x` must be a vector, not a function.</span></span></code></pre></div>
 <p>The math formatting is applied when the data frame is printed in the
 output document. For example, we can use <code><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">knitr::kable()</a></code> to
 print the formatted data.</p>
@@ -241,31 +241,31 @@ column. A zero returns the variable in its original form.</p>
 <p>Print the data with incrementally decreasing significant digits.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">x</span>, sigdig <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"4 digits"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in is.data.frame(x): object 'x' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'x' not found</span></span></code></pre></div>
 <p>Three digits creates no ambiguity.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">x</span>, sigdig <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"3 digits"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in is.data.frame(x): object 'x' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'x' not found</span></span></code></pre></div>
 <p>With 2 digits, we have three columns with ambiguous trailing
 zeros.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">x</span>, sigdig <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"2 digits"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in is.data.frame(x): object 'x' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'x' not found</span></span></code></pre></div>
 <p>By setting the <code>ambig_0_adj</code> argument to TRUE, scientific
 notation is used to remove the ambiguity.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">x</span>, sigdig <span class="op">=</span> <span class="fl">2</span>, ambig_0_adj <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"Removing ambiguity"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in is.data.frame(x): object 'x' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'x' not found</span></span></code></pre></div>
 <p>The ambiguous trailing zero adjustment is applied only to those
 variables for which the condition exists. For example, consider these
 data without the adjustment,</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">x</span>, sigdig <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, ambig_0_adj <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in is.data.frame(x): object 'x' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'x' not found</span></span></code></pre></div>
 <p>The same numbers with <code>ambig_0_adj = TRUE</code>,</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="../reference/format_engr.html">format_engr</a></span><span class="op">(</span><span class="va">x</span>, sigdig <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, ambig_0_adj <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in is.data.frame(x): object 'x' not found</span></span></code></pre></div>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'x' not found</span></span></code></pre></div>
 <p>and only the pressure variable has a reformatted power of ten because
 it is the only variable that had ambiguous trailing zeros.</p>
 </div>
@@ -288,7 +288,7 @@ it is the only variable that had ambiguous trailing zeros.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

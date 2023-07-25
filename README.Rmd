@@ -36,12 +36,12 @@ options(tibble.print_min = 8L, tibble.print_max = 8L)
 
 # docxtools <img src="man/figures/logo.png" align="right" />
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](https://CRAN.R-project.org/package=docxtools) 
-[![cran checks](https://cranchecks.info/badges/summary/rhub)](https://cran.r-project.org/web/checks/check_results_rhub.html)
-[![status](https://tinyverse.netlify.com/badge/docxtools)](https://CRAN.R-project.org/package=docxtools)
-[![Coverage Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master) 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) 
-[![](https://cranlogs.r-pkg.org/badges/grand-total/docxtools)](https://CRAN.R-project.org/package=docxtools) 
+<!-- badges -->
+[![cran checks](https://badges.cranchecks.info/worst/docxtools.svg)](https://cran.r-project.org/web/checks/check_results_docxtools.html)
+[![coverage](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master) 
+<!-- badges -->
+
+
 
 ## Overview
 
@@ -118,3 +118,6 @@ put_axes(1, col = "blue", linewidth = 0.5)
 ```
 
 
+## License
+
+[MIT](LICENSE.html) + file [LICENSE](LICENSE-text.html)

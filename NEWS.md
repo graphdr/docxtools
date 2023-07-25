@@ -5,6 +5,11 @@
 
 
 
+## docxtools 0.3.0.9000 dev (2022-11-11) 
+
+- Corrected CRAN check badge
+
+
 ## docxtools 0.3.0 (2022-11-11)
 
 - Change line width argument from `size` to `linewidth` for compatibility with 2022 late October release of ggplot2. 

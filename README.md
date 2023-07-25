@@ -3,15 +3,12 @@
 
 # docxtools <img src="man/figures/logo.png" align="right" />
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/docxtools)](https://CRAN.R-project.org/package=docxtools)
+<!-- badges -->
+
 [![cran
-checks](https://cranchecks.info/badges/summary/rhub)](https://cran.r-project.org/web/checks/check_results_rhub.html)
-[![status](https://tinyverse.netlify.com/badge/docxtools)](https://CRAN.R-project.org/package=docxtools)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
-[![License:
-MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/docxtools)](https://CRAN.R-project.org/package=docxtools)
+checks](https://badges.cranchecks.info/worst/docxtools.svg)](https://cran.r-project.org/web/checks/check_results_docxtools.html)
+[![coverage](https://img.shields.io/codecov/c/github/graphdr/docxtools/master.svg)](https://codecov.io/github/graphdr/docxtools?branch=master)
+<!-- badges -->
 
 ## Overview
 
@@ -21,10 +18,9 @@ classroom or workshop setting. These are particularly useful when one
 tries to do one’s own work reproducibly but has collaborators who work
 with Office software exclusively.
 
--   `format_engr()` to apply engineering format to numbers
-    <!-- - `align_pander()` to print a table of numbers using pander (deprecated) -->
--   `put_gap()` to create white space in a document
--   `put_axes()` to place unlabeled axes in a document
+- `format_engr()` to apply engineering format to numbers
+- `put_gap()` to create white space in a document
+- `put_axes()` to place unlabeled axes in a document
 
 ## Installation
 
@@ -220,3 +216,7 @@ put_axes(1, col = "blue", linewidth = 0.5)
 <code>```</code></code></pre>
 
 <img src="man/figures/README-005-1.png" width="33%" style="display: block; margin: auto;" />
+
+## License
+
+[MIT](LICENSE.html) + file [LICENSE](LICENSE-text.html)
