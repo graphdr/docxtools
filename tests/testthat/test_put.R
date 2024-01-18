@@ -18,7 +18,10 @@ test_that("put_axes() attributes match expectations", {
   expect_identical(p$theme$plot.margin, unit(c(0, 0, 0, 0), "mm"))
 
   p <- put_axes(col = "blue", linewidth = 1)
-  expect_identical(p$layers[[1]]$geom$non_missing_aes, c("linetype", "linewidth", "shape"))
+  expect_identical(
+    p$layers[[1]]$geom$non_missing_aes,
+    geom_segment()$geom$non_missing_aes
+  )
 
   p <- put_axes(2)
   expect_true(purrr::is_empty(p$mapping))
